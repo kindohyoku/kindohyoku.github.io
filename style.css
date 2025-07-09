@@ -211,6 +211,11 @@ a.link-korean {
     margin-right: 0; /* Align right within its flex parent */
 }
 
+/* Ensure last loading box matches full width */
+.portfolio-item:last-of-type .portfolio-image-container.loading-box {
+    max-width: var(--max-content-width) !important;
+}
+
 /* Caption styles */
 .portfolio-caption {
     width: 100%;

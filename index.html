@@ -12,10 +12,10 @@
 <body>
     <div class="wrapper">
         <header class="intro-section">
-            <div class="about-me">
-                <p>Kim Dong Hyuk is an interdisciplinary filmmaker, researcher, and designer working at the intersection of computational technology and applied design. This dual focus is central to his current practice: at Hanyang University's <a href="https://designinformatics.hanyang.ac.kr/" class="link">Design Informatics Lab</a>, he investigates the application of <em>AI</em> and <em>HCI</em> to <em>design workflows</em>, while as a project lead at <a href="https://www.forumdnp.com/" class="link">FORUM D&P Inc.</a>, he merges <em>cinematic</em> techniques with <em>architectural</em> documentation.</p>
-                <p>His interest in computational creativity is reflected in his projects. He has developed a <a href="#computational-cinematics" class="link">multimodal AI pipeline</a> that applies computational methodologies to Cinematics, enabling a quantitative analysis of how specific shot compositions create emotional shifts. His work has also involved investigating <a href="#" class="link">the impact of 3D pre-visualization</a> on the storyboarding process and utilizing generative ai tools to <a href="#" class="link">visualize narrative scenarios</a>.</p>
-                <p>He applies this hybrid expertise to a dynamic creative practice. His work in filmmaking has been invited to and awarded at numerous international film festivals. In parallel, he contributes his visual and directorial skills to campaign projects for clients such as <a href="https://www.instagram.com/reel/C8UKrYYptPP/" class="link">Adidas</a> and the <a href="https://youtu.be/5DmUZFaWPQI?si=lynaDwLC-g5F7wcA" class="link">Korea National Contemporary Dance Company</a>. Grounded in his dual studies in Theater & Film and Interior Architectural Design, Dong Hyuk consistently seeks to build unique worlds and craft compelling experiences.</p>
+            <div class="about-me"> 
+                <p>Kim Dong Hyuk is an interdisciplinary filmmaker, researcher, and designer working at the intersection of computational technology and applied design. At Hanyang University's <a href="https://designinformatics.hanyang.ac.kr/" class="link">Design Informatics Lab</a>, he investigates the application of <em>AI</em> and <em>HCI</em> to design, developing methodologies that bridge data-driven analysis with creative workflows.  while as a project lead at <a href="https://www.forumdnp.com/" class="link">FORUM D&P Inc.</a>, he merges <em>cinematic</em> techniques with <em>architectural</em> documentation.</p>
+                <p>His interest in computational creativity is reflected in his projects. He has developed a <a href="#computational-cinematics" class="link">multimodal AI pipeline</a> that applies computational methodologies to Cinematics, enabling a quantitative analysis of how specific shot compositions create emotional shifts. Another investigation into <a href="#" class="link">impact of 3D pre-visualization</a> for film storyboarding examines efficiency gains in camera and lighting setup while maintaining creative shot composition. His work with generative AI tools further explores new possibilities for <a href="#" class="link">narrative scenario visualization</a>.</p>
+                <p>His primary focus on filmmaking and visual storytelling informs this research foundation. His work in filmmaking has been invited to and awarded at numerous international film festivals. In parallel, he contributes his visual and directorial skills to campaign projects for clients such as <a href="https://www.instagram.com/reel/C8UKrYYptPP/" class="link">Adidas</a> and the <a href="https://youtu.be/5DmUZFaWPQI?si=lynaDwLC-g5F7wcA" class="link">Korea National Contemporary Dance Company</a>. Grounded in his studies in Film, Architectural Design and Ai, Dong Hyuk consistently seeks to create new things for compelling experiences.</p>
             </div>
             <div class="recent-contact">
                 <p class="recent-heading">Recently...</p>
@@ -83,8 +83,8 @@
 
             <!-- Portfolio Item 5 -->
             <article class="portfolio-item">
-                <div class="portfolio-image-container video-container">
-                    <iframe src="https://www.youtube.com/embed/TV_H7jcgWw8?rel=0&modestbranding=1" title="Adidas Samba Campaign" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                <div class="portfolio-image-container loading-box">
+                    <span class="loading-text">loading<span class="dots">.</span></span>
                 </div>
                 <div class="portfolio-caption">
                     <p class="caption-title">Adidas “Samba” Campaign. commerce. 2024.</p>
@@ -93,7 +93,7 @@
         </main>
 
         <footer class="site-footer">
-            <p class="copyright">kindohyoku. 2025.</p>
+            <p class="copyright">more to come... kindohyoku. 2025.</p>
         </footer>
     </div>
     <script>
@@ -167,13 +167,13 @@ window.addEventListener('DOMContentLoaded', function () {
 
 // Loading dots animation
 (function(){
-  const dotsEl = document.querySelector('#computational-cinematics .dots');
-  if(!dotsEl) return;
+  const dotsEls = document.querySelectorAll('.dots');
+  if(!dotsEls.length) return;
   const pattern = [".", "..", "...", "..", "."];
-  let i = 0;
+  let idx = 0;
   setInterval(()=>{
-    dotsEl.textContent = pattern[i];
-    i = (i + 1) % pattern.length;
+    dotsEls.forEach(el => el.textContent = pattern[idx]);
+    idx = (idx + 1) % pattern.length;
   }, 700);
 })();
 </script>
