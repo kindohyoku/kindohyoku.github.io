@@ -1,0 +1,284 @@
+/* Custom CSS Variables */
+:root {
+    --primary-bg-color: rgba(245, 233, 233, 0.69); /* Original RGBA value for background */
+    --text-color-dark: black;
+    --text-color-medium: #666666;
+    --text-color-link: #767676; /* Based on Figma's link color */
+    --font-anonymous-pro: 'Anonymous Pro', monospace;
+    --max-content-width: 960px; /* Max width of the main content area */
+    --page-horizontal-padding: 16px; /* Padding on the left/right of the main wrapper */
+    --gap-between-sections: 60px; /* Space between major content blocks */
+    --gap-between-items: 60px; /* Space between portfolio items */
+}
+
+/* Basic Reset & Box-Sizing */
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: var(--primary-bg-color);
+    font-family: var(--font-anonymous-pro);
+    color: var(--text-color-dark);
+    line-height: 1.5; /* Default line height */
+    display: flex;
+    justify-content: center; /* Center the wrapper horizontally */
+    align-items: flex-start; /* Align wrapper to the top */
+    min-height: 100vh; /* Ensures body takes at least full viewport height */
+    padding: var(--page-horizontal-padding); /* Padding around the entire content */
+}
+
+.wrapper {
+    width: 100%;
+    max-width: calc(var(--max-content-width) + (2 * var(--page-horizontal-padding))); /* Max width of the wrapper, including its own padding */
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Center items within the wrapper */
+}
+
+/* Links */
+a {
+    color: inherit; /* Inherit color from parent by default */
+    text-decoration: none; /* Remove default underline */
+}
+
+a.link {
+    text-decoration: underline; /* Apply underline only to links with 'link' class */
+    color: var(--text-color-link);
+}
+
+a.link-korean {
+    text-decoration: underline;
+    color: var(--text-color-medium); /* Specific color for the Korean link */
+    font-size: 13px; /* Specific size for the Korean link */
+}
+
+/* Header / Intro Section */
+.intro-section {
+    display: flex;
+    flex-wrap: wrap; /* Allows items to wrap onto the next line on smaller screens */
+    justify-content: space-between;
+    width: 100%;
+    max-width: var(--max-content-width); /* Align with the inner content width */
+    margin-bottom: var(--gap-between-sections);
+}
+
+.about-me,
+.recent-contact {
+    flex: 1; /* Allow flexibility */
+    min-width: 400px; /* Minimum width before wrapping */
+    max-width: calc(50% - 20px); /* Roughly half width minus gap */
+    margin-bottom: 20px; /* Space between columns when they stack */
+}
+
+.about-me p,
+.recent-contact p {
+    font-size: 14px;
+    line-height: 21px;
+    margin-bottom: 10px; /* Spacing between paragraphs */
+    word-wrap: break-word; /* Ensure long words wrap */
+}
+
+.about-me p:last-child,
+.recent-contact p:last-child {
+    margin-bottom: 0; /* No margin after the last paragraph */
+}
+
+.about-me em {
+    font-style: italic;
+}
+
+.recent-heading, .contact-heading {
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 21px;
+    margin-bottom: 5px;
+}
+
+.recent-entry {
+    font-size: 14px;
+    line-height: 21px;
+    margin-bottom: 5px;
+}
+
+.recent-entry .text-small {
+    font-size: 11px;
+    line-height: 17px;
+}
+
+.recent-entry strong {
+    font-weight: 700;
+}
+
+.contact-entry {
+    font-size: 14px;
+    line-height: 21px;
+    margin-bottom: 5px;
+}
+
+/* Portfolio Items Grid */
+.portfolio-grid {
+    width: 100%;
+    max-width: var(--max-content-width);
+}
+
+.portfolio-item {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end; /* Align caption to the right */
+    margin-bottom: var(--gap-between-items);
+}
+
+.portfolio-image-container {
+    width: 100%;
+    /* Figma's image containers had specific dimensions and overflow hidden. */
+    /* To maintain aspect ratio and fit, we will use max-width and let height be auto. */
+    /* For specific cropping like Figma's, you might need a fixed height and object-fit: cover; */
+    max-width: 965px; /* Max width for images based on Figma */
+    overflow: hidden; /* If images are larger than their containers */
+    margin-bottom: 5px;
+}
+
+.portfolio-image-container img {
+    width: 100%; /* Make image fill its container */
+    height: auto; /* Maintain aspect ratio */
+    display: block; /* Remove extra space below image */
+    object-fit: cover; /* Crop image to fit container while maintaining aspect ratio */
+    object-position: center top; /* Adjust if certain parts of image need to be visible */
+}
+
+/* Specific adjustments for the last image based on original Figma (smaller container width) */
+.portfolio-item:last-of-type .portfolio-image-container {
+    max-width: 754px; /* Adidas image container was 754px in Figma */
+}
+
+
+.portfolio-caption {
+    width: 100%;
+    max-width: 480px; /* Caption width from Figma */
+    text-align: right; /* Aligns text within caption div to the right */
+    margin-left: auto; /* Pushes the caption to the right */
+    margin-top: 10px; /* Space between image and caption */
+}
+
+.caption-title {
+    color: var(--text-color-medium);
+    font-size: 11.81px;
+    font-weight: 700;
+    line-height: 17px;
+    margin-bottom: 5px;
+}
+
+.caption-description {
+    color: var(--text-color-dark);
+    font-size: 12px;
+    line-height: 17px;
+}
+
+.caption-description em {
+    font-style: italic;
+}
+
+.caption-description strong {
+     font-weight: 700;
+}
+
+/* Footer */
+.site-footer {
+    width: 100%;
+    max-width: var(--max-content-width);
+    padding-top: 20px;
+    padding-bottom: 20px;
+    text-align: center;
+}
+
+.copyright {
+    color: var(--text-color-medium);
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 17px;
+}
+
+/* Media Queries for Responsiveness */
+
+/* Tablets and smaller desktops */
+@media (max-width: 990px) {
+    .intro-section {
+        flex-direction: column; /* Stack columns vertically */
+        align-items: center; /* Center the stacked columns */
+    }
+
+    .about-me,
+    .recent-contact {
+        max-width: 600px; /* Give them more width on medium screens */
+        width: 100%; /* Take full width of parent */
+        flex: none; /* Remove flex sizing to allow max-width to control */
+        margin-bottom: 40px; /* More space between stacked sections */
+        text-align: center; /* Center text within these sections */
+    }
+
+    .about-me {
+        margin-top: 20px; /* Space from top */
+    }
+
+    .portfolio-item {
+        align-items: center; /* Center image and caption on smaller screens */
+    }
+
+    .portfolio-caption {
+        text-align: center; /* Center text within caption */
+        margin-left: auto;
+        margin-right: auto; /* Center the caption div */
+    }
+}
+
+/* Mobile devices */
+@media (max-width: 768px) {
+    :root {
+        --page-horizontal-padding: 10px; /* Reduce padding for smaller screens */
+        --max-content-width: 90vw; /* Use percentage of viewport width */
+        --gap-between-sections: 40px;
+        --gap-between-items: 40px;
+    }
+
+    body {
+        padding: var(--page-horizontal-padding);
+    }
+
+    .about-me,
+    .recent-contact {
+        max-width: 100%; /* Take full width of content area */
+        min-width: unset; /* Remove min-width constraint */
+    }
+
+    .about-me p,
+    .recent-contact p {
+        font-size: 13px; /* Slightly smaller text for better readability on small screens */
+        line-height: 1.6;
+    }
+
+    .recent-heading, .contact-heading {
+        font-size: 13px;
+    }
+
+    .recent-entry {
+        font-size: 13px;
+    }
+
+    .recent-entry .text-small {
+        font-size: 10px;
+    }
+
+    .contact-entry {
+        font-size: 13px;
+    }
+
+    .caption-title {
+        font-size: 11px;
+    }
+    .caption-description {
+        font-size: 11px;
+    }
+}
