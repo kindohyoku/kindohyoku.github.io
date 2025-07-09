@@ -97,10 +97,15 @@ a.link-korean {
     margin-bottom: 5px;
 }
 
+/* Extra spacing above contact heading */
+.contact-heading {
+    margin-top: 15px;
+}
+
 .recent-entry {
     font-size: 14px;
-    line-height: 21px;
-    margin-bottom: 5px;
+    line-height: 19px !important; /* adjusted line height */
+    margin-bottom: 0 !important;
 }
 
 .recent-entry .text-small {
@@ -110,12 +115,6 @@ a.link-korean {
 
 .recent-entry strong {
     font-weight: 700;
-}
-
-.contact-entry {
-    font-size: 14px;
-    line-height: 21px;
-    margin-bottom: 5px;
 }
 
 /* Portfolio Items Grid */
@@ -152,6 +151,30 @@ a.link-korean {
 /* Specific adjustments for the last image based on original Figma (smaller container width) */
 .portfolio-item:last-of-type .portfolio-image-container {
     max-width: 754px; /* Adidas image container was 754px in Figma */
+}
+
+/* Slideshow styles */
+.portfolio-image-container.slideshow {
+    position: relative;
+    width: 100%; /* take full available width */
+    max-width: var(--max-content-width); /* align with header width */
+    padding-top: 56.25%; /* 16:9 aspect ratio */
+    overflow: hidden;
+    cursor: pointer;
+}
+.portfolio-image-container.slideshow .slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* crop to fill frame */
+    object-position: center center;
+    opacity: 0;
+    transition: opacity 0.7s ease-in-out;
+}
+.portfolio-image-container.slideshow .slide.active {
+    opacity: 1;
 }
 
 
@@ -273,6 +296,7 @@ a.link-korean {
 
     .contact-entry {
         font-size: 13px;
+        line-height: 5px !important;
     }
 
     .caption-title {
@@ -281,4 +305,81 @@ a.link-korean {
     .caption-description {
         font-size: 11px;
     }
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+/* Tighter spacing for intro-section text */
+.about-me p {
+    margin-bottom: 3px; /* reduced from 5px */
+}
+
+/* Tighter spacing for recent-contact section */
+.recent-entry,
+.contact-entry {
+    margin-bottom: 2px; /* reduced from 3px */
+}
+
+/* Keep slightly more space below small text lines */
+.recent-entry .text-small {
+    display: inline-block;
+    margin-bottom: 3px;
+}
+
+.recent-entry.spacer-top {
+    margin-top: 3px;
+}
+
+.contact-entry {
+    margin: 3 !important;
+    line-height: 12px !important;
+}
+
+.video-container {
+    position: relative;
+    width: 100%;
+    max-width: var(--max-content-width);
+    padding-top: 56.25%; /* 16:9 ratio */
+    overflow: hidden;
+}
+.video-container iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+.video-container video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Ensure last portfolio item video spans full width */
+.portfolio-item:last-of-type .video-container {
+    max-width: var(--max-content-width);
+}
+
+/* Loading placeholder styles */
+.loading-box {
+    position: relative;
+    width: 100%;
+    max-width: var(--max-content-width);
+    padding-top: 56.25%; /* 16:9 ratio */
+    background: #fff;
+    overflow: hidden;
+}
+.loading-box .loading-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 18px;
+    color: #000;
+    font-family: var(--font-anonymous-pro);
 }
