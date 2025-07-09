@@ -18,11 +18,15 @@
     padding: 0;
 }
 
+html {
+    scroll-behavior: smooth; /* Keep for smooth scrolling */
+}
+
 body {
     background-color: var(--primary-bg-color);
     font-family: var(--font-anonymous-pro);
     color: var(--text-color-dark);
-    line-height: 1.5; /* Default line height */
+    line-height: 1.5; /* Default line height for most text */
     display: flex;
     justify-content: center; /* Center the wrapper horizontally */
     align-items: flex-start; /* Align wrapper to the top */
@@ -52,7 +56,7 @@ a.link {
 a.link-korean {
     text-decoration: underline;
     color: var(--text-color-medium); /* Specific color for the Korean link */
-    font-size: 13px; /* Specific size for the Korean link */
+    font-size: 13px; /* Original explicit font size, not a general text size */
 }
 
 /* Header / Intro Section */
@@ -73,49 +77,66 @@ a.link-korean {
     margin-bottom: 20px; /* Space between columns when they stack */
 }
 
-.about-me p,
-.recent-contact p {
-    font-size: 14px;
-    line-height: 21px;
-    margin-bottom: 10px; /* Spacing between paragraphs */
-    word-wrap: break-word; /* Ensure long words wrap */
+/* Tighter spacing for intro-section text */
+.about-me p {
+    font-size: 14px; /* Keeping font size as is */
+    line-height: 21px; /* Original line-height from Figma */
+    margin-bottom: 3px; /* Reduced spacing */
+    word-wrap: break-word;
 }
-
-.about-me p:last-child,
-.recent-contact p:last-child {
-    margin-bottom: 0; /* No margin after the last paragraph */
+.about-me p:last-child {
+    margin-bottom: 0;
 }
-
 .about-me em {
     font-style: italic;
 }
 
-.recent-heading, .contact-heading {
-    font-size: 14px;
+
+.recent-heading {
+    font-size: 14px; /* Keeping font size as is */
     font-weight: 400;
     line-height: 21px;
     margin-bottom: 5px;
 }
-
 /* Extra spacing above contact heading */
 .contact-heading {
+    font-size: 14px; /* Keeping font size as is */
+    font-weight: 400;
+    line-height: 21px;
     margin-top: 15px;
+    margin-bottom: 5px; /* Ensure some bottom margin */
 }
 
+/* Specific styling for recent entries */
 .recent-entry {
-    font-size: 14px;
-    line-height: 19px !important; /* adjusted line height */
-    margin-bottom: 0 !important;
+    font-size: 14px; /* Keeping font size as is */
+    line-height: 1.3; /* Adjusted for better spacing without overlap */
+    margin-bottom: 5px; /* Default small spacing */
+    word-wrap: break-word;
 }
-
 .recent-entry .text-small {
-    font-size: 11px;
-    line-height: 17px;
+    font-size: 11px; /* Keeping font size as is */
+    line-height: 17px; /* From original Figma code */
+    display: block; /* Ensure it starts on a new line */
 }
-
 .recent-entry strong {
     font-weight: 700;
 }
+.recent-entry.spacer-top {
+    margin-top: 10px; /* Add some top margin for visual separation if needed */
+}
+
+/* Styling for contact entries */
+.contact-entry {
+    font-size: 14px; /* Keeping font size as is */
+    line-height: 1.5; /* More appropriate line-height for readability */
+    margin-bottom: 5px; /* Consistent spacing, corrected from 'margin: 3 !important;' */
+    word-wrap: break-word;
+}
+.contact-entry:last-child {
+    margin-bottom: 0;
+}
+
 
 /* Portfolio Items Grid */
 .portfolio-grid {
@@ -130,46 +151,36 @@ a.link-korean {
     margin-bottom: var(--gap-between-items);
 }
 
+/* Base style for all media containers (HTML uses portfolio-image-container) */
 .portfolio-image-container {
     width: 100%;
-    /* Figma's image containers had specific dimensions and overflow hidden. */
-    /* To maintain aspect ratio and fit, we will use max-width and let height be auto. */
-    /* For specific cropping like Figma's, you might need a fixed height and object-fit: cover; */
-    max-width: 965px; /* Max width for images based on Figma */
-    overflow: hidden; /* If images are larger than their containers */
+    position: relative; /* Needed for absolute positioning of slides/iframes */
+    overflow: hidden; /* Ensures content stays within bounds */
     margin-bottom: 5px;
+    /* Default aspect ratio for containers. Can be overridden by specific types. */
+    padding-top: 56.25%; /* Default to 16:9 ratio, common for videos and full-width slideshows */
+    background-color: #f0f0f0; /* Light background while content loads */
 }
 
-.portfolio-image-container img {
-    width: 100%; /* Make image fill its container */
-    height: auto; /* Maintain aspect ratio */
-    display: block; /* Remove extra space below image */
-    object-fit: cover; /* Crop image to fit container while maintaining aspect ratio */
-    object-position: center top; /* Adjust if certain parts of image need to be visible */
-}
-
-/* Specific adjustments for the last image based on original Figma (smaller container width) */
-.portfolio-item:last-of-type .portfolio-image-container {
-    max-width: 754px; /* Adidas image container was 754px in Figma */
-}
-
-/* Slideshow styles */
-.portfolio-image-container.slideshow {
-    position: relative;
-    width: 100%; /* take full available width */
-    max-width: var(--max-content-width); /* align with header width */
-    padding-top: 56.25%; /* 16:9 aspect ratio */
-    overflow: hidden;
-    cursor: pointer;
-}
-.portfolio-image-container.slideshow .slide {
-    position: absolute;
+/* Styles for actual images, videos, iframes within portfolio-image-container */
+.portfolio-image-container img,
+.portfolio-image-container video,
+.portfolio-image-container iframe {
+    position: absolute; /* To fit within padding-top container */
     top: 0;
     left: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover; /* crop to fill frame */
-    object-position: center center;
+    width: 100%; /* Make media fill its container */
+    height: 100%; /* Make media fill its container */
+    object-fit: cover; /* Crop to fill frame while maintaining aspect ratio */
+    display: block; /* Remove extra space below images */
+    border: 0; /* Remove default iframe border */
+}
+
+/* Slideshow specific styles (applies when .slideshow is present) */
+.portfolio-image-container.slideshow {
+    cursor: pointer; /* Indicates it's clickable */
+}
+.portfolio-image-container.slideshow .slide {
     opacity: 0;
     transition: opacity 0.7s ease-in-out;
 }
@@ -177,18 +188,41 @@ a.link-korean {
     opacity: 1;
 }
 
+/* Loading placeholder styles */
+.portfolio-image-container.loading-box { /* Apply loading-box styles to the common container */
+    background: #fff;
+    /* padding-top: 56.25%; is already set on .portfolio-image-container */
+}
+.portfolio-image-container.loading-box .loading-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 18px; /* Keeping this specific font-size for loading text */
+    color: #000;
+    font-family: var(--font-anonymous-pro);
+}
 
+/* Specific adjustment for the last image/video based on original Figma (Adidas campaign had a narrower container) */
+/* This rule affects the container itself, making it narrower on wider screens. */
+.portfolio-item:last-of-type .portfolio-image-container {
+    max-width: 754px; /* Adidas image container was 754px in Figma, if you want this specific width */
+    margin-left: auto; /* Pushes it to the right if the parent is wider */
+    margin-right: 0; /* Align right within its flex parent */
+}
+
+/* Caption styles */
 .portfolio-caption {
     width: 100%;
     max-width: 480px; /* Caption width from Figma */
     text-align: right; /* Aligns text within caption div to the right */
     margin-left: auto; /* Pushes the caption to the right */
-    margin-top: 10px; /* Space between image and caption */
+    margin-top: 10px; /* Space between media and caption */
 }
 
 .caption-title {
     color: var(--text-color-medium);
-    font-size: 11.81px;
+    font-size: 11.81px; /* Keeping font size as is */
     font-weight: 700;
     line-height: 17px;
     margin-bottom: 5px;
@@ -196,7 +230,7 @@ a.link-korean {
 
 .caption-description {
     color: var(--text-color-dark);
-    font-size: 12px;
+    font-size: 12px; /* Keeping font size as is */
     line-height: 17px;
 }
 
@@ -219,7 +253,7 @@ a.link-korean {
 
 .copyright {
     color: var(--text-color-medium);
-    font-size: 14px;
+    font-size: 14px; /* Keeping font size as is */
     font-weight: 700;
     line-height: 17px;
 }
@@ -276,110 +310,37 @@ a.link-korean {
         min-width: unset; /* Remove min-width constraint */
     }
 
+    /* Removed font-size changes here as per request */
     .about-me p,
     .recent-contact p {
-        font-size: 13px; /* Slightly smaller text for better readability on small screens */
-        line-height: 1.6;
+        line-height: 1.6; /* Adjusted line height for better mobile readability */
     }
 
+    /* Removed font-size changes here as per request */
     .recent-heading, .contact-heading {
-        font-size: 13px;
+        /* font-size: inherit; */ /* No change to font-size here */
     }
 
+    /* Removed font-size changes here as per request */
     .recent-entry {
-        font-size: 13px;
+        /* font-size: inherit; */ /* No change to font-size here */
     }
 
     .recent-entry .text-small {
-        font-size: 10px;
+        font-size: 10px; /* Keeping this specific font-size change for small text */
     }
 
+    /* Removed font-size changes here as per request */
     .contact-entry {
-        font-size: 13px;
-        line-height: 5px !important;
+        /* font-size: inherit; */ /* No change to font-size here */
+        line-height: 1.5; /* Keeping this specific line-height change for mobile */
+        margin-bottom: 5px; /* Keeping consistent small margin */
     }
 
     .caption-title {
-        font-size: 11px;
+        font-size: 11px; /* Keeping this specific font-size change */
     }
     .caption-description {
-        font-size: 11px;
+        font-size: 11px; /* Keeping this specific font-size change */
     }
-}
-
-html {
-    scroll-behavior: smooth;
-}
-
-/* Tighter spacing for intro-section text */
-.about-me p {
-    margin-bottom: 3px; /* reduced from 5px */
-}
-
-/* Tighter spacing for recent-contact section */
-.recent-entry,
-.contact-entry {
-    margin-bottom: 2px; /* reduced from 3px */
-}
-
-/* Keep slightly more space below small text lines */
-.recent-entry .text-small {
-    display: inline-block;
-    margin-bottom: 3px;
-}
-
-.recent-entry.spacer-top {
-    margin-top: 3px;
-}
-
-.contact-entry {
-    margin: 3 !important;
-    line-height: 12px !important;
-}
-
-.video-container {
-    position: relative;
-    width: 100%;
-    max-width: var(--max-content-width);
-    padding-top: 56.25%; /* 16:9 ratio */
-    overflow: hidden;
-}
-.video-container iframe {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-}
-.video-container video {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
-
-/* Ensure last portfolio item video spans full width */
-.portfolio-item:last-of-type .video-container {
-    max-width: var(--max-content-width);
-}
-
-/* Loading placeholder styles */
-.loading-box {
-    position: relative;
-    width: 100%;
-    max-width: var(--max-content-width);
-    padding-top: 56.25%; /* 16:9 ratio */
-    background: #fff;
-    overflow: hidden;
-}
-.loading-box .loading-text {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    font-size: 18px;
-    color: #000;
-    font-family: var(--font-anonymous-pro);
 }
