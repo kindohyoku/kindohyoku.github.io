@@ -328,11 +328,11 @@ a.link-korean {
 
     /* Removed font-size changes here as per request */
     .recent-entry {
-        /* font-size: inherit; */ /* No change to font-size here */
+        font-size: 11px;/* font-size: inherit; */ /* No change to font-size here */
     }
 
     .recent-entry .text-small {
-        font-size: 10px; /* Keeping this specific font-size change for small text */
+        font-size: 9px; /* Keeping this specific font-size change for small text */
     }
 
     /* Removed font-size changes here as per request */
