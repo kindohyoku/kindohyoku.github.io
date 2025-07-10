@@ -6,6 +6,8 @@
     <title>Kim Dong Hyuk</title>
     <!-- Anonymous Pro 폰트 로드 -->
     <link href="https://fonts.googleapis.com/css2?family=Anonymous+Pro:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <!-- p5.js 라이브러리 로드 -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.min.js"></script>
     <!-- 커스텀 CSS 파일 연결 -->
     <link rel="stylesheet" href="style.css">
 </head>
@@ -13,9 +15,9 @@
     <div class="wrapper">
         <header class="intro-section">
             <div class="about-me"> 
-                <p>Kim Dong Hyuk is an interdisciplinary filmmaker, researcher, and designer working at the intersection of computational technology and applied design. At Hanyang University's <a href="https://designinformatics.hanyang.ac.kr/" class="link">Design Informatics Lab</a>, he investigates the application of <em>AI</em> and <em>HCI</em> to design, developing methodologies that bridge data-driven analysis with creative workflows.  while as a project lead at <a href="https://www.forumdnp.com/" class="link">FORUM D&P Inc.</a>, he merges <em>cinematic</em> techniques with <em>architectural</em> documentation.</p>
-                <p>His interest in computational design is reflected in his projects. He has developed a <a href="#computational-cinematics" class="link">multimodal AI pipeline</a> that applies computational methodologies to Cinematics, enabling a quantitative analysis of how specific shot compositions create emotional shifts. Another investigation into <a href="#" class="link">impact of 3D pre-visualization</a> for film storyboarding examines efficiency gains in camera and lighting setup while maintaining creative shot composition. His work with generative AI tools further explores new possibilities for <a href="#" class="link">narrative scenario visualization</a>.</p>
-                <p>His primary focus on filmmaking and visual storytelling informs this research foundation. His work in filmmaking has been invited to and awarded at numerous international film festivals. In parallel, he contributes his visual and directorial skills to campaign projects for clients such as <a href="https://www.instagram.com/reel/C8UKrYYptPP/" class="link">Adidas</a> and the <a href="https://youtu.be/5DmUZFaWPQI?si=lynaDwLC-g5F7wcA" class="link">Korea National Contemporary Dance Company</a>. Grounded in his studies in Film, Architectural Design and Ai, Dong Hyuk consistently seeks to create new things for compelling experiences.</p>
+                <p>Kim Dong Hyuk is an interdisciplinary filmmaker, researcher, and designer working at the intersection of computational technology and applied design. At <a href="https://designinformatics.hanyang.ac.kr/" class="link">Design Informatics Lab</a>, Hanyang University, he resea the application of <em>AI</em> and <em>HCI</em> to design, developing methodologies that bridge data-driven analysis with creative workflows.  while as a project lead at <a href="https://www.forumdnp.com/" class="link">FORUM D&P Inc.</a>, he merges <em>architectural</em> techniques with <em>cinematic</em> approach.</p>
+                <p>His interest in emerging technologies is reflected in his projects. He has developed a <a href="#computational-cinematics" class="link">multimodal AI pipeline</a> that applies computational methodologies to Cinematics, enabling a quantitative analysis of how shot compositions create emotional shifts. Another investigation into <a href="#" class="link">impact of 3D pre-visualization</a> for film storyboarding examines efficiency gains in camera and lighting setup while maintaining creative shot composition. His work with generative AI tools further explores new possibilities for <a href="#" class="link">narrative scenario visualization</a>.</p>
+                <p>His primary focus on film and visual storytelling informs his research foundation. Dong Hyuk's work in filmmaking has been invited to and awarded at numerous international film festivals. In parallel, he contributes his visual and directorial skills to campaign projects for clients such as <a href="https://www.instagram.com/reel/C8UKrYYptPP/?igsh=MXNwMGpmYnZneHMwZw==" class="link">Adidas</a> and the <a href="https://youtu.be/5DmUZFaWPQI?si=lynaDwLC-g5F7wcA" class="link">Korea National Contemporary Dance Company</a>. Grounded in his studies in Film, Architectural Design and Ai, Dong Hyuk consistently seeks to create new things for compelling experiences.</p>
             </div>
             <div class="recent-contact">
                 <p class="recent-heading">Recently...</p>
@@ -29,6 +31,11 @@
                 <p class="contact-heading">Contact...</p>
                 <p class="contact-entry"><a href="mailto:sisyphe@hanyang.ac.kr" class="link">sisyphe@hanyang.ac.kr</a></p>
                 <p class="contact-entry"><a href="https://op.gg/lol/summoners/kr/%EC%9D%B4%EA%B0%95%EB%B0%B1-KR1" class="link-korean">이강백 KR#1</a></p>
+                
+                <!-- EYES Generative Design Canvas -->
+                <div class="eyes-container">
+                    <div id="eyes-canvas-container"></div>
+                </div>
             </div>
         </header>
 
@@ -43,7 +50,7 @@
                 </div>
                 <div class="portfolio-caption">
                     <p class="caption-title">Table Lamp. Design. 2025.</p>
-                    <p class="caption-description">Designed and Fabricated a lighting fixture synthesizes Japanese <strong><chōchin></strong> and Korean <strong><seokdeung></strong> lantern traditions, realized in a contrasting material palette of <em>wood</em>, <em>washi</em>, and <em>concrete</em>.</p>
+                    <p class="caption-description">Designed and Fabricated a lighting fixture, synthesizes Japanese <strong>'chōchin'</strong> and Korean <strong>'seokdeung'</strong> lantern traditions, realized in a contrasting material palette of <em>wood</em>, <em>washi</em>, and <em>concrete</em>.</p>
                 </div>
             </article>
 
@@ -66,7 +73,7 @@
                 </div>
                 <div class="portfolio-caption">
                     <p class="caption-title">Computational Cinematics. Computing. 2025.</p>
-                    <p class="caption-description">developed a multimodal AI pipeline that applies computational methodologies to Cinematics, enabling a quantitative analysis of how specific shot compositions create emotional shifts.</p>
+                    <p class="caption-description">developed a multimodal AI pipeline that applies computational methodologies to Cinematics, enabling a quantitative analysis of how shot compositions create emotional shifts.</p>
                 </div>
             </article>
 
@@ -177,5 +184,8 @@ window.addEventListener('DOMContentLoaded', function () {
   }, 700);
 })();
 </script>
+
+<!-- EYES Generative Design Script -->
+<script src="assets/js/eyes_sketch.js"></script>
 </body>
 </html>

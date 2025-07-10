@@ -137,6 +137,28 @@ a.link-korean {
     margin-bottom: 0;
 }
 
+/* EYES Generative Design Canvas Styles */
+.eyes-container {
+    margin-top: 30px; /* 15px에서 30px로 증가하여 밑으로 이동 */
+    width: 100%;
+    display: flex;
+    justify-content: flex-start; /* 왼쪽 정렬 */
+}
+
+#eyes-canvas-container {
+    border-radius: 50%; /* 원형으로 만들기 */
+    overflow: hidden;
+    cursor: pointer;
+    position: relative;
+}
+
+#eyes-canvas-container canvas {
+    display: block !important;
+    border-radius: 50%;
+    width: 200px !important; /* 300px 캔버스를 200px로 축소하여 고해상도 효과 */
+    height: 200px !important;
+}
+
 
 /* Portfolio Items Grid */
 .portfolio-grid {
@@ -322,8 +344,12 @@ a.link-korean {
     }
 
     /* Removed font-size changes here as per request */
-    .recent-heading, .contact-heading {
-        /* font-size: inherit; */ /* No change to font-size here */
+    .recent-heading {
+        margin-top: 10px !important; /* 모바일에서 Recently 위쪽 간격 줄임 */
+    }
+    
+    .contact-heading {
+        margin-top: 20px !important; /* 모바일에서 Contact 위쪽 간격 더 늘림 */
     }
 
     /* Removed font-size changes here as per request */
@@ -347,5 +373,15 @@ a.link-korean {
     }
     .caption-description {
         font-size: 11px; /* Keeping this specific font-size change */
+    }
+    
+    /* EYES Canvas responsive styles */
+    .eyes-container {
+        justify-content: center; /* 모바일에서는 중앙 정렬 */
+    }
+    
+    #eyes-canvas-container canvas {
+        width: 160px !important; /* 모바일에서는 조금 더 작게 */
+        height: 160px !important;
     }
 }
