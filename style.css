@@ -335,6 +335,7 @@ a.link-korean {
     .recent-contact {
         max-width: 100%; /* Take full width of content area */
         min-width: unset; /* Remove min-width constraint */
+        text-align: left; /* 모바일에서 왼쪽 정렬 */
     }
 
     /* Removed font-size changes here as per request */
@@ -344,12 +345,14 @@ a.link-korean {
     }
 
     /* Removed font-size changes here as per request */
-    .recent-heading {
-        margin-top: 10px !important; /* 모바일에서 Recently 위쪽 간격 줄임 */
+    .recent-heading,
+    .contact-heading,
+    .caption-title {
+        text-align: center;
     }
-    
-    .contact-heading {
-        margin-top: 20px !important; /* 모바일에서 Contact 위쪽 간격 더 늘림 */
+    .recent-entry,
+    .contact-entry {
+        text-align: center;
     }
 
     /* Removed font-size changes here as per request */
@@ -384,4 +387,22 @@ a.link-korean {
         width: 160px !important; /* 모바일에서는 조금 더 작게 */
         height: 160px !important;
     }
+
+    .portfolio-caption,
+    .portfolio-caption .caption-title,
+    .portfolio-caption .caption-description,
+    .portfolio-caption .festival-award {
+        text-align: right;
+    }
+}
+
+.festival-award {
+    font-size: 10px;
+    line-height: 14px;
+    color: var(--text-color-dark); /* 기본은 검정 */
+    letter-spacing: 0.01em;
+    font-weight: 400;
+}
+.festival-award a {
+    color: var(--text-color-medium); /* 링크만 중간톤 */
 }
