@@ -1,49 +1,53 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 360" role="img" aria-label="Three-layer framework: Physical, Socio-Spatial, Embodied — animated agents at decreasing fidelity">
-  <style>
-    text {
-      font-family: 'Anonymous Pro', 'Courier New', 'Courier', monospace;
-      fill: #1a1a1a;
-    }
-    .num   { font-size: 36px; font-weight: 700; letter-spacing: 0.04em; }
-    .layer { font-size: 22px; font-weight: 700; letter-spacing: 0.18em; }
-    .meta  { font-size: 12px; fill: #666; font-style: italic; letter-spacing: 0.14em; }
-  </style>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 360"
+     role="img" aria-label="Lefebvre trialectic — Physical / Socio-spatial / Embodied — three vertices of spatial usability evaluation">
+  <defs>
+    <style>
+      text { font-family: 'Anonymous Pro', 'Courier New', monospace; fill: #1a1a1a; }
+      .vertex-label { font-size: 11px; font-weight: 700; letter-spacing: 0.22em; }
+      .vertex-sub   { font-size: 9.5px; fill: #888; font-style: italic; letter-spacing: 0.08em; }
+      .num          { font-size: 16px; font-weight: 400; fill: #999; letter-spacing: 0; }
+      .meta         { font-size: 10.5px; fill: #777; font-style: italic; letter-spacing: 0.16em; }
+    </style>
+  </defs>
 
-  <!-- top meta -->
-  <text class="meta" x="40" y="44">LAYER-SPECIFIC LLM PARTICIPATION</text>
-  <line x1="40" y1="58" x2="600" y2="58" stroke="#000" stroke-width="0.5" opacity="0.4" />
+  <!-- top meta + hairline rule -->
+  <text class="meta" x="40" y="40">LAYER-SPECIFIC LLM PARTICIPATION</text>
+  <line x1="40" y1="54" x2="600" y2="54" stroke="#000" stroke-width="0.5" opacity="0.35" />
 
-  <!-- Layer 3 — EMBODIED (top) : open question -->
-  <text class="num"   x="42" y="128">3</text>
-  <text class="layer" x="92" y="123">EMBODIED</text>
-  <line x1="320" y1="128" x2="588" y2="128"
-        stroke="#999" stroke-width="1" stroke-dasharray="1 8" />
-  <circle cx="460" cy="128" r="3" fill="#999">
-    <animate attributeName="opacity" values="0.15;0.55;0.15" dur="3.2s" repeatCount="indefinite" />
-    <animate attributeName="r"       values="2.5;4.5;2.5"     dur="3.2s" repeatCount="indefinite" />
-  </circle>
-  <text x="598" y="134" font-size="18" fill="#bbb"
-        font-family="'Anonymous Pro', 'Courier New', monospace">?</text>
+  <!-- Triangle vertices: top (3 EMBODIED), bottom-left (1 PHYSICAL), bottom-right (2 SOCIO-SPATIAL) -->
+  <!-- Edges -->
+  <line x1="320" y1="115" x2="160" y2="285" stroke="#1a1a1a" stroke-width="1" />
+  <line x1="320" y1="115" x2="480" y2="285" stroke="#1a1a1a" stroke-width="1" />
+  <line x1="160" y1="285" x2="480" y2="285" stroke="#1a1a1a" stroke-width="1" />
 
-  <!-- Layer 2 — SOCIO-SPATIAL (middle) : bounded informant -->
-  <text class="num"   x="42" y="218">2</text>
-  <text class="layer" x="92" y="213">SOCIO-SPATIAL</text>
-  <line x1="320" y1="218" x2="588" y2="218"
-        stroke="#444" stroke-width="1" stroke-dasharray="6 4" />
-  <circle r="4" fill="#444" cy="218">
-    <animate attributeName="cx"      values="320;588;320"    dur="7s"   repeatCount="indefinite" />
-    <animate attributeName="opacity" values="0.5;0.9;0.5"     dur="7s"   repeatCount="indefinite" />
-  </circle>
+  <!-- Subtle medians from each vertex to the centroid (320, 228) — emphasizes the three-pole structure -->
+  <line x1="320" y1="115" x2="320" y2="228" stroke="#bbb" stroke-width="0.5" stroke-dasharray="2 4" />
+  <line x1="160" y1="285" x2="320" y2="228" stroke="#bbb" stroke-width="0.5" stroke-dasharray="2 4" />
+  <line x1="480" y1="285" x2="320" y2="228" stroke="#bbb" stroke-width="0.5" stroke-dasharray="2 4" />
 
-  <!-- Layer 1 — PHYSICAL (bottom) : autonomous proxy -->
-  <text class="num"   x="42" y="308">1</text>
-  <text class="layer" x="92" y="303">PHYSICAL</text>
-  <line x1="320" y1="308" x2="588" y2="308" stroke="#000" stroke-width="1.3" />
-  <circle r="5" fill="#000" cy="308">
-    <animate attributeName="cx" values="320;588;320" dur="5s" repeatCount="indefinite" />
-  </circle>
+  <!-- Center mark — a tiny standing body at the centroid: the body in space -->
+  <g transform="translate(320, 228)">
+    <circle cx="0" cy="-7" r="2.5" fill="#1a1a1a" />
+    <line x1="0" y1="-4" x2="0" y2="6" stroke="#1a1a1a" stroke-width="2" />
+    <line x1="-5" y1="0" x2="5" y2="0" stroke="#1a1a1a" stroke-width="1.4" />
+  </g>
 
-  <!-- bottom attribution -->
-  <text class="meta" x="40" y="345">CHI '26 WORKSHOP ON LLM SIMULACRA · LEFEBVRE TRIALECTIC</text>
+  <!-- Vertex 3 — EMBODIED (top) : open / question. Hollow circle, lightest weight -->
+  <circle cx="320" cy="115" r="6" fill="#fbf6f6" stroke="#999" stroke-width="1.4" />
+  <text class="num" x="320" y="76" text-anchor="middle" fill="#999">3</text>
+  <text class="vertex-label" x="320" y="93" text-anchor="middle" fill="#1a1a1a">EMBODIED</text>
+  <text class="vertex-sub"   x="320" y="106" text-anchor="middle">lived space</text>
+
+  <!-- Vertex 1 — PHYSICAL (bottom-left) : autonomous. Solid filled, heaviest weight -->
+  <circle cx="160" cy="285" r="7" fill="#1a1a1a" />
+  <text class="num"          x="160" y="318" text-anchor="middle">1</text>
+  <text class="vertex-label" x="160" y="335" text-anchor="middle">PHYSICAL</text>
+  <text class="vertex-sub"   x="160" y="348" text-anchor="middle">perceived space</text>
+
+  <!-- Vertex 2 — SOCIO-SPATIAL (bottom-right) : bounded informant. Medium weight -->
+  <circle cx="480" cy="285" r="5.5" fill="#444" />
+  <text class="num"          x="480" y="318" text-anchor="middle">2</text>
+  <text class="vertex-label" x="480" y="335" text-anchor="middle">SOCIO-SPATIAL</text>
+  <text class="vertex-sub"   x="480" y="348" text-anchor="middle">conceived space</text>
 </svg>
