@@ -1,53 +1,51 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 360"
-     role="img" aria-label="Lefebvre trialectic — Physical / Socio-spatial / Embodied — three vertices of spatial usability evaluation">
+     role="img" aria-label="Lefebvre trialectic — Physical, Socio-Spatial, Embodied — three poles of spatial usability evaluation">
   <defs>
     <style>
-      text { font-family: 'Anonymous Pro', 'Courier New', monospace; fill: #1a1a1a; }
-      .vertex-label { font-size: 11px; font-weight: 700; letter-spacing: 0.22em; }
-      .vertex-sub   { font-size: 9.5px; fill: #888; font-style: italic; letter-spacing: 0.08em; }
-      .num          { font-size: 16px; font-weight: 400; fill: #999; letter-spacing: 0; }
-      .meta         { font-size: 10.5px; fill: #777; font-style: italic; letter-spacing: 0.16em; }
+      text {
+        font-family: 'Futura', 'Futura PT', 'Avenir Next', 'Trebuchet MS', sans-serif;
+        fill: #1a1a1a;
+      }
+      .num   { font-size: 13px; font-weight: 400; fill: #888; letter-spacing: 0.05em; }
+      .layer { font-size: 13px; font-weight: 500; letter-spacing: 0.22em; }
+      .meta  { font-size: 10px; fill: #888; letter-spacing: 0.18em; }
     </style>
   </defs>
 
-  <!-- top meta + hairline rule -->
-  <text class="meta" x="40" y="40">LAYER-SPECIFIC LLM PARTICIPATION</text>
-  <line x1="40" y1="54" x2="600" y2="54" stroke="#000" stroke-width="0.5" opacity="0.35" />
+  <!--
+    Equilateral triangle — side 220, centroid at (320, 195)
+    Top vertex      (320, 68)
+    Bottom-left     (210, 258)
+    Bottom-right    (430, 258)
+    Bottom side length = 430 - 210 = 220
+    Left side  = sqrt((320-210)^2 + (68-258)^2) = sqrt(12100 + 36100) = sqrt(48200) ≈ 219.5  ✓
+    Right side = same by symmetry  ✓
+  -->
 
-  <!-- Triangle vertices: top (3 EMBODIED), bottom-left (1 PHYSICAL), bottom-right (2 SOCIO-SPATIAL) -->
-  <!-- Edges -->
-  <line x1="320" y1="115" x2="160" y2="285" stroke="#1a1a1a" stroke-width="1" />
-  <line x1="320" y1="115" x2="480" y2="285" stroke="#1a1a1a" stroke-width="1" />
-  <line x1="160" y1="285" x2="480" y2="285" stroke="#1a1a1a" stroke-width="1" />
+  <!-- triangle edges -->
+  <polygon points="320,68 210,258 430,258"
+           fill="none" stroke="#1a1a1a" stroke-width="1" stroke-linejoin="miter" />
 
-  <!-- Subtle medians from each vertex to the centroid (320, 228) — emphasizes the three-pole structure -->
-  <line x1="320" y1="115" x2="320" y2="228" stroke="#bbb" stroke-width="0.5" stroke-dasharray="2 4" />
-  <line x1="160" y1="285" x2="320" y2="228" stroke="#bbb" stroke-width="0.5" stroke-dasharray="2 4" />
-  <line x1="480" y1="285" x2="320" y2="228" stroke="#bbb" stroke-width="0.5" stroke-dasharray="2 4" />
+  <!-- vertex dots -->
+  <circle cx="320" cy="68"  r="4.5" fill="#1a1a1a" />
+  <circle cx="210" cy="258" r="4.5" fill="#1a1a1a" />
+  <circle cx="430" cy="258" r="4.5" fill="#1a1a1a" />
 
-  <!-- Center mark — a tiny standing body at the centroid: the body in space -->
-  <g transform="translate(320, 228)">
-    <circle cx="0" cy="-7" r="2.5" fill="#1a1a1a" />
-    <line x1="0" y1="-4" x2="0" y2="6" stroke="#1a1a1a" stroke-width="2" />
-    <line x1="-5" y1="0" x2="5" y2="0" stroke="#1a1a1a" stroke-width="1.4" />
-  </g>
+  <!-- vertex labels — numeral above the layer name, all centred on the vertex -->
 
-  <!-- Vertex 3 — EMBODIED (top) : open / question. Hollow circle, lightest weight -->
-  <circle cx="320" cy="115" r="6" fill="#fbf6f6" stroke="#999" stroke-width="1.4" />
-  <text class="num" x="320" y="76" text-anchor="middle" fill="#999">3</text>
-  <text class="vertex-label" x="320" y="93" text-anchor="middle" fill="#1a1a1a">EMBODIED</text>
-  <text class="vertex-sub"   x="320" y="106" text-anchor="middle">lived space</text>
+  <!-- 3 EMBODIED (top) -->
+  <text class="num"   x="320" y="36" text-anchor="middle">3</text>
+  <text class="layer" x="320" y="54" text-anchor="middle">EMBODIED</text>
 
-  <!-- Vertex 1 — PHYSICAL (bottom-left) : autonomous. Solid filled, heaviest weight -->
-  <circle cx="160" cy="285" r="7" fill="#1a1a1a" />
-  <text class="num"          x="160" y="318" text-anchor="middle">1</text>
-  <text class="vertex-label" x="160" y="335" text-anchor="middle">PHYSICAL</text>
-  <text class="vertex-sub"   x="160" y="348" text-anchor="middle">perceived space</text>
+  <!-- 1 PHYSICAL (bottom-left) -->
+  <text class="num"   x="210" y="288" text-anchor="middle">1</text>
+  <text class="layer" x="210" y="306" text-anchor="middle">PHYSICAL</text>
 
-  <!-- Vertex 2 — SOCIO-SPATIAL (bottom-right) : bounded informant. Medium weight -->
-  <circle cx="480" cy="285" r="5.5" fill="#444" />
-  <text class="num"          x="480" y="318" text-anchor="middle">2</text>
-  <text class="vertex-label" x="480" y="335" text-anchor="middle">SOCIO-SPATIAL</text>
-  <text class="vertex-sub"   x="480" y="348" text-anchor="middle">conceived space</text>
+  <!-- 2 SOCIO-SPATIAL (bottom-right) -->
+  <text class="num"   x="430" y="288" text-anchor="middle">2</text>
+  <text class="layer" x="430" y="306" text-anchor="middle">SOCIO-SPATIAL</text>
+
+  <!-- bottom meta line -->
+  <text class="meta" x="320" y="340" text-anchor="middle">CHI '26 WORKSHOP · LEFEBVRE TRIALECTIC</text>
 </svg>
