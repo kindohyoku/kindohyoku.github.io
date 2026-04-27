@@ -284,21 +284,14 @@ a.link-korean {
     font-style: italic;
 }
 
-/* BehaviorAware: GIF is square — letterbox in dark frame so empty bands feel intentional */
+/* BehaviorAware: GIF is 3:2 (1200×800) — match the container aspect so it fills cleanly */
 #behavior-aware .portfolio-image-container {
-    background: #0a0a0a;
-}
-
-/* CHI Workshop: animated SVG diagram, sits on a soft off-white card */
-#chi-workshop .portfolio-image-container {
-    background: #fbf6f6;
-    border: 1px solid rgba(0, 0, 0, 0.08);
-}
-#chi-workshop .portfolio-image-container img {
-    object-fit: contain;
+    padding-top: 66.67%;             /* override default 16:9 with 3:2 */
+    background: #ffffff;
+    border: 1px solid rgba(0, 0, 0, 0.06);
 }
 #behavior-aware .portfolio-image-container img {
-    object-fit: contain;
+    object-fit: cover;               /* GIF and frame match — no letterbox */
 }
 /* Fallback "documenting…" text behind the GIF — visible if image fails to load */
 #behavior-aware .portfolio-image-container .fallback-text {
@@ -309,9 +302,18 @@ a.link-korean {
     font-family: var(--font-anonymous-pro);
     font-size: 13px;
     font-style: italic;
-    color: rgba(255, 255, 255, 0.55);
+    color: rgba(0, 0, 0, 0.4);
     letter-spacing: 0.04em;
     z-index: 0;
+}
+
+/* CHI Workshop: static SVG diagram, sits on a soft off-white card */
+#chi-workshop .portfolio-image-container {
+    background: #fbf6f6;
+    border: 1px solid rgba(0, 0, 0, 0.08);
+}
+#chi-workshop .portfolio-image-container img {
+    object-fit: contain;
 }
 
 /* Base style for all media containers (HTML uses portfolio-image-container) */
