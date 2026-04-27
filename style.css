@@ -288,6 +288,15 @@ a.link-korean {
 #behavior-aware .portfolio-image-container {
     background: #0a0a0a;
 }
+
+/* CHI Workshop: animated SVG diagram, sits on a soft off-white card */
+#chi-workshop .portfolio-image-container {
+    background: #fbf6f6;
+    border: 1px solid rgba(0, 0, 0, 0.08);
+}
+#chi-workshop .portfolio-image-container img {
+    object-fit: contain;
+}
 #behavior-aware .portfolio-image-container img {
     object-fit: contain;
 }
