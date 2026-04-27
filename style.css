@@ -9,8 +9,9 @@
     --page-horizontal-padding: 16px; /* Padding on the left/right of the main wrapper */
     --gap-between-sections: 60px; /* Space between major content blocks */
     --gap-between-items: 60px; /* Space between portfolio items (legacy, used elsewhere) */
-    --grid-row-gap: 48px; /* Vertical gap between portfolio rows */
-    --grid-col-gap: 20px; /* Horizontal gap between portfolio columns */
+    --grid-row-gap: 96px; /* Vertical gap between portfolio rows (editorial breathing room) */
+    --grid-col-gap: 24px; /* Horizontal gap between portfolio columns */
+    --rule-color: rgba(0, 0, 0, 0.22);
 }
 
 /* Basic Reset & Box-Sizing */
@@ -162,23 +163,32 @@ a.link-korean {
 }
 
 
-/* Portfolio Items Grid */
+/* Portfolio Items Grid — Editorial Asymmetric */
 .portfolio-grid {
     width: 100%;
     max-width: var(--max-content-width);
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(12, 1fr);
     column-gap: var(--grid-col-gap);
     row-gap: var(--grid-row-gap);
+    align-items: start;
+    counter-reset: project;
 }
 
 .portfolio-item {
     display: flex;
     flex-direction: column;
-    align-items: stretch; /* Fill grid cell width */
-    margin-bottom: 0; /* Spacing handled by grid row-gap */
-    min-width: 0; /* Allow grid item to shrink properly */
+    align-items: stretch;
+    margin-bottom: 0;
+    min-width: 0;
 }
+
+/* Asymmetric placement — feature / supporting / centered closer */
+.portfolio-item:nth-child(1) { grid-column: 1 / span 8; }   /* feature L */
+.portfolio-item:nth-child(2) { grid-column: 9 / span 4; }   /* small R, top-aligned with #1 */
+.portfolio-item:nth-child(3) { grid-column: 1 / span 5; }   /* small L */
+.portfolio-item:nth-child(4) { grid-column: 7 / span 6; }   /* feature R */
+.portfolio-item:nth-child(5) { grid-column: 4 / span 6; }   /* centered closer */
 
 /* Base style for all media containers (HTML uses portfolio-image-container) */
 .portfolio-image-container {
@@ -195,14 +205,21 @@ a.link-korean {
 .portfolio-image-container img,
 .portfolio-image-container video,
 .portfolio-image-container iframe {
-    position: absolute; /* To fit within padding-top container */
+    position: absolute;
     top: 0;
     left: 0;
-    width: 100%; /* Make media fill its container */
-    height: 100%; /* Make media fill its container */
-    object-fit: cover; /* Crop to fill frame while maintaining aspect ratio */
-    display: block; /* Remove extra space below images */
-    border: 0; /* Remove default iframe border */
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    border: 0;
+    transition: transform 0.7s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+/* Subtle scale on hover — only for live media items, not loading boxes */
+.portfolio-image-container.slideshow:hover img.active,
+.portfolio-image-container.slideshow:hover video.active {
+    transform: scale(1.025);
 }
 
 /* Slideshow specific styles (applies when .slideshow is present) */
@@ -217,44 +234,78 @@ a.link-korean {
     opacity: 1;
 }
 
-/* Loading placeholder styles */
-.portfolio-image-container.loading-box { /* Apply loading-box styles to the common container */
-    background: #fff;
-    /* padding-top: 56.25%; is already set on .portfolio-image-container */
+/* Loading placeholder — refined, tonal off-color panel with hairline border */
+.portfolio-image-container.loading-box {
+    background: rgba(255, 255, 255, 0.55);
+    border: 1px solid rgba(0, 0, 0, 0.07);
+    backdrop-filter: blur(2px);
+}
+.portfolio-image-container.loading-box::after {
+    /* faint diagonal stripe to signal "in progress" without looking unfinished */
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image: repeating-linear-gradient(
+        45deg,
+        transparent 0,
+        transparent 14px,
+        rgba(0, 0, 0, 0.025) 14px,
+        rgba(0, 0, 0, 0.025) 15px
+    );
+    pointer-events: none;
 }
 .portfolio-image-container.loading-box .loading-text {
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    font-size: 18px; /* Keeping this specific font-size for loading text */
-    color: #000;
+    font-size: 13px;
+    font-style: italic;
+    color: var(--text-color-medium);
+    letter-spacing: 0.04em;
     font-family: var(--font-anonymous-pro);
+    z-index: 1;
 }
 
 /* Last-item override removed — every portfolio item now fills its grid cell uniformly. */
 
-/* Caption styles */
+/* Caption styles — editorial */
 .portfolio-caption {
     width: 100%;
-    max-width: 100%; /* Full width of grid cell */
-    text-align: left; /* Left-align under the image in grid cell */
+    max-width: 100%;
+    text-align: left;
     margin-left: 0;
-    margin-top: 8px; /* Space between media and caption */
+    margin-top: 14px;
 }
 
+/* Project number injected via CSS counter — keeps HTML untouched */
 .caption-title {
+    color: var(--text-color-dark);
+    font-size: 12.5px;
+    font-weight: 400;
+    font-style: italic;
+    line-height: 1.5;
+    margin-bottom: 6px;
+    letter-spacing: 0.005em;
+}
+.caption-title::before {
+    counter-increment: project;
+    content: counter(project, decimal-leading-zero);
+    display: inline-block;
+    margin-right: 10px;
     color: var(--text-color-medium);
-    font-size: 11.81px; /* Keeping font size as is */
+    font-style: normal;
     font-weight: 700;
-    line-height: 17px;
-    margin-bottom: 5px;
+    font-size: 10px;
+    letter-spacing: 0.18em;
+    vertical-align: 1px;
 }
 
 .caption-description {
     color: var(--text-color-dark);
-    font-size: 12px; /* Keeping font size as is */
-    line-height: 17px;
+    font-size: 11.5px;
+    line-height: 1.55;
+    margin-bottom: 2px;
 }
 
 .caption-description em {
@@ -262,7 +313,7 @@ a.link-korean {
 }
 
 .caption-description strong {
-     font-weight: 700;
+    font-weight: 700;
 }
 
 /* Footer */
@@ -304,10 +355,17 @@ a.link-korean {
     }
 
     .portfolio-grid {
-        grid-template-columns: repeat(2, 1fr); /* 2 columns on tablet */
+        grid-template-columns: repeat(6, 1fr); /* 6-col asymmetric on tablet */
         column-gap: 18px;
-        row-gap: 40px;
+        row-gap: 72px;
     }
+
+    /* Re-map nth-child placement to 6-col scale */
+    .portfolio-item:nth-child(1) { grid-column: 1 / span 4; }
+    .portfolio-item:nth-child(2) { grid-column: 5 / span 2; }
+    .portfolio-item:nth-child(3) { grid-column: 1 / span 3; }
+    .portfolio-item:nth-child(4) { grid-column: 4 / span 3; }
+    .portfolio-item:nth-child(5) { grid-column: 2 / span 4; }
 
     .portfolio-item {
         align-items: stretch;
@@ -392,7 +450,16 @@ a.link-korean {
 
     .portfolio-grid {
         grid-template-columns: 1fr; /* Single column on mobile */
-        row-gap: 36px;
+        row-gap: 56px;
+    }
+
+    /* Reset all asymmetric placements — each item full width on mobile */
+    .portfolio-item:nth-child(1),
+    .portfolio-item:nth-child(2),
+    .portfolio-item:nth-child(3),
+    .portfolio-item:nth-child(4),
+    .portfolio-item:nth-child(5) {
+        grid-column: 1 / -1;
     }
 
     .portfolio-caption,
@@ -405,11 +472,17 @@ a.link-korean {
 
 .festival-award {
     font-size: 10px;
-    line-height: 14px;
-    color: var(--text-color-dark); /* 기본은 검정 */
-    letter-spacing: 0.01em;
+    line-height: 1.55;
+    color: var(--text-color-dark);
+    letter-spacing: 0.02em;
     font-weight: 400;
+    padding-left: 10px;
+    border-left: 1px solid var(--rule-color);
+    margin-top: 1px;
+}
+.caption-description + .festival-award {
+    margin-top: 8px;
 }
 .festival-award a {
-    color: var(--text-color-medium); /* 링크만 중간톤 */
+    color: var(--text-color-medium);
 }
