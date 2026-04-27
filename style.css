@@ -214,12 +214,32 @@ a.link-korean {
     margin-bottom: 0;
     min-width: 0;
 }
-.portfolio-item--feature { grid-column: 1 / span 8; }
-.portfolio-item--small   { grid-column: 9 / span 4; }
+.portfolio-item--feature   { grid-column: 1 / span 8; }
+.portfolio-item--small     { grid-column: 9 / span 4; }
+.portfolio-item--text-only { grid-column: 1 / -1; }   /* full-width, no image */
 
-/* Practice section: feature spans 2 rows so 2 stacked smalls fit beside it */
-.portfolio-section--practice .portfolio-item--feature {
-    grid-row: span 2;
+/* Patents section — text-only entries, title left + status tag right */
+.patent-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 24px;
+    margin-bottom: 4px;
+}
+.patent-header .caption-title {
+    margin: 0;
+    flex: 1;
+    line-height: 1.45;
+}
+.patent-header .status-tag {
+    flex: 0 0 auto;
+    margin-right: 0;
+    margin-top: 3px;
+}
+.patent-entry .publication-venue,
+.patent-entry .publication-authors,
+.patent-entry .publication-location {
+    max-width: 720px;     /* keep prose comfortably readable on a wide row */
 }
 
 /* === Citation block (used by all items, not just publications) === */
