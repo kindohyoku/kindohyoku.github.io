@@ -176,7 +176,7 @@ a.link-korean {
     display: grid;
     grid-template-columns: repeat(12, 1fr);
     column-gap: var(--grid-col-gap);
-    row-gap: 28px;
+    row-gap: 16px;
     align-items: start;
 }
 
@@ -214,9 +214,9 @@ a.link-korean {
     margin-bottom: 0;
     min-width: 0;
 }
-.portfolio-item--feature   { grid-column: 1 / span 8; }
+.portfolio-item--feature   { grid-column: 1 / span 7; }
 .portfolio-item--feature .portfolio-image-container { max-width: 37.5vw; }
-.portfolio-item--small     { grid-column: 9 / span 4; }
+.portfolio-item--small     { grid-column: 8 / span 5; }
 .portfolio-item--text-only { grid-column: 1 / -1; }   /* full-width, no image */
 
 /* Patents section — text-only entries, title left + status tag right */
@@ -537,8 +537,8 @@ a.portfolio-image-container.loading-box:hover .loading-text {
         row-gap: 22px;
     }
     /* Keep feature/small split, slightly tighter */
-    .portfolio-item--feature { grid-column: 1 / span 8; }
-    .portfolio-item--small   { grid-column: 9 / span 4; }
+    .portfolio-item--feature { grid-column: 1 / span 7; }
+    .portfolio-item--small   { grid-column: 8 / span 5; }
 
     .portfolio-item {
         align-items: stretch;
