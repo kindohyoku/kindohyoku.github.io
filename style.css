@@ -163,21 +163,51 @@ a.link-korean {
 }
 
 
-/* Portfolio Items Grid — Mosaic Pairs */
-/* 12-col grid with explicit row tracks. Feature spans 2 rows; */
-/* two smalls stack adjacent. Empty spacer row between blocks. */
+/* Portfolio Layout — Section-based (Research / Film / Design) */
 .portfolio-grid {
     width: 100%;
     max-width: var(--max-content-width);
+    display: flex;
+    flex-direction: column;
+    gap: 96px; /* breathing room between sections */
+}
+
+.portfolio-section {
     display: grid;
     grid-template-columns: repeat(12, 1fr);
-    grid-template-rows: auto auto 88px auto auto;
     column-gap: var(--grid-col-gap);
-    row-gap: 32px;
+    row-gap: 28px;
     align-items: start;
     counter-reset: project;
 }
 
+/* Section heading — small italic uppercase with hairline rule */
+.section-heading {
+    grid-column: 1 / -1;
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    margin: 0;
+    padding-bottom: 14px;
+    border-bottom: 1px solid var(--rule-color);
+    font-family: var(--font-anonymous-pro);
+    font-size: 11px;
+    font-weight: 400;
+    font-style: italic;
+    letter-spacing: 0.32em;
+    text-transform: uppercase;
+    color: var(--text-color-dark);
+}
+.section-heading .section-rule {
+    /* tiny editorial mark before the heading word */
+    display: inline-block;
+    width: 10px;
+    height: 1px;
+    background: var(--text-color-dark);
+    transform: translateY(-2px);
+}
+
+/* Item placement within section grid */
 .portfolio-item {
     display: flex;
     flex-direction: column;
@@ -185,18 +215,16 @@ a.link-korean {
     margin-bottom: 0;
     min-width: 0;
 }
+.portfolio-item--feature { grid-column: 1 / span 8; }
+.portfolio-item--small   { grid-column: 9 / span 4; }
 
-/* Block 1 — Feature left (Table Lamp), two smalls stacked right */
-.portfolio-item:nth-child(1) { grid-column: 1 / span 8;  grid-row: 1 / span 2; } /* Table Lamp */
-.portfolio-item:nth-child(2) { grid-column: 9 / span 4;  grid-row: 1; }          /* BehaviorAware */
-.portfolio-item:nth-child(3) { grid-column: 9 / span 4;  grid-row: 2; }          /* CHI Workshop */
-
-/* Row 3 is the inter-block spacer (88px) */
-
-/* Block 2 — two smalls stacked left, Feature right (Canned) */
-.portfolio-item:nth-child(4) { grid-column: 1 / span 4;  grid-row: 4; }          /* After Dawn */
-.portfolio-item:nth-child(5) { grid-column: 1 / span 4;  grid-row: 5; }          /* Adidas */
-.portfolio-item:nth-child(6) { grid-column: 5 / span 8;  grid-row: 4 / span 2; } /* Canned */
+/* BehaviorAware: GIF is square — letterbox in dark frame so empty bands feel intentional */
+#behavior-aware .portfolio-image-container {
+    background: #0a0a0a;
+}
+#behavior-aware .portfolio-image-container img {
+    object-fit: contain;
+}
 
 /* Base style for all media containers (HTML uses portfolio-image-container) */
 .portfolio-image-container {
@@ -368,22 +396,15 @@ a.portfolio-image-container.loading-box:hover .loading-text {
         margin-top: 20px; /* Space from top */
     }
 
-    .portfolio-grid {
-        /* Tablet: collapse to 6-col single-row mosaic */
-        grid-template-columns: repeat(6, 1fr);
-        grid-template-rows: auto auto 64px auto auto;
+    /* Tablet: portfolio-grid still flex-stacked sections */
+    .portfolio-grid { gap: 72px; }
+    .portfolio-section {
         column-gap: 18px;
-        row-gap: 24px;
+        row-gap: 22px;
     }
-
-    /* Block 1 — feature left, two stacked right */
-    .portfolio-item:nth-child(1) { grid-column: 1 / span 4; grid-row: 1 / span 2; }
-    .portfolio-item:nth-child(2) { grid-column: 5 / span 2; grid-row: 1; }
-    .portfolio-item:nth-child(3) { grid-column: 5 / span 2; grid-row: 2; }
-    /* Block 2 — two stacked left, feature right */
-    .portfolio-item:nth-child(4) { grid-column: 1 / span 2; grid-row: 4; }
-    .portfolio-item:nth-child(5) { grid-column: 1 / span 2; grid-row: 5; }
-    .portfolio-item:nth-child(6) { grid-column: 3 / span 4; grid-row: 4 / span 2; }
+    /* Keep feature/small split, slightly tighter */
+    .portfolio-item--feature { grid-column: 1 / span 8; }
+    .portfolio-item--small   { grid-column: 9 / span 4; }
 
     .portfolio-item {
         align-items: stretch;
@@ -466,21 +487,19 @@ a.portfolio-image-container.loading-box:hover .loading-text {
         height: 160px !important;
     }
 
-    .portfolio-grid {
-        grid-template-columns: 1fr; /* Single column on mobile */
-        grid-template-rows: none;   /* Drop the desktop row plan */
-        row-gap: 56px;
+    /* Mobile: sections still stack; each section becomes single-column */
+    .portfolio-grid { gap: 56px; }
+    .portfolio-section {
+        grid-template-columns: 1fr;
+        row-gap: 32px;
     }
-
-    /* Reset all mosaic placements — each item full width on mobile */
-    .portfolio-item:nth-child(1),
-    .portfolio-item:nth-child(2),
-    .portfolio-item:nth-child(3),
-    .portfolio-item:nth-child(4),
-    .portfolio-item:nth-child(5),
-    .portfolio-item:nth-child(6) {
+    .portfolio-item--feature,
+    .portfolio-item--small {
         grid-column: 1 / -1;
-        grid-row: auto;
+    }
+    .section-heading {
+        font-size: 10.5px;
+        letter-spacing: 0.28em;
     }
 
     .portfolio-caption,
