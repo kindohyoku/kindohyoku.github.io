@@ -225,6 +225,19 @@ a.link-korean {
 #behavior-aware .portfolio-image-container img {
     object-fit: contain;
 }
+/* Fallback "documenting…" text behind the GIF — visible if image fails to load */
+#behavior-aware .portfolio-image-container .fallback-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-family: var(--font-anonymous-pro);
+    font-size: 13px;
+    font-style: italic;
+    color: rgba(255, 255, 255, 0.55);
+    letter-spacing: 0.04em;
+    z-index: 0;
+}
 
 /* Base style for all media containers (HTML uses portfolio-image-container) */
 .portfolio-image-container {
