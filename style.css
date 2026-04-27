@@ -177,7 +177,7 @@ a.link-korean {
     grid-template-columns: repeat(12, 1fr);
     column-gap: var(--grid-col-gap);
     row-gap: 16px;
-    align-items: start;
+    align-items: stretch;
 }
 
 /* Section heading — small italic uppercase with hairline rule */
@@ -216,7 +216,9 @@ a.link-korean {
 }
 .portfolio-item--feature   { grid-column: 1 / span 7; }
 .portfolio-item--feature .portfolio-image-container { max-width: 37.5vw; }
-.portfolio-item--small     { grid-column: 8 / span 5; }
+.portfolio-item--small     { grid-column: 8 / span 5; overflow-y: auto; -ms-overflow-style: none; scrollbar-width: none; }
+.portfolio-item--small::-webkit-scrollbar { display: none; }
+.portfolio-item--small > article + article { margin-top: 24px; }
 .portfolio-item--text-only { grid-column: 1 / -1; }   /* full-width, no image */
 
 /* Patents section — text-only entries, title left + status tag right */
