@@ -8,7 +8,9 @@
     --max-content-width: 960px; /* Max width of the main content area */
     --page-horizontal-padding: 16px; /* Padding on the left/right of the main wrapper */
     --gap-between-sections: 60px; /* Space between major content blocks */
-    --gap-between-items: 60px; /* Space between portfolio items */
+    --gap-between-items: 60px; /* Space between portfolio items (legacy, used elsewhere) */
+    --grid-row-gap: 48px; /* Vertical gap between portfolio rows */
+    --grid-col-gap: 20px; /* Horizontal gap between portfolio columns */
 }
 
 /* Basic Reset & Box-Sizing */
@@ -164,13 +166,18 @@ a.link-korean {
 .portfolio-grid {
     width: 100%;
     max-width: var(--max-content-width);
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    column-gap: var(--grid-col-gap);
+    row-gap: var(--grid-row-gap);
 }
 
 .portfolio-item {
     display: flex;
     flex-direction: column;
-    align-items: flex-end; /* Align caption to the right */
-    margin-bottom: var(--gap-between-items);
+    align-items: stretch; /* Fill grid cell width */
+    margin-bottom: 0; /* Spacing handled by grid row-gap */
+    min-width: 0; /* Allow grid item to shrink properly */
 }
 
 /* Base style for all media containers (HTML uses portfolio-image-container) */
@@ -225,26 +232,15 @@ a.link-korean {
     font-family: var(--font-anonymous-pro);
 }
 
-/* Specific adjustment for the last image/video based on original Figma (Adidas campaign had a narrower container) */
-/* This rule affects the container itself, making it narrower on wider screens. */
-.portfolio-item:last-of-type .portfolio-image-container {
-    max-width: 754px; /* Adidas image container was 754px in Figma, if you want this specific width */
-    margin-left: auto; /* Pushes it to the right if the parent is wider */
-    margin-right: 0; /* Align right within its flex parent */
-}
-
-/* Ensure last loading box matches full width */
-.portfolio-item:last-of-type .portfolio-image-container.loading-box {
-    max-width: var(--max-content-width) !important;
-}
+/* Last-item override removed — every portfolio item now fills its grid cell uniformly. */
 
 /* Caption styles */
 .portfolio-caption {
     width: 100%;
-    max-width: 480px; /* Caption width from Figma */
-    text-align: right; /* Aligns text within caption div to the right */
-    margin-left: auto; /* Pushes the caption to the right */
-    margin-top: 10px; /* Space between media and caption */
+    max-width: 100%; /* Full width of grid cell */
+    text-align: left; /* Left-align under the image in grid cell */
+    margin-left: 0;
+    margin-top: 8px; /* Space between media and caption */
 }
 
 .caption-title {
@@ -307,14 +303,20 @@ a.link-korean {
         margin-top: 20px; /* Space from top */
     }
 
+    .portfolio-grid {
+        grid-template-columns: repeat(2, 1fr); /* 2 columns on tablet */
+        column-gap: 18px;
+        row-gap: 40px;
+    }
+
     .portfolio-item {
-        align-items: center; /* Center image and caption on smaller screens */
+        align-items: stretch;
     }
 
     .portfolio-caption {
-        text-align: center; /* Center text within caption */
-        margin-left: auto;
-        margin-right: auto; /* Center the caption div */
+        text-align: left;
+        margin-left: 0;
+        margin-right: 0;
     }
 }
 
@@ -388,11 +390,16 @@ a.link-korean {
         height: 160px !important;
     }
 
+    .portfolio-grid {
+        grid-template-columns: 1fr; /* Single column on mobile */
+        row-gap: 36px;
+    }
+
     .portfolio-caption,
     .portfolio-caption .caption-title,
     .portfolio-caption .caption-description,
     .portfolio-caption .festival-award {
-        text-align: right;
+        text-align: left;
     }
 }
 
