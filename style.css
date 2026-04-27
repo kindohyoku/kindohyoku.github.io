@@ -218,6 +218,84 @@ a.link-korean {
 .portfolio-item--feature { grid-column: 1 / span 8; }
 .portfolio-item--small   { grid-column: 9 / span 4; }
 
+/* === Publication caption (Research items, academic citation style) === */
+.publication-caption .caption-title {
+    font-style: normal;
+    font-weight: 700;
+    font-size: 13px;
+    line-height: 1.45;
+    letter-spacing: 0;
+    margin-bottom: 4px;
+    color: var(--text-color-dark);
+}
+.publication-caption .caption-title::before {
+    /* Suppress the project counter for academic publications */
+    display: none;
+}
+
+.publication-tag {
+    display: inline-block;
+    font-family: var(--font-anonymous-pro);
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    padding: 2px 8px;
+    margin-bottom: 10px;
+    background: transparent;
+    color: var(--text-color-dark);
+    border: 1px solid var(--rule-color);
+}
+
+.publication-venue {
+    font-size: 11.5px;
+    line-height: 1.5;
+    color: var(--text-color-dark);
+    margin-bottom: 1px;
+}
+.publication-venue em { font-style: italic; }
+
+.publication-location {
+    font-size: 11px;
+    line-height: 1.5;
+    color: var(--text-color-medium);
+    margin-bottom: 8px;
+}
+.publication-location .text-small {
+    font-size: 10px;
+    line-height: 1.45;
+    color: var(--text-color-medium);
+    display: inline-block;
+    margin-top: 2px;
+}
+
+.publication-authors {
+    font-size: 11.5px;
+    line-height: 1.55;
+    color: var(--text-color-dark);
+    margin-bottom: 8px;
+}
+.publication-authors strong { font-weight: 700; }
+
+.publication-links {
+    font-size: 11px;
+    line-height: 1.55;
+    color: var(--text-color-medium);
+    margin-bottom: 12px;
+    letter-spacing: 0.02em;
+}
+.publication-links a { color: var(--text-color-link); }
+
+.publication-summary {
+    font-size: 11.5px;
+    line-height: 1.6;
+    color: var(--text-color-dark);
+    margin-top: 0;
+    padding-top: 10px;
+    border-top: 1px solid var(--rule-color);
+    font-style: italic;
+}
+
 /* BehaviorAware: GIF is square — letterbox in dark frame so empty bands feel intentional */
 #behavior-aware .portfolio-image-container {
     background: #0a0a0a;
