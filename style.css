@@ -163,14 +163,17 @@ a.link-korean {
 }
 
 
-/* Portfolio Items Grid — Editorial Asymmetric */
+/* Portfolio Items Grid — Mosaic Pairs */
+/* 12-col grid with explicit row tracks. Feature spans 2 rows; */
+/* two smalls stack adjacent. Empty spacer row between blocks. */
 .portfolio-grid {
     width: 100%;
     max-width: var(--max-content-width);
     display: grid;
     grid-template-columns: repeat(12, 1fr);
+    grid-template-rows: auto auto 88px auto auto;
     column-gap: var(--grid-col-gap);
-    row-gap: var(--grid-row-gap);
+    row-gap: 32px;
     align-items: start;
     counter-reset: project;
 }
@@ -183,22 +186,33 @@ a.link-korean {
     min-width: 0;
 }
 
-/* Asymmetric placement — feature / supporting / centered closer */
-.portfolio-item:nth-child(1) { grid-column: 1 / span 8; }   /* feature L */
-.portfolio-item:nth-child(2) { grid-column: 9 / span 4; }   /* small R, top-aligned with #1 */
-.portfolio-item:nth-child(3) { grid-column: 1 / span 5; }   /* small L */
-.portfolio-item:nth-child(4) { grid-column: 7 / span 6; }   /* feature R */
-.portfolio-item:nth-child(5) { grid-column: 4 / span 6; }   /* centered closer */
+/* Block 1 — Feature left (Table Lamp), two smalls stacked right */
+.portfolio-item:nth-child(1) { grid-column: 1 / span 8;  grid-row: 1 / span 2; } /* Table Lamp */
+.portfolio-item:nth-child(2) { grid-column: 9 / span 4;  grid-row: 1; }          /* BehaviorAware */
+.portfolio-item:nth-child(3) { grid-column: 9 / span 4;  grid-row: 2; }          /* CHI Workshop */
+
+/* Row 3 is the inter-block spacer (88px) */
+
+/* Block 2 — two smalls stacked left, Feature right (Canned) */
+.portfolio-item:nth-child(4) { grid-column: 1 / span 4;  grid-row: 4; }          /* After Dawn */
+.portfolio-item:nth-child(5) { grid-column: 1 / span 4;  grid-row: 5; }          /* Adidas */
+.portfolio-item:nth-child(6) { grid-column: 5 / span 8;  grid-row: 4 / span 2; } /* Canned */
 
 /* Base style for all media containers (HTML uses portfolio-image-container) */
 .portfolio-image-container {
+    display: block; /* Works for both <div> and <a> variants */
     width: 100%;
     position: relative; /* Needed for absolute positioning of slides/iframes */
     overflow: hidden; /* Ensures content stays within bounds */
     margin-bottom: 5px;
     /* Default aspect ratio for containers. Can be overridden by specific types. */
-    padding-top: 56.25%; /* Default to 16:9 ratio, common for videos and full-width slideshows */
+    padding-top: 56.25%; /* Default to 16:9 ratio */
     background-color: #f0f0f0; /* Light background while content loads */
+    text-decoration: none; /* Anchor variant should not underline */
+    color: inherit;
+}
+a.portfolio-image-container.loading-box:hover .loading-text {
+    color: var(--text-color-dark);
 }
 
 /* Styles for actual images, videos, iframes within portfolio-image-container */
@@ -355,17 +369,21 @@ a.link-korean {
     }
 
     .portfolio-grid {
-        grid-template-columns: repeat(6, 1fr); /* 6-col asymmetric on tablet */
+        /* Tablet: collapse to 6-col single-row mosaic */
+        grid-template-columns: repeat(6, 1fr);
+        grid-template-rows: auto auto 64px auto auto;
         column-gap: 18px;
-        row-gap: 72px;
+        row-gap: 24px;
     }
 
-    /* Re-map nth-child placement to 6-col scale */
-    .portfolio-item:nth-child(1) { grid-column: 1 / span 4; }
-    .portfolio-item:nth-child(2) { grid-column: 5 / span 2; }
-    .portfolio-item:nth-child(3) { grid-column: 1 / span 3; }
-    .portfolio-item:nth-child(4) { grid-column: 4 / span 3; }
-    .portfolio-item:nth-child(5) { grid-column: 2 / span 4; }
+    /* Block 1 — feature left, two stacked right */
+    .portfolio-item:nth-child(1) { grid-column: 1 / span 4; grid-row: 1 / span 2; }
+    .portfolio-item:nth-child(2) { grid-column: 5 / span 2; grid-row: 1; }
+    .portfolio-item:nth-child(3) { grid-column: 5 / span 2; grid-row: 2; }
+    /* Block 2 — two stacked left, feature right */
+    .portfolio-item:nth-child(4) { grid-column: 1 / span 2; grid-row: 4; }
+    .portfolio-item:nth-child(5) { grid-column: 1 / span 2; grid-row: 5; }
+    .portfolio-item:nth-child(6) { grid-column: 3 / span 4; grid-row: 4 / span 2; }
 
     .portfolio-item {
         align-items: stretch;
@@ -450,16 +468,19 @@ a.link-korean {
 
     .portfolio-grid {
         grid-template-columns: 1fr; /* Single column on mobile */
+        grid-template-rows: none;   /* Drop the desktop row plan */
         row-gap: 56px;
     }
 
-    /* Reset all asymmetric placements — each item full width on mobile */
+    /* Reset all mosaic placements — each item full width on mobile */
     .portfolio-item:nth-child(1),
     .portfolio-item:nth-child(2),
     .portfolio-item:nth-child(3),
     .portfolio-item:nth-child(4),
-    .portfolio-item:nth-child(5) {
+    .portfolio-item:nth-child(5),
+    .portfolio-item:nth-child(6) {
         grid-column: 1 / -1;
+        grid-row: auto;
     }
 
     .portfolio-caption,
