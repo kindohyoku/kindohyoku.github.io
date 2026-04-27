@@ -215,6 +215,7 @@ a.link-korean {
     min-width: 0;
 }
 .portfolio-item--feature   { grid-column: 1 / span 8; }
+.portfolio-item--feature .portfolio-image-container { max-width: 50vw; }
 .portfolio-item--small     { grid-column: 9 / span 4; }
 .portfolio-item--text-only { grid-column: 1 / -1; }   /* full-width, no image */
 
