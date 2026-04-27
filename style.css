@@ -217,6 +217,11 @@ a.link-korean {
 .portfolio-item--feature { grid-column: 1 / span 8; }
 .portfolio-item--small   { grid-column: 9 / span 4; }
 
+/* Practice section: feature spans 2 rows so 2 stacked smalls fit beside it */
+.portfolio-section--practice .portfolio-item--feature {
+    grid-row: span 2;
+}
+
 /* === Citation block (used by all items, not just publications) === */
 .publication-venue {
     font-size: 11.5px;
@@ -419,6 +424,36 @@ a.portfolio-image-container.loading-box:hover .loading-text {
     line-height: 1.4;
     margin-bottom: 4px;
     letter-spacing: 0;
+}
+
+/* Small caps prefix tag before the title (DESIGN / COMMERCIAL / PATENT etc.) */
+.category-prefix {
+    display: inline-block;
+    margin-right: 8px;
+    padding: 1px 6px;
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--text-color-medium);
+    background: transparent;
+    border: 1px solid var(--rule-color);
+    vertical-align: 2px;
+}
+
+/* Status tag (FILED / GRANTED / etc.) — slightly stronger than category prefix */
+.status-tag {
+    display: inline-block;
+    margin-right: 8px;
+    padding: 1px 6px;
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: #7a002b;
+    background: rgba(122, 0, 43, 0.06);
+    border: 1px solid rgba(122, 0, 43, 0.25);
+    vertical-align: 2px;
 }
 
 .caption-description {
