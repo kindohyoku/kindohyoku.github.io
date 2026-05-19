@@ -1,20 +1,16 @@
-/* Custom CSS Variables */
+/* kim dong hyuk · terminal-style personal page
+   Inspired by yugyeongjang.github.io — centerpiece is the eyes p5 canvas. */
+
 :root {
-    --primary-bg-color: rgba(245, 233, 233, 0.69); /* Original RGBA value for background */
-    --text-color-dark: black;
-    --text-color-medium: #666666;
-    --text-color-link: #767676; /* Based on Figma's link color */
-    --font-anonymous-pro: 'Anonymous Pro', monospace;
-    --max-content-width: 960px; /* Max width of the main content area */
-    --page-horizontal-padding: 16px; /* Padding on the left/right of the main wrapper */
-    --gap-between-sections: 60px; /* Space between major content blocks */
-    --gap-between-items: 60px; /* Space between portfolio items (legacy, used elsewhere) */
-    --grid-row-gap: 96px; /* Vertical gap between portfolio rows (editorial breathing room) */
-    --grid-col-gap: 24px; /* Horizontal gap between portfolio columns */
-    --rule-color: rgba(0, 0, 0, 0.22);
+    --bg: rgba(245, 233, 233, 0.69);
+    --text: #1a1a1a;
+    --text-muted: #777;
+    --text-dim: #aaa;
+    --rule: rgba(0, 0, 0, 0.18);
+    --accent: #7a002b;
+    --font-mono: 'Anonymous Pro', 'Courier New', 'Courier', monospace;
 }
 
-/* Basic Reset & Box-Sizing */
 *, *::before, *::after {
     box-sizing: border-box;
     margin: 0;
@@ -22,715 +18,280 @@
 }
 
 html, body {
-    height: 100%;
-    overflow: hidden;            /* one-screen static layout: no page scroll */
+    background-color: var(--bg);
+    color: var(--text);
+    font-family: var(--font-mono);
+    font-size: 13px;
+    line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
 }
 
 body {
-    background-color: var(--primary-bg-color);
-    font-family: var(--font-anonymous-pro);
-    color: var(--text-color-dark);
-    line-height: 1.5;
-    display: flex;
-    justify-content: center;
-    align-items: flex-start;
-    padding: var(--page-horizontal-padding);
+    min-height: 100vh;
+    padding: 36px 32px 24px;
 }
 
-.wrapper {
-    width: 100%;
-    max-width: 1400px;
-    height: calc(100vh - 2 * var(--page-horizontal-padding));
-    display: grid;
-    grid-template-columns: 600px 1fr;
-    column-gap: 56px;
-    align-items: stretch;
-    overflow: hidden;
-}
-
-/* Links */
 a {
-    color: inherit; /* Inherit color from parent by default */
-    text-decoration: none; /* Remove default underline */
-}
-
-a.link {
-    text-decoration: underline; /* Apply underline only to links with 'link' class */
-    color: var(--text-color-link);
-}
-
-a.link-korean {
+    color: inherit;
     text-decoration: underline;
-    color: var(--text-color-medium); /* Specific color for the Korean link */
-    font-size: 13px; /* Original explicit font size, not a general text size */
+    text-decoration-color: rgba(0, 0, 0, 0.18);
+    text-underline-offset: 3px;
+    transition: text-decoration-color 0.2s ease;
 }
+a:hover { text-decoration-color: rgba(0, 0, 0, 0.6); }
 
-/* Header / Intro — left zone. About text flows in 2 columns on top;
-   Recently / Contact / eyes sit below in a smaller block that fills the empty space. */
-.intro-section {
-    grid-column: 1;
+em { font-style: italic; }
+
+/* ===== Main container ===== */
+.terminal {
+    max-width: 880px;
+    margin: 0 auto;
     display: flex;
     flex-direction: column;
-    gap: 28px;
-    width: 100%;
-    max-width: 100%;
-    margin-bottom: 0;
-    height: 100%;
-    overflow-y: auto;
-    scrollbar-width: none;
-    padding-right: 4px;
-}
-.intro-section::-webkit-scrollbar { display: none; }
-
-/* About paragraphs reflow as a CSS multi-column block — reads as two columns at once */
-.about-me {
-    column-count: 2;
-    column-gap: 32px;
-}
-.about-me p {
-    break-inside: avoid;     /* don't split a paragraph across columns */
-    margin-bottom: 6px;
+    gap: 36px;
 }
 
-/* Recently / Contact / Eyes — pushed below the about text, smaller font fills the empty area */
-.recent-contact {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    column-gap: 28px;
-    row-gap: 4px;
-    align-items: start;
-    font-size: 11px;
-}
-.recent-contact .recent-heading  { grid-column: 1; font-size: 11px; }
-.recent-contact .contact-heading { grid-column: 2; font-size: 11px; margin-top: 0; }
-.recent-contact .recent-entry    { grid-column: 1; font-size: 11px; line-height: 1.45; }
-.recent-contact .recent-entry .text-small { font-size: 9px; }
-.recent-contact .contact-entry   { grid-column: 2; font-size: 11px; line-height: 1.45; }
-.recent-contact .eyes-container  { grid-column: 2; margin-top: 12px; }
-.recent-contact #eyes-canvas-container canvas {
-    width: 140px !important;
-    height: 140px !important;
-}
-
-.about-me,
-.recent-contact {
-    width: 100%;
-    max-width: 100%;
-    min-width: 0;
-    margin-bottom: 0;
-}
-
-/* Tighter spacing for intro-section text */
-.about-me p {
-    font-size: 14px; /* Keeping font size as is */
-    line-height: 21px; /* Original line-height from Figma */
-    margin-bottom: 3px; /* Reduced spacing */
-    word-wrap: break-word;
-}
-.about-me p:last-child {
-    margin-bottom: 0;
-}
-.about-me em {
-    font-style: italic;
-}
-
-
-.recent-heading {
-    font-size: 14px; /* Keeping font size as is */
-    font-weight: 400;
-    line-height: 21px;
-    margin-bottom: 5px;
-}
-/* Extra spacing above contact heading */
-.contact-heading {
-    font-size: 14px; /* Keeping font size as is */
-    font-weight: 400;
-    line-height: 21px;
-    margin-top: 15px;
-    margin-bottom: 5px; /* Ensure some bottom margin */
-}
-
-/* Specific styling for recent entries */
-.recent-entry {
-    font-size: 14px; /* Keeping font size as is */
-    line-height: 1.3; /* Adjusted for better spacing without overlap */
-    margin-bottom: 5px; /* Default small spacing */
-    word-wrap: break-word;
-}
-.recent-entry .text-small {
-    font-size: 11px; /* Keeping font size as is */
-    line-height: 17px; /* From original Figma code */
-    display: block; /* Ensure it starts on a new line */
-}
-.recent-entry strong {
-    font-weight: 700;
-}
-.recent-entry.spacer-top {
-    margin-top: 10px; /* Add some top margin for visual separation if needed */
-}
-
-/* Styling for contact entries */
-.contact-entry {
-    font-size: 14px; /* Keeping font size as is */
-    line-height: 1.5; /* More appropriate line-height for readability */
-    margin-bottom: 5px; /* Consistent spacing, corrected from 'margin: 3 !important;' */
-    word-wrap: break-word;
-}
-.contact-entry:last-child {
-    margin-bottom: 0;
-}
-
-/* EYES Generative Design Canvas Styles */
-.eyes-container {
-    margin-top: 30px; /* 15px에서 30px로 증가하여 밑으로 이동 */
-    width: 100%;
+/* ===== Header (prompt + nav + time) ===== */
+.header {
     display: flex;
-    justify-content: flex-start; /* 왼쪽 정렬 */
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 12px 22px;
+    font-size: 12px;
+    color: var(--text);
+    padding-bottom: 14px;
+    border-bottom: 1px solid var(--rule);
+}
+.header .prompt { color: var(--text); }
+.header .nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px;
+}
+.header .nav a {
+    text-decoration: none;
+    color: var(--text);
+    border-bottom: 1px solid transparent;
+    padding-bottom: 1px;
+}
+.header .nav a.active { border-bottom-color: var(--text); }
+.header .nav a:hover { border-bottom-color: var(--text); }
+.header .tz {
+    margin-left: auto;
+    font-size: 11px;
+    color: var(--text-muted);
+    letter-spacing: 0.04em;
 }
 
+/* ===== Hero (name + tagline + bio) ===== */
+.hero { display: flex; flex-direction: column; gap: 6px; }
+.hero .name {
+    font-size: 30px;
+    font-weight: 400;
+    letter-spacing: -0.01em;
+    line-height: 1.15;
+}
+.hero .tagline {
+    font-size: 12px;
+    color: var(--text-muted);
+}
+.hero .bio {
+    font-size: 13px;
+    max-width: 640px;
+    margin-top: 6px;
+    line-height: 1.6;
+}
+
+/* ===== Meta blocks (stats / branch / system) — 3-col grid ===== */
+.meta-blocks {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    column-gap: 36px;
+    row-gap: 16px;
+}
+.meta-block h3 {
+    font-size: 11px;
+    font-weight: 400;
+    color: var(--text);
+    margin-bottom: 6px;
+    letter-spacing: 0.04em;
+}
+.meta-block .kv {
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 1px 0;
+    font-size: 12px;
+}
+.meta-block .kv > span:first-child { color: var(--text-muted); }
+.meta-block .kv .val { color: var(--text); text-align: right; }
+
+/* ===== Eyes centerpiece ===== */
+.eyes-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 14px;
+    padding: 12px 0 4px;
+}
 #eyes-canvas-container {
-    border-radius: 50%; /* 원형으로 만들기 */
+    position: relative;
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
     overflow: hidden;
     cursor: pointer;
-    position: relative;
+    /* subtle ring around the canvas to anchor it on the page */
+    box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.08);
 }
-
 #eyes-canvas-container canvas {
     display: block !important;
     border-radius: 50%;
-    width: 200px !important; /* 300px 캔버스를 200px로 축소하여 고해상도 효과 */
-    height: 200px !important;
+    width: 300px !important;
+    height: 300px !important;
 }
-
-
-/* Portfolio Layout — compact static grid on the right column */
-.portfolio-grid {
-    grid-column: 2;
-    width: 100%;
-    max-width: 100%;
-    height: 100%;
-    overflow-y: auto;
-    scrollbar-width: none;
-    padding-right: 4px;
-    display: flex;
-    flex-direction: column;
-    gap: 12px; /* very compact — fits one screen */
-}
-
-.portfolio-section {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: flex-start;
-    column-gap: 16px;
-    row-gap: 8px;
-}
-/* heading occupies its own row; items share the row below */
-.portfolio-section > .section-heading { flex-basis: 100%; }
-
-/* Section heading — small italic uppercase with hairline rule */
-.section-heading {
-    flex-basis: 100%;
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    margin: 0;
-    padding-bottom: 6px;
-    border-bottom: 1px solid var(--rule-color);
-    font-family: var(--font-anonymous-pro);
-    font-size: 10px;
-    font-weight: 400;
-    font-style: italic;
-    letter-spacing: 0.28em;
-    text-transform: uppercase;
-    color: var(--text-color-dark);
-}
-.section-heading .section-rule {
-    /* tiny editorial mark before the heading word */
-    display: inline-block;
-    width: 10px;
-    height: 1px;
-    background: var(--text-color-dark);
-    transform: translateY(-2px);
-}
-
-/* Item placement within section grid */
-.portfolio-item {
-    display: flex;
-    flex-direction: column;
-    align-items: stretch;
-    margin-bottom: 0;
-    min-width: 0;
-}
-/* Static row: feature wider than small, all items share a single row. */
-.portfolio-item--feature   { flex: 2 1 0; min-width: 0; }
-.portfolio-item--small     { flex: 1 1 0; min-width: 0; }
-.portfolio-item--text-only { flex: 1 1 100%; max-width: 100%; }
-
-/* Compact caption typography for the static one-screen layout */
-.portfolio-caption .caption-title { font-size: 11px; line-height: 1.4; margin-bottom: 4px; }
-.portfolio-caption .publication-venue,
-.portfolio-caption .publication-location,
-.portfolio-caption .publication-authors,
-.portfolio-caption .publication-author-note,
-.portfolio-caption .publication-links,
-.portfolio-caption .publication-summary,
-.portfolio-caption .caption-description { font-size: 10px; line-height: 1.45; }
-.portfolio-caption .festival-award { font-size: 9.5px; line-height: 1.45; }
-
-/* Patents section — text-only entries, title left + status tag right */
-.patent-header {
-    display: flex;
-    align-items: flex-start;
-    justify-content: space-between;
-    gap: 24px;
-    margin-bottom: 4px;
-}
-.patent-header .caption-title {
-    margin: 0;
-    flex: 1;
-    line-height: 1.45;
-}
-.patent-header .status-tag {
-    flex: 0 0 auto;
-    margin-right: 0;
-    margin-top: 3px;
-}
-.patent-entry .publication-venue,
-.patent-entry .publication-authors,
-.patent-entry .publication-location {
-    max-width: 720px;     /* keep prose comfortably readable on a wide row */
-}
-
-/* === Citation block (used by all items, not just publications) === */
-.publication-venue {
-    font-size: 11.5px;
-    line-height: 1.5;
-    color: var(--text-color-dark);
-    margin-bottom: 1px;
-}
-.publication-venue em { font-style: italic; }
-
-.publication-location {
+.eyes-caption {
     font-size: 11px;
-    line-height: 1.5;
-    color: var(--text-color-medium);
-    margin-bottom: 8px;
-}
-.publication-location .text-small {
-    font-size: 10px;
-    line-height: 1.45;
-    color: var(--text-color-medium);
-    display: inline-block;
-    margin-top: 2px;
-}
-
-.publication-authors {
-    font-size: 11.5px;
-    line-height: 1.55;
-    color: var(--text-color-dark);
-    margin-bottom: 2px;
-}
-.publication-authors strong { font-weight: 700; }
-.publication-authors sup,
-.publication-author-note sup {
-    font-size: 0.8em;
-    vertical-align: super;
-    line-height: 0;
-    margin-left: 1px;
-    color: var(--text-color-medium);
-}
-
-.publication-author-note {
-    font-size: 10px;
-    line-height: 1.5;
-    color: var(--text-color-medium);
+    color: var(--text-muted);
     font-style: italic;
-    margin-bottom: 8px;
-    letter-spacing: 0.01em;
-}
-
-.publication-links {
-    font-size: 11px;
-    line-height: 1.55;
-    color: var(--text-color-medium);
-    margin-bottom: 12px;
     letter-spacing: 0.02em;
 }
-.publication-links a { color: var(--text-color-link); }
 
-.publication-summary {
-    font-size: 11.5px;
-    line-height: 1.6;
-    color: var(--text-color-dark);
-    margin-top: 0;
-    padding-top: 10px;
-    border-top: 1px solid var(--rule-color);
-    font-style: italic;
+/* ===== Works graph ===== */
+.works-graph { display: flex; flex-direction: column; gap: 12px; }
+.works-heading {
+    font-size: 11px;
+    font-weight: 400;
+    color: var(--text-muted);
+    line-height: 1.5;
 }
-
-/* BehaviorAware: GIF is 3:2 (1200×800) — match the container aspect so it fills cleanly */
-#behavior-aware .portfolio-image-container {
-    padding-top: 66.67%;             /* override default 16:9 with 3:2 */
-    background: #ffffff;
-    border: 1px solid rgba(0, 0, 0, 0.06);
-}
-#behavior-aware .portfolio-image-container img {
-    object-fit: cover;               /* GIF and frame match — no letterbox */
-}
-/* Fallback "documenting…" text behind the GIF — visible if image fails to load */
-#behavior-aware .portfolio-image-container .fallback-text {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    font-family: var(--font-anonymous-pro);
-    font-size: 13px;
-    font-style: italic;
-    color: rgba(0, 0, 0, 0.4);
-    letter-spacing: 0.04em;
-    z-index: 0;
+.works-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1px;
 }
 
-/* CHI Workshop: static SVG diagram, sits on a soft off-white card */
-#chi-workshop .portfolio-image-container {
-    background: #fbf6f6;
-    border: 1px solid rgba(0, 0, 0, 0.08);
+.work-node {
+    display: grid;
+    grid-template-columns: 48px 170px 1fr 48px;
+    column-gap: 16px;
+    padding: 5px 0;
+    text-decoration: none;
+    font-size: 12px;
+    align-items: baseline;
+    border-bottom: 1px dotted transparent;
+    line-height: 1.45;
 }
-#chi-workshop .portfolio-image-container img {
-    object-fit: contain;
+.work-node:hover { border-bottom-color: var(--rule); }
+.work-node .year  { color: var(--text-muted); font-size: 11px; }
+.work-node .venue {
+    color: var(--accent);
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
 }
-
-/* Base style for all media containers (HTML uses portfolio-image-container) */
-.portfolio-image-container {
-    display: block; /* Works for both <div> and <a> variants */
-    width: 100%;
-    position: relative; /* Needed for absolute positioning of slides/iframes */
-    overflow: hidden; /* Ensures content stays within bounds */
-    margin-bottom: 5px;
-    /* Default aspect ratio for containers. Can be overridden by specific types. */
-    padding-top: 56.25%; /* Default to 16:9 ratio */
-    background-color: #f0f0f0; /* Light background while content loads */
-    text-decoration: none; /* Anchor variant should not underline */
-    color: inherit;
-}
-a.portfolio-image-container.loading-box:hover .loading-text {
-    color: var(--text-color-dark);
-}
-
-/* Styles for actual images, videos, iframes within portfolio-image-container */
-.portfolio-image-container img,
-.portfolio-image-container video,
-.portfolio-image-container iframe {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
-    border: 0;
-    transition: transform 0.7s cubic-bezier(0.2, 0.8, 0.2, 1);
-}
-
-/* Subtle scale on hover — only for live media items, not loading boxes */
-.portfolio-image-container.slideshow:hover img.active,
-.portfolio-image-container.slideshow:hover video.active {
-    transform: scale(1.025);
-}
-
-/* Slideshow specific styles (applies when .slideshow is present) */
-.portfolio-image-container.slideshow {
-    cursor: pointer; /* Indicates it's clickable */
-}
-.portfolio-image-container.slideshow .slide {
-    opacity: 0;
-    transition: opacity 0.7s ease-in-out;
-}
-.portfolio-image-container.slideshow .slide.active {
-    opacity: 1;
-}
-
-/* Loading placeholder — refined, tonal off-color panel with hairline border */
-.portfolio-image-container.loading-box {
-    background: rgba(255, 255, 255, 0.55);
-    border: 1px solid rgba(0, 0, 0, 0.07);
-    backdrop-filter: blur(2px);
-}
-.portfolio-image-container.loading-box::after {
-    /* faint diagonal stripe to signal "in progress" without looking unfinished */
-    content: "";
-    position: absolute;
-    inset: 0;
-    background-image: repeating-linear-gradient(
-        45deg,
-        transparent 0,
-        transparent 14px,
-        rgba(0, 0, 0, 0.025) 14px,
-        rgba(0, 0, 0, 0.025) 15px
-    );
-    pointer-events: none;
-}
-.portfolio-image-container.loading-box .loading-text {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    font-size: 13px;
-    font-style: italic;
-    color: var(--text-color-medium);
-    letter-spacing: 0.04em;
-    font-family: var(--font-anonymous-pro);
-    z-index: 1;
-}
-
-/* Last-item override removed — every portfolio item now fills its grid cell uniformly. */
-
-/* Caption styles — editorial */
-.portfolio-caption {
-    width: 100%;
-    max-width: 100%;
-    text-align: left;
-    margin-left: 0;
-    margin-top: 14px;
-}
-
-/* Caption title — bold project / paper / film name */
-.caption-title {
-    color: var(--text-color-dark);
-    font-size: 13px;
-    font-weight: 700;
+.work-node .title { color: var(--text); }
+.work-node .title .status-inline {
+    display: inline-block;
+    margin-left: 6px;
+    padding: 1px 5px;
+    font-size: 9px;
     font-style: normal;
-    line-height: 1.4;
-    margin-bottom: 4px;
-    letter-spacing: 0;
-}
-
-/* Small caps prefix tag before the title (DESIGN / COMMERCIAL / PATENT etc.) */
-.category-prefix {
-    display: inline-block;
-    margin-right: 8px;
-    padding: 1px 6px;
-    font-size: 9px;
     font-weight: 700;
-    letter-spacing: 0.18em;
+    letter-spacing: 0.16em;
     text-transform: uppercase;
-    color: var(--text-color-medium);
-    background: transparent;
-    border: 1px solid var(--rule-color);
-    vertical-align: 2px;
-}
-
-/* Status tag (FILED / GRANTED / etc.) — slightly stronger than category prefix */
-.status-tag {
-    display: inline-block;
-    margin-right: 8px;
-    padding: 1px 6px;
-    font-size: 9px;
-    font-weight: 700;
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
-    color: #7a002b;
+    color: var(--accent);
     background: rgba(122, 0, 43, 0.06);
     border: 1px solid rgba(122, 0, 43, 0.25);
     vertical-align: 2px;
 }
-
-.caption-description {
-    color: var(--text-color-dark);
-    font-size: 11.5px;
-    line-height: 1.55;
-    margin-bottom: 2px;
+.work-node .hash {
+    color: var(--text-dim);
+    font-size: 11px;
+    text-align: right;
 }
 
-.caption-description em {
+.git-log {
+    margin-top: 8px;
+    font-size: 11px;
+    color: var(--text-muted);
     font-style: italic;
 }
 
-.caption-description strong {
-    font-weight: 700;
+/* ===== Links / elsewhere ===== */
+.links-elsewhere {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 36px;
 }
-
-/* Footer */
-.site-footer {
-    grid-column: 2;
-    width: 100%;
-    max-width: 100%;
-    padding-top: 20px;
-    padding-bottom: 20px;
-    text-align: center;
-}
-
-.copyright {
-    color: var(--text-color-medium);
-    font-size: 14px; /* Keeping font size as is */
-    font-weight: 700;
-    line-height: 17px;
-}
-
-/* Media Queries for Responsiveness */
-
-/* Below 1024px: fall back to single-column stack (intro on top, content below) */
-@media (max-width: 1024px) {
-    .wrapper {
-        grid-template-columns: 1fr;
-        column-gap: 0;
-        max-width: calc(var(--max-content-width) + (2 * var(--page-horizontal-padding)));
-    }
-    .intro-section {
-        grid-column: 1;
-        position: static;
-        max-height: none;
-        overflow: visible;
-        max-width: var(--max-content-width);
-        margin-bottom: var(--gap-between-sections);
-    }
-    .portfolio-grid,
-    .site-footer {
-        grid-column: 1;
-        max-width: var(--max-content-width);
-    }
-}
-
-/* Tablets and smaller desktops — fine-tune intro and portfolio */
-@media (max-width: 990px) {
-    .about-me,
-    .recent-contact {
-        max-width: 600px;
-        width: 100%;
-        flex: none;
-        margin-bottom: 32px;
-    }
-
-    .about-me {
-        margin-top: 20px;
-    }
-
-    /* Tablet: portfolio-grid still flex-stacked sections */
-    .portfolio-grid { gap: 72px; }
-    .portfolio-section {
-        column-gap: 18px;
-        row-gap: 22px;
-    }
-    .portfolio-item--feature { grid-column: 1 / span 7; }
-    .portfolio-item--small   { grid-column: 8 / span 5; }
-
-    .portfolio-item {
-        align-items: stretch;
-    }
-
-    .portfolio-caption {
-        text-align: left;
-        margin-left: 0;
-        margin-right: 0;
-    }
-}
-
-/* Mobile devices */
-@media (max-width: 768px) {
-    :root {
-        --page-horizontal-padding: 10px; /* Reduce padding for smaller screens */
-        --max-content-width: 90vw; /* Use percentage of viewport width */
-        --gap-between-sections: 40px;
-        --gap-between-items: 40px;
-    }
-
-    body {
-        padding: var(--page-horizontal-padding);
-    }
-
-    .about-me,
-    .recent-contact {
-        max-width: 100%; /* Take full width of content area */
-        min-width: unset; /* Remove min-width constraint */
-        text-align: left; /* 모바일에서 왼쪽 정렬 */
-    }
-
-    /* Removed font-size changes here as per request */
-    .about-me p,
-    .recent-contact p {
-        line-height: 1.6; /* Adjusted line height for better mobile readability */
-    }
-
-    /* Removed font-size changes here as per request */
-    .recent-heading,
-    .contact-heading,
-    .caption-title {
-        text-align: center;
-    }
-    .recent-entry,
-    .contact-entry {
-        text-align: center;
-    }
-
-    /* Removed font-size changes here as per request */
-    .recent-entry {
-        font-size: 11px;/* font-size: inherit; */ /* No change to font-size here */
-    }
-
-    .recent-entry .text-small {
-        font-size: 9px; /* Keeping this specific font-size change for small text */
-    }
-
-    /* Removed font-size changes here as per request */
-    .contact-entry {
-        /* font-size: inherit; */ /* No change to font-size here */
-        line-height: 1.5; /* Keeping this specific line-height change for mobile */
-        margin-bottom: 5px; /* Keeping consistent small margin */
-    }
-
-    .caption-title {
-        font-size: 11px; /* Keeping this specific font-size change */
-    }
-    .caption-description {
-        font-size: 11px; /* Keeping this specific font-size change */
-    }
-    
-    /* EYES Canvas responsive styles */
-    .eyes-container {
-        justify-content: center; /* 모바일에서는 중앙 정렬 */
-    }
-    
-    #eyes-canvas-container canvas {
-        width: 160px !important; /* 모바일에서는 조금 더 작게 */
-        height: 160px !important;
-    }
-
-    /* Mobile: sections still stack; each section becomes single-column */
-    .portfolio-grid { gap: 56px; }
-    .portfolio-section {
-        grid-template-columns: 1fr;
-        row-gap: 32px;
-    }
-    .portfolio-item--feature,
-    .portfolio-item--small {
-        grid-column: 1 / -1;
-    }
-    .section-heading {
-        font-size: 10.5px;
-        letter-spacing: 0.28em;
-    }
-
-    .portfolio-caption,
-    .portfolio-caption .caption-title,
-    .portfolio-caption .caption-description,
-    .portfolio-caption .festival-award {
-        text-align: left;
-    }
-}
-
-.festival-award {
-    font-size: 10px;
-    line-height: 1.55;
-    color: var(--text-color-dark);
-    letter-spacing: 0.02em;
+.links-block h3 {
+    font-size: 11px;
     font-weight: 400;
-    padding-left: 10px;
-    border-left: 1px solid var(--rule-color);
-    margin-top: 1px;
+    margin-bottom: 6px;
+    letter-spacing: 0.04em;
 }
-.caption-description + .festival-award {
-    margin-top: 8px;
+.links-block a {
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 2px 0;
+    text-decoration: none;
+    font-size: 12px;
+    border-bottom: 1px dotted transparent;
 }
-.festival-award a {
-    color: var(--text-color-medium);
+.links-block a:hover { border-bottom-color: var(--rule); }
+.links-block a > span:first-child { color: var(--text); }
+.links-block a .val { color: var(--text-muted); }
+
+/* ===== Footer ===== */
+.footer {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 14px 22px;
+    padding-top: 16px;
+    border-top: 1px solid var(--rule);
+    font-size: 11px;
+    color: var(--text-muted);
+}
+.footer .shortcuts {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    align-items: baseline;
+}
+.footer kbd {
+    font-family: inherit;
+    font-size: 10px;
+    padding: 1px 5px;
+    border: 1px solid var(--rule);
+    border-radius: 2px;
+    color: var(--text);
+    background: rgba(255, 255, 255, 0.4);
+    margin-right: 2px;
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 760px) {
+    body { padding: 24px 18px 18px; }
+    .meta-blocks { grid-template-columns: 1fr; row-gap: 14px; }
+    .links-elsewhere { grid-template-columns: 1fr; gap: 18px; }
+    .work-node {
+        grid-template-columns: 44px 1fr 44px;
+        row-gap: 2px;
+        column-gap: 12px;
+    }
+    .work-node .venue { grid-column: 1 / -1; grid-row: 1; }
+    .work-node .year  { grid-column: 1; grid-row: 2; }
+    .work-node .title { grid-column: 2; grid-row: 2; }
+    .work-node .hash  { grid-column: 3; grid-row: 2; }
+    .hero .name { font-size: 24px; }
+    .header .tz { margin-left: 0; }
+    #eyes-canvas-container,
+    #eyes-canvas-container canvas {
+        width: 240px !important;
+        height: 240px !important;
+    }
+    #eyes-canvas-container { height: 240px; }
 }

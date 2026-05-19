@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 360"
+     role="img" aria-label="Lefebvre trialectic — Physical, Socio-Spatial, Embodied — three poles of spatial usability evaluation">
+  <defs>
+    <style>
+      text {
+        font-family: 'Futura', 'Futura PT', 'Avenir Next', 'Trebuchet MS', sans-serif;
+        fill: #1a1a1a;
+      }
+      .num   { font-size: 13px; font-weight: 400; fill: #888; letter-spacing: 0.05em; }
+      .layer { font-size: 13px; font-weight: 500; letter-spacing: 0.22em; }
+      .meta  { font-size: 10px; fill: #888; letter-spacing: 0.18em; }
+    </style>
+  </defs>
+
+  <!--
+    Equilateral triangle — side 220, centroid at (320, 195)
+    Top vertex      (320, 68)
+    Bottom-left     (210, 258)
+    Bottom-right    (430, 258)
+    Bottom side length = 430 - 210 = 220
+    Left side  = sqrt((320-210)^2 + (68-258)^2) = sqrt(12100 + 36100) = sqrt(48200) ≈ 219.5  ✓
+    Right side = same by symmetry  ✓
+  -->
+
+  <!-- triangle edges -->
+  <polygon points="320,68 210,258 430,258"
+           fill="none" stroke="#1a1a1a" stroke-width="1" stroke-linejoin="miter" />
+
+  <!-- vertex dots -->
+  <circle cx="320" cy="68"  r="4.5" fill="#1a1a1a" />
+  <circle cx="210" cy="258" r="4.5" fill="#1a1a1a" />
+  <circle cx="430" cy="258" r="4.5" fill="#1a1a1a" />
+
+  <!-- vertex labels — numeral above the layer name, all centred on the vertex -->
+
+  <!-- 3 EMBODIED (top) -->
+  <text class="num"   x="320" y="36" text-anchor="middle">3</text>
+  <text class="layer" x="320" y="54" text-anchor="middle">EMBODIED</text>
+
+  <!-- 1 PHYSICAL (bottom-left) -->
+  <text class="num"   x="210" y="288" text-anchor="middle">1</text>
+  <text class="layer" x="210" y="306" text-anchor="middle">PHYSICAL</text>
+
+  <!-- 2 SOCIO-SPATIAL (bottom-right) -->
+  <text class="num"   x="430" y="288" text-anchor="middle">2</text>
+  <text class="layer" x="430" y="306" text-anchor="middle">SOCIO-SPATIAL</text>
+
+  <!-- bottom meta line -->
+  <text class="meta" x="320" y="340" text-anchor="middle">CHI '26 WORKSHOP · LEFEBVRE TRIALECTIC</text>
+</svg>

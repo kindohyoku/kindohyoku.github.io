@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kim Dong Hyuk</title>
+    <!-- Anonymous Pro 폰트 로드 -->
+    <link href="https://fonts.googleapis.com/css2?family=Anonymous+Pro:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <!-- p5.js 라이브러리 로드 -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.min.js"></script>
+    <!-- 커스텀 CSS 파일 연결 -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="wrapper">
+        <header class="intro-section">
+            <div class="about-me"> 
+                <p>Kim Dong Hyuk is an interdisciplinary filmmaker, researcher, and designer working at the intersection of computational technology and applied design. He is currently pursuing his M.S. at the <a href="https://designinformatics.hanyang.ac.kr/" class="link">Design Informatics Lab (DILAB)</a>, Hanyang University, where he researches the application of <em>AI</em> in <em>Design</em> and <em>Human-Computer Interaction (HCI)</em>, developing methodologies that bridge data-driven analysis with creative workflows.</p>
+                <p>His paper, <a href="https://kindohyoku.github.io/BehaviorAware/" class="link"><em>Behavior-Aware Anthropometric Scene Generation for Human-Usable 3D Layouts</em></a>, presented at <em>CHI 2026</em> in Barcelona, examines how AI systems can generate 3D spaces that account for human body use and movement. Drawing from this, his research interests broadly center on how space is represented, generated, and inhabited, spanning cinematography, 3D spatial computing, and embodied interaction.</p>
+                <p>His background in film and visual storytelling informs his research foundation. Dong Hyuk's work in filmmaking has been invited to and awarded at numerous international film festivals; he also produces occasional campaign projects for clients such as <a href="https://www.instagram.com/reel/C8UKrYYptPP/?igsh=MXNwMGpmYnZneHMwZw==" class="link">Adidas</a> and the <a href="https://youtu.be/5DmUZFaWPQI?si=lynaDwLC-g5F7wcA" class="link">Korea National Contemporary Dance Company</a>.</p>
+            </div>
+            <div class="recent-contact">
+                <p class="recent-heading">Recently...</p>
+                <p class="recent-entry">Paper Presented, <em>CHI 2026’</em>, Barcelona<br><span class="text-small">as <strong>co-first author</strong> on '<a href="https://kindohyoku.github.io/BehaviorAware/" class="link">Behavior-Aware Anthropometric Scene Generation for Human-Usable 3D Layouts</a>' (<a href="https://doi.org/10.1145/3772318.3790341" class="link">ACM DOI</a>)</span></p>
+                <p class="recent-entry spacer-top">Workshop Attended, <em>CHI 2026’</em>, Barcelona<br><span class="text-small">on '<a href="https://sites.google.com/andrew.cmu.edu/chi-llm-simulacra/home" class="link">Developing Standards and Documentation for LLM Use as Simulated Research Participants</a>'</span></p>
+                <p class="recent-entry spacer-top">Paper Submitted, <em>UIST 2026’</em><br><span class="text-small">under review</span></p>
+                <p class="recent-entry spacer-top">Official Selection, <em>NR1IFF 25’</em><br><span class="text-small">as <strong>Producer</strong> on 'Unbearable' (dir. Jiyun Han)</span></p>
+                <p class="recent-entry spacer-top">Official Selection, <em>BIFAN 25’</em><br><span class="text-small">as <strong>Producer</strong> on 'After Dawn' (dir. Yoo Kang Hyeon)</span></p>
+                
+                <p class="contact-heading">Contact...</p>
+                <p class="contact-entry"><a href="mailto:oververitas@gmail.com" class="link">oververitas@gmail.com</a></p>
+                <p class="contact-entry"><a href="https://www.linkedin.com/in/donghyuk-kim-90b8b2341/" class="link" target="_blank" rel="noopener">LinkedIn</a></p>
+                
+                <!-- EYES Generative Design Canvas -->
+                <div class="eyes-container">
+                    <div id="eyes-canvas-container"></div>
+                </div>
+            </div>
+        </header>
+
+        <main class="portfolio-grid">
+
+            <!-- =================== RESEARCH =================== -->
+            <section class="portfolio-section" aria-labelledby="section-research">
+                <h2 class="section-heading" id="section-research"><span class="section-rule"></span>Research</h2>
+
+                <!-- Research / Feature — BehaviorAware (CHI 2026) -->
+                <article class="portfolio-item portfolio-item--feature" id="behavior-aware">
+                    <a class="portfolio-image-container" href="https://kindohyoku.github.io/BehaviorAware/" target="_blank" rel="noopener">
+                        <span class="loading-text fallback-text">documenting<span class="dots">.</span></span>
+                        <img src="assets/behavior-aware/behavior_aware.gif" alt="BehaviorAware demo animation" class="slide active" onerror="this.style.visibility='hidden'">
+                    </a>
+                    <div class="portfolio-caption">
+                        <p class="caption-title">Behavior-Aware Anthropometric Scene Generation for Human-Usable 3D Layouts</p>
+                        <p class="publication-venue"><em>ACM CHI</em> 2026 Paper</p>
+                        <p class="publication-location">Barcelona, Spain</p>
+                        <p class="publication-authors">Semin Jin<sup>co-fa</sup>, <strong>Donghyuk Kim</strong><sup>co-fa</sup>, Jeongmin Ryu, Kyung Hoon Hyun</p>
+                        <p class="publication-links"><a href="https://doi.org/10.1145/3772318.3790341" class="link">html</a> | <a href="https://kindohyoku.github.io/BehaviorAware/" class="link">project page</a></p>
+                    </div>
+                </article>
+
+                <!-- Research / Small — CHI 2026 Workshop -->
+                <article class="portfolio-item portfolio-item--small" id="chi-workshop">
+                    <a class="portfolio-image-container" href="https://sites.google.com/andrew.cmu.edu/chi-llm-simulacra/home" target="_blank" rel="noopener">
+                        <img src="assets/chi-workshop/workshop_diagram.svg" alt="Three-layer framework diagram for layer-specific LLM participation in spatial usability evaluation" class="slide active">
+                    </a>
+                    <div class="portfolio-caption">
+                        <p class="caption-title">Layer-Specific LLM Participation in Spatial Usability Evaluation</p>
+                        <p class="publication-venue"><em>ACM CHI</em> 2026 Workshop Position Paper</p>
+                        <p class="publication-location">Barcelona, Spain<br><span class="text-small">CHI 2026 Workshop on Developing Standards and Documentation for LLM Use as Simulated Research Participants</span></p>
+                        <p class="publication-authors"><strong>Donghyuk Kim</strong><sup>co-fa</sup>, Yejin Yun<sup>co-fa</sup>, Kyung Hoon Hyun</p>
+                        <p class="publication-links"><a href="https://sites.google.com/andrew.cmu.edu/chi-llm-simulacra/home" class="link">workshop site</a></p>
+                    </div>
+                </article>
+            </section>
+
+            <!-- =================== FILM =================== -->
+            <section class="portfolio-section" aria-labelledby="section-film">
+                <h2 class="section-heading" id="section-film"><span class="section-rule"></span>Film</h2>
+
+                <!-- Film / Feature — After Dawn -->
+                <article class="portfolio-item portfolio-item--feature">
+                    <div class="portfolio-image-container slideshow" id="after-dawn-slideshow">
+                        <img src="assets/after-dawn/kung_thumbnail.png" alt="After Dawn Thumbnail" class="slide active">
+                        <video class="slide" src="assets/after-dawn/kung_trailer.mp4" loop playsinline></video>
+                    </div>
+                    <div class="portfolio-caption">
+                        <p class="caption-title">After Dawn</p>
+                        <p class="publication-venue"><em>Short Film</em> 2024</p>
+                        <p class="publication-location">Jeonju &amp; Jeongeup, South Korea</p>
+                        <p class="publication-authors">Yoo Kang Hyeon — Director · <strong>Donghyuk Kim</strong> — Producer</p>
+                        <p class="publication-summary">Filmed on location in Jeonju &amp; Jeongeup, supported by Jeonju Film Commission.</p>
+                        <p class="festival-award"><a href="https://www.bifan.kr/program/program_view.asp?pk_seq=8041&sc_category_seq=8024&sc_num=1&actEvent=view" class="link">Official Selection, <em>BIFAN '25</em></a></p>
+                    </div>
+                </article>
+
+                <!-- Film / Small — Canned -->
+                <article class="portfolio-item portfolio-item--small">
+                    <div class="portfolio-image-container slideshow" id="canned-crop-slideshow">
+                        <img src="assets/canned/canned_crop_thumbnail.png" alt="Canned Crop Thumbnail" class="slide active">
+                        <video class="slide" src="assets/canned/canned_crop.mp4" loop playsinline></video>
+                    </div>
+                    <div class="portfolio-caption">
+                        <p class="caption-title">Canned</p>
+                        <p class="publication-venue"><em>Short Film</em> 2024</p>
+                        <p class="publication-authors">Lyn — Director · <strong>Donghyuk Kim</strong> — Art &amp; Set Director, 2nd AC</p>
+                        <p class="publication-summary">Designed and fabricated sets.</p>
+                        <p class="festival-award">Best Film Award, <em>Seoul Dance Film Festival '25</em></p>
+                        <p class="festival-award"><a href="https://danceswithfilms.com/canned/" class="link">Official Selection, <em>Dances With Films: Los Angeles '25</em></a></p>
+                        <p class="festival-award">Official Selection, <em>Vienna Shorts Festival '25</em></p>
+                        <p class="festival-award">Official Selection, <em>Jeju Dance Film Festival '25</em></p>
+                    </div>
+                </article>
+            </section>
+
+            <!-- =================== DESIGN =================== -->
+            <section class="portfolio-section" aria-labelledby="section-design">
+                <h2 class="section-heading" id="section-design"><span class="section-rule"></span>Design</h2>
+
+                <!-- Design / Feature — Table Lamp -->
+                <article class="portfolio-item portfolio-item--feature">
+                    <div class="portfolio-image-container slideshow" id="lamp-slideshow">
+                        <img src="assets/table-lamp/tl1.png" alt="Table Lamp Image 1" class="slide active">
+                        <img src="assets/table-lamp/tl2.JPG" alt="Table Lamp Image 2" class="slide">
+                        <img src="assets/table-lamp/tl3.JPG" alt="Table Lamp Image 3" class="slide">
+                        <video class="slide" src="assets/table-lamp/tl4.mov" muted loop playsinline></video>
+                    </div>
+                    <div class="portfolio-caption">
+                        <p class="caption-title">Table Lamp</p>
+                        <p class="publication-venue"><em>Lighting Design</em> 2025</p>
+                        <p class="publication-summary">A lighting fixture that synthesizes Japanese <strong>chōchin</strong> and Korean <strong>seokdeung</strong> lantern traditions, realized in a contrasting material palette of <em>wood</em>, <em>washi</em>, and <em>concrete</em>.</p>
+                    </div>
+                </article>
+
+                <!-- Design / Small — Adidas + KNCDC stacked -->
+                <div class="portfolio-item portfolio-item--small">
+                    <article>
+                        <div class="portfolio-image-container loading-box">
+                            <span class="loading-text">loading<span class="dots">.</span></span>
+                        </div>
+                        <div class="portfolio-caption">
+                            <p class="caption-title">Adidas "Samba" Campaign</p>
+                            <p class="publication-venue"><em>Commerce</em> 2024</p>
+                        </div>
+                    </article>
+
+                    <article>
+                        <div class="portfolio-image-container">
+                            <iframe src="https://www.youtube.com/embed/5DmUZFaWPQI" title="Korea National Contemporary Dance Company" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        </div>
+                        <div class="portfolio-caption">
+                            <p class="caption-title">Korea National Contemporary Dance Company</p>
+                            <p class="publication-venue"><em>Commerce</em> 2024</p>
+                        </div>
+                    </article>
+                </div>
+            </section>
+
+            <!-- =================== PATENTS =================== -->
+            <!-- Text-only entries: no image-container, full-width row inside the section grid. -->
+            <section class="portfolio-section portfolio-section--patents" aria-labelledby="section-patents">
+                <h2 class="section-heading" id="section-patents"><span class="section-rule"></span>Patents</h2>
+
+                <article class="portfolio-item portfolio-item--text-only" id="patent-behavior-aware">
+                    <div class="portfolio-caption patent-entry">
+                        <div class="patent-header">
+                            <p class="caption-title">인체측정 데이터 기반 행동 인식형 3차원 실내 공간 자동 생성 및 사용성 검증 시스템</p>
+
+                        </div>
+                        <p class="publication-venue">(<em>Anthropometric Data-driven Behavior-Aware Automatic 3D Indoor Scene Generation and Usability Evaluation System</em>)</p>
+                        <p class="publication-authors">Kyung Hoon Hyun, Semin Jin, <strong>Donghyuk Kim</strong></p>
+                        <p class="publication-location">Application No. KR 10-2026-0040371 · KIPO 2026</p>
+                    </div>
+                </article>
+            </section>
+
+        </main>
+
+        <footer class="site-footer">
+            <p class="copyright">more to come... kimdonghyuk.</p>
+        </footer>
+    </div>
+    <script>
+// Ensure page starts at top even if URL has a hash
+window.addEventListener('DOMContentLoaded', function () {
+  if (window.location.hash) {
+    window.scrollTo(0, 0);
+    // Remove hash from URL without reloading the page
+    history.replaceState(null, '', window.location.pathname + window.location.search);
+  }
+});
+// Custom smooth scroll with slower speed (550ms)
+(function() {
+  const ANIMATION_DURATION = 550; // milliseconds
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+      const targetId = this.getAttribute('href');
+      if (!targetId || targetId === '#') return; // ignore empty anchors
+      const targetElement = document.querySelector(targetId);
+      if (!targetElement) return; // target not found
+      e.preventDefault();
+      const startY = window.pageYOffset;
+      const targetY = targetElement.getBoundingClientRect().top + window.pageYOffset;
+      const distance = targetY - startY;
+      let startTime = null;
+      function animateScroll(currentTime) {
+        if (startTime === null) startTime = currentTime;
+        const timeElapsed = currentTime - startTime;
+        const progress = Math.min(timeElapsed / ANIMATION_DURATION, 1);
+        window.scrollTo(0, startY + distance * progress);
+        if (progress < 1) {
+          requestAnimationFrame(animateScroll);
+        }
+      }
+      requestAnimationFrame(animateScroll);
+    });
+  });
+})();
+
+// Slideshow click-to-advance logic
+(function() {
+  const shows = document.querySelectorAll('.slideshow');
+  shows.forEach(show => {
+    const slides = Array.from(show.querySelectorAll('.slide'));
+    let idx = 0;
+    // ensure initial active class
+    slides.forEach((s,i)=>{ if(i!==0) s.classList.remove('active');});
+    if(slides[0].tagName === 'VIDEO') slides[0].play();
+    show.addEventListener('click', () => {
+      slides[idx].classList.remove('active');
+      if(slides[idx].tagName === 'VIDEO') slides[idx].pause();
+      idx = (idx + 1) % slides.length;
+      slides[idx].classList.add('active');
+      if(slides[idx].tagName === 'VIDEO') slides[idx].play();
+    });
+  });
+})();
+
+// Toggle play/pause on video click
+(function(){
+  document.querySelectorAll('.toggle-video').forEach(v => {
+    v.addEventListener('click', () => {
+      if (v.paused) {
+        v.play();
+      } else {
+        v.pause();
+      }
+    });
+  });
+})();
+
+// Loading dots animation
+(function(){
+  const dotsEls = document.querySelectorAll('.dots');
+  if(!dotsEls.length) return;
+  const pattern = [".", "..", "...", "..", "."];
+  let idx = 0;
+  setInterval(()=>{
+    dotsEls.forEach(el => el.textContent = pattern[idx]);
+    idx = (idx + 1) % pattern.length;
+  }, 700);
+})();
+</script>
+
+<!-- EYES Generative Design Script -->
+<script src="assets/js/eyes_sketch.js"></script>
+</body>
+</html>
