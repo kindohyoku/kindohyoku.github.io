@@ -39,10 +39,11 @@ body {
 
 .wrapper {
     width: 100%;
-    max-width: calc(var(--max-content-width) + (2 * var(--page-horizontal-padding))); /* Max width of the wrapper, including its own padding */
-    display: flex;
-    flex-direction: column;
-    align-items: center; /* Center items within the wrapper */
+    max-width: 1280px;
+    display: grid;
+    grid-template-columns: 280px 1fr;
+    column-gap: 64px;
+    align-items: start;
 }
 
 /* Links */
@@ -62,23 +63,33 @@ a.link-korean {
     font-size: 13px; /* Original explicit font size, not a general text size */
 }
 
-/* Header / Intro Section */
+/* Header / Intro Section — sticky left sidebar on desktop */
 .intro-section {
+    grid-column: 1;
     display: flex;
-    flex-wrap: wrap; /* Allows items to wrap onto the next line on smaller screens */
-    justify-content: space-between;
+    flex-direction: column;
     width: 100%;
-    max-width: var(--max-content-width); /* Align with the inner content width */
-    margin-bottom: var(--gap-between-sections);
+    max-width: 100%;
+    margin-bottom: 0;
+    position: sticky;
+    top: 24px;
+    align-self: start;
+    max-height: calc(100vh - 48px);
+    overflow-y: auto;
+    /* hide scrollbar but keep scroll */
+    scrollbar-width: none;
 }
+.intro-section::-webkit-scrollbar { display: none; }
 
 .about-me,
 .recent-contact {
-    flex: 1; /* Allow flexibility */
-    min-width: 400px; /* Minimum width before wrapping */
-    max-width: calc(50% - 20px); /* Roughly half width minus gap */
-    margin-bottom: 20px; /* Space between columns when they stack */
+    flex: none;
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+    margin-bottom: 28px;
 }
+.recent-contact { margin-bottom: 0; }
 
 /* Tighter spacing for intro-section text */
 .about-me p {
@@ -165,8 +176,9 @@ a.link-korean {
 
 /* Portfolio Layout — Section-based (Research / Film / Design) */
 .portfolio-grid {
+    grid-column: 2;
     width: 100%;
-    max-width: var(--max-content-width);
+    max-width: 100%;
     display: flex;
     flex-direction: column;
     gap: 96px; /* breathing room between sections */
@@ -496,8 +508,9 @@ a.portfolio-image-container.loading-box:hover .loading-text {
 
 /* Footer */
 .site-footer {
+    grid-column: 2;
     width: 100%;
-    max-width: var(--max-content-width);
+    max-width: 100%;
     padding-top: 20px;
     padding-bottom: 20px;
     text-align: center;
@@ -512,24 +525,40 @@ a.portfolio-image-container.loading-box:hover .loading-text {
 
 /* Media Queries for Responsiveness */
 
-/* Tablets and smaller desktops */
-@media (max-width: 990px) {
-    .intro-section {
-        flex-direction: column; /* Stack columns vertically */
-        align-items: center; /* Center the stacked columns */
+/* Below 1024px: fall back to single-column stack (intro on top, content below) */
+@media (max-width: 1024px) {
+    .wrapper {
+        grid-template-columns: 1fr;
+        column-gap: 0;
+        max-width: calc(var(--max-content-width) + (2 * var(--page-horizontal-padding)));
     }
+    .intro-section {
+        grid-column: 1;
+        position: static;
+        max-height: none;
+        overflow: visible;
+        max-width: var(--max-content-width);
+        margin-bottom: var(--gap-between-sections);
+    }
+    .portfolio-grid,
+    .site-footer {
+        grid-column: 1;
+        max-width: var(--max-content-width);
+    }
+}
 
+/* Tablets and smaller desktops — fine-tune intro and portfolio */
+@media (max-width: 990px) {
     .about-me,
     .recent-contact {
-        max-width: 600px; /* Give them more width on medium screens */
-        width: 100%; /* Take full width of parent */
-        flex: none; /* Remove flex sizing to allow max-width to control */
-        margin-bottom: 40px; /* More space between stacked sections */
-        text-align: center; /* Center text within these sections */
+        max-width: 600px;
+        width: 100%;
+        flex: none;
+        margin-bottom: 32px;
     }
 
     .about-me {
-        margin-top: 20px; /* Space from top */
+        margin-top: 20px;
     }
 
     /* Tablet: portfolio-grid still flex-stacked sections */
@@ -538,7 +567,6 @@ a.portfolio-image-container.loading-box:hover .loading-text {
         column-gap: 18px;
         row-gap: 22px;
     }
-    /* Keep feature/small split, slightly tighter */
     .portfolio-item--feature { grid-column: 1 / span 7; }
     .portfolio-item--small   { grid-column: 8 / span 5; }
 
