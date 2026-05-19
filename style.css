@@ -21,29 +21,31 @@
     padding: 0;
 }
 
-html {
-    scroll-behavior: smooth; /* Keep for smooth scrolling */
+html, body {
+    height: 100%;
+    overflow: hidden;            /* one-screen static layout: no page scroll */
 }
 
 body {
     background-color: var(--primary-bg-color);
     font-family: var(--font-anonymous-pro);
     color: var(--text-color-dark);
-    line-height: 1.5; /* Default line height for most text */
+    line-height: 1.5;
     display: flex;
-    justify-content: center; /* Center the wrapper horizontally */
-    align-items: flex-start; /* Align wrapper to the top */
-    min-height: 100vh; /* Ensures body takes at least full viewport height */
-    padding: var(--page-horizontal-padding); /* Padding around the entire content */
+    justify-content: center;
+    align-items: flex-start;
+    padding: var(--page-horizontal-padding);
 }
 
 .wrapper {
     width: 100%;
-    max-width: 1280px;
+    max-width: 1400px;
+    height: calc(100vh - 2 * var(--page-horizontal-padding));
     display: grid;
-    grid-template-columns: 280px 1fr;
-    column-gap: 64px;
-    align-items: start;
+    grid-template-columns: 320px 1fr;
+    column-gap: 56px;
+    align-items: stretch;
+    overflow: hidden;
 }
 
 /* Links */
@@ -63,7 +65,7 @@ a.link-korean {
     font-size: 13px; /* Original explicit font size, not a general text size */
 }
 
-/* Header / Intro Section — sticky left sidebar on desktop */
+/* Header / Intro Section — static left sidebar, fits within wrapper height */
 .intro-section {
     grid-column: 1;
     display: flex;
@@ -71,13 +73,10 @@ a.link-korean {
     width: 100%;
     max-width: 100%;
     margin-bottom: 0;
-    position: sticky;
-    top: 24px;
-    align-self: start;
-    max-height: calc(100vh - 48px);
-    overflow-y: auto;
-    /* hide scrollbar but keep scroll */
+    height: 100%;
+    overflow-y: auto;            /* fallback if sidebar content exceeds viewport */
     scrollbar-width: none;
+    padding-right: 4px;
 }
 .intro-section::-webkit-scrollbar { display: none; }
 
@@ -174,38 +173,41 @@ a.link-korean {
 }
 
 
-/* Portfolio Layout — Section-based (Research / Film / Design) */
+/* Portfolio Layout — compact static grid on the right column */
 .portfolio-grid {
     grid-column: 2;
     width: 100%;
     max-width: 100%;
+    height: 100%;
+    overflow-y: auto;
+    scrollbar-width: none;
+    padding-right: 4px;
     display: flex;
     flex-direction: column;
-    gap: 96px; /* breathing room between sections */
+    gap: 12px; /* very compact — fits one screen */
 }
 
 .portfolio-section {
-    display: grid;
-    grid-template-columns: repeat(12, 1fr);
-    column-gap: var(--grid-col-gap);
-    row-gap: 16px;
-    align-items: stretch;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    gap: 16px;
 }
 
 /* Section heading — small italic uppercase with hairline rule */
 .section-heading {
-    grid-column: 1 / -1;
+    flex-basis: 100%;
     display: flex;
     align-items: center;
-    gap: 18px;
+    gap: 12px;
     margin: 0;
-    padding-bottom: 14px;
+    padding-bottom: 6px;
     border-bottom: 1px solid var(--rule-color);
     font-family: var(--font-anonymous-pro);
-    font-size: 11px;
+    font-size: 10px;
     font-weight: 400;
     font-style: italic;
-    letter-spacing: 0.32em;
+    letter-spacing: 0.28em;
     text-transform: uppercase;
     color: var(--text-color-dark);
 }
@@ -226,12 +228,39 @@ a.link-korean {
     margin-bottom: 0;
     min-width: 0;
 }
-.portfolio-item--feature   { grid-column: 1 / span 7; padding-bottom: 2em; }
-.portfolio-item--feature .portfolio-image-container { max-width: 37.5vw; }
-.portfolio-item--small     { grid-column: 8 / span 5; overflow-y: auto; min-height: 0; -ms-overflow-style: none; scrollbar-width: none; }
-.portfolio-item--small::-webkit-scrollbar { display: none; }
-.portfolio-item--small > article + article { margin-top: 24px; }
-.portfolio-item--text-only { grid-column: 1 / -1; }   /* full-width, no image */
+.portfolio-item--feature   { flex: 0 0 180px; max-width: 180px; }
+.portfolio-item--small     { flex: 0 0 180px; max-width: 180px; }
+.portfolio-item--text-only { flex: 1 1 100%; max-width: 100%; }
+
+/* Compact static layout — show only image + title, hide the rest */
+.publication-venue,
+.publication-location,
+.publication-authors,
+.publication-author-note,
+.publication-links,
+.publication-summary,
+.caption-description,
+.festival-award {
+    display: none;
+}
+
+/* Smaller title font in static view */
+.portfolio-caption .caption-title {
+    font-size: 11px;
+    line-height: 1.35;
+    margin-top: 4px;
+    margin-bottom: 0;
+}
+
+/* Patents section still wants to show its full text block */
+.portfolio-section--patents .publication-venue,
+.portfolio-section--patents .publication-location,
+.portfolio-section--patents .publication-authors {
+    display: block;
+}
+.portfolio-section--patents .caption-title {
+    font-size: 11px;
+}
 
 /* Patents section — text-only entries, title left + status tag right */
 .patent-header {
