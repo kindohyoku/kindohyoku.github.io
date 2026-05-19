@@ -33,34 +33,47 @@
 
             <aside class="col col-left">
                 <div class="meta-block">
-                    <h3>#### stats</h3>
-                    <div class="kv"><span>papers</span><span class="val">2</span></div>
-                    <div class="kv"><span>films</span><span class="val">4+</span></div>
-                    <div class="kv"><span>designs</span><span class="val">2</span></div>
-                    <div class="kv"><span>patents</span><span class="val">1</span></div>
-                    <div class="kv"><span>since</span><span class="val">2024</span></div>
-                </div>
-                <div class="meta-block">
-                    <h3>#### branch</h3>
-                    <div class="kv"><span>current</span><span class="val">behavior-aware</span></div>
-                    <div class="kv"><span>based on</span><span class="val">[001]</span></div>
-                    <div class="kv"><span>status</span><span class="val">presented · chi 26</span></div>
-                    <div class="kv"><span>next</span><span class="val">uist 26 · review</span></div>
-                </div>
-                <div class="meta-block">
-                    <h3>#### system</h3>
-                    <div class="kv"><span>affil.</span><span class="val">hanyang</span></div>
-                    <div class="kv"><span>lab</span><span class="val">dilab</span></div>
-                    <div class="kv"><span>role</span><span class="val">ms · co-author</span></div>
-                    <div class="kv"><span>dept</span><span class="val">design inf.</span></div>
+                    <h3>#### now</h3>
+                    <div class="row">ms candidate · dilab · hanyang</div>
+                    <div class="row">co-first author · chi 26 · barcelona</div>
+                    <div class="row">under review · uist 26</div>
+                    <div class="row">recent · best film award · seoul dance ff 25'</div>
                 </div>
             </aside>
 
             <section class="col col-mid">
+
                 <div class="eyes-pair" id="eyes-pair">
+
+                    <!-- Geometric head outline — computational, line-only -->
+                    <svg class="head-frame" viewBox="0 0 600 320" aria-hidden="true">
+                        <!-- construction grid (dashed midlines) -->
+                        <line x1="300" y1="14" x2="300" y2="306" class="grid" />
+                        <line x1="14" y1="160" x2="586" y2="160" class="grid" />
+
+                        <!-- head silhouette -->
+                        <ellipse cx="300" cy="160" rx="252" ry="142" class="head" />
+
+                        <!-- brow line — slight arc above the eyes -->
+                        <path d="M 110 116 Q 300 96 490 116" class="brow" />
+
+                        <!-- nose ridge (geometric polyline) -->
+                        <polyline points="300,148 295,232 305,232 300,148" class="nose" />
+
+                        <!-- mouth -->
+                        <line x1="266" y1="262" x2="334" y2="262" class="mouth" />
+
+                        <!-- tiny coordinate markers, computational feel -->
+                        <text x="10" y="20" class="marker">x</text>
+                        <text x="582" y="312" class="marker">y</text>
+                    </svg>
+
+                    <!-- Left eye: generative p5 sketch, no eyelid -->
                     <div class="eye eye-left" aria-label="generative eye · click to disturb">
                         <div id="eyes-canvas-container"></div>
                     </div>
+
+                    <!-- Right eye: works display with natural blink -->
                     <div class="eye eye-right" aria-label="works eye · click to advance">
                         <div class="project-display">
                             <div class="project-bg"></div>
@@ -70,11 +83,13 @@
                                 <span class="psub"></span>
                             </div>
                         </div>
-                        <div class="eyelid eyelid-top"></div>
-                        <div class="eyelid eyelid-bottom"></div>
+                        <!-- closed-eyelid line — appears at mid-blink -->
+                        <span class="lid-line"></span>
                     </div>
+
                 </div>
-                <p class="eyes-caption">— click to blink · the right eye cycles through works</p>
+
+                <p class="eyes-caption">— click either eye · the right eye blinks &amp; cycles through works</p>
             </section>
 
             <aside class="col col-right">
@@ -141,7 +156,7 @@
     <!-- Eyes p5 sketch (left eye) -->
     <script src="assets/js/eyes_sketch.js"></script>
 
-    <!-- Right eye: project cycle + blink -->
+    <!-- Right eye: project cycle + natural blink -->
     <script>
     (function() {
         const projects = [
@@ -196,15 +211,15 @@
         function blinkAndCycle() {
             if (eyeRight.classList.contains('blinking')) return;
             eyeRight.classList.add('blinking');
-            // Mid-blink: swap content while lids are closed
+            // Mid-blink: swap project while the slit is at its thinnest
             setTimeout(() => {
                 projectIndex = (projectIndex + 1) % projects.length;
                 showProject(projectIndex);
             }, 220);
-            // Re-open
+            // Open the lids back up
             setTimeout(() => {
                 eyeRight.classList.remove('blinking');
-            }, 320);
+            }, 380);
         }
 
         // Click on left eye (via p5 sketch) triggers blink+cycle
@@ -212,15 +227,13 @@
 
         // Click on right eye triggers blink+cycle AND regenerates left eye
         eyeRight.addEventListener('click', (e) => {
-            // Don't intercept the inner anchor when user clicks its visible text
+            // let the inner anchor handle navigation when user clicks the title strip
             if (e.target.closest('.project-meta')) return;
-            // Otherwise: blink/cycle, and regenerate the left eye
             e.preventDefault();
             blinkAndCycle();
             if (typeof window.generateNewEyes === 'function') window.generateNewEyes();
         });
 
-        // Prime with first project
         showProject(0);
     })();
     </script>

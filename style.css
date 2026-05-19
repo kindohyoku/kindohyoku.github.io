@@ -1,8 +1,8 @@
-/* kim dong hyuk · terminal-themed single-screen page with two interactive eyes. */
+/* kim dong hyuk · terminal page with a computational head + two interactive eyes */
 
 :root {
     --bg: rgba(245, 233, 233, 0.85);
-    --bg-solid: #f1e8e8;            /* used by eyelids so they blend into the page */
+    --bg-solid: #f1e8e8;
     --text: #1a1a1a;
     --text-muted: #777;
     --text-dim: #aaa;
@@ -25,7 +25,7 @@ html, body {
     line-height: 1.5;
     -webkit-font-smoothing: antialiased;
     height: 100%;
-    overflow: hidden;               /* one-screen, no page scroll */
+    overflow: hidden;
 }
 
 body { padding: 24px 36px; }
@@ -41,14 +41,13 @@ a:hover { text-decoration-color: rgba(0, 0, 0, 0.7); }
 
 em { font-style: italic; }
 
-/* ===== Main container — fits a single viewport ===== */
 .terminal {
     max-width: 1400px;
     margin: 0 auto;
     height: calc(100vh - 48px);
     display: flex;
     flex-direction: column;
-    gap: 18px;
+    gap: 16px;
 }
 
 /* ===== Header ===== */
@@ -56,9 +55,9 @@ em { font-style: italic; }
     display: flex;
     flex-wrap: wrap;
     align-items: baseline;
-    gap: 12px 22px;
+    gap: 10px 22px;
     font-size: 12px;
-    padding-bottom: 12px;
+    padding-bottom: 10px;
     border-bottom: 1px solid var(--rule);
 }
 .header .nav { display: flex; flex-wrap: wrap; gap: 14px; }
@@ -77,63 +76,83 @@ em { font-style: italic; }
     font-size: 26px;
     font-weight: 400;
     letter-spacing: -0.01em;
-    line-height: 1.15;
+    line-height: 1.1;
 }
 .hero .tagline { font-size: 11.5px; color: var(--text-muted); }
-.hero .bio { font-size: 12px; max-width: 720px; margin-top: 4px; line-height: 1.55; }
+.hero .bio { font-size: 12px; max-width: 720px; margin-top: 2px; line-height: 1.55; }
 
 /* ===== Three-column main ===== */
 .three-col {
     flex: 1 1 auto;
     min-height: 0;
     display: grid;
-    grid-template-columns: 280px 1fr 380px;
-    column-gap: 40px;
+    grid-template-columns: 220px minmax(0, 1fr) 320px;
+    column-gap: 36px;
     align-items: start;
 }
-
 .col { min-width: 0; }
-
 .col-left  { display: flex; flex-direction: column; gap: 16px; }
-.col-mid   { display: flex; flex-direction: column; align-items: center; gap: 18px; padding-top: 8px; }
-.col-right { display: flex; flex-direction: column; gap: 16px; }
+.col-mid   { display: flex; flex-direction: column; align-items: center; gap: 16px; padding-top: 4px; }
+.col-right { display: flex; flex-direction: column; gap: 14px; }
 
-/* meta-blocks reused */
+/* ===== Meta-block (left col: 'now') ===== */
 .meta-block h3 {
     font-size: 11px;
     font-weight: 400;
-    margin-bottom: 6px;
+    margin-bottom: 8px;
     letter-spacing: 0.04em;
 }
-.meta-block .kv {
-    display: flex;
-    justify-content: space-between;
-    gap: 12px;
-    padding: 1px 0;
+.meta-block .row {
     font-size: 11.5px;
+    line-height: 1.55;
+    color: var(--text);
+    padding: 1px 0;
 }
-.meta-block .kv > span:first-child { color: var(--text-muted); }
-.meta-block .kv .val { color: var(--text); text-align: right; }
+.meta-block .row::before {
+    content: '· ';
+    color: var(--text-muted);
+}
 
-/* ===== Eyes pair ===== */
+/* ============================================================
+   Eyes pair — geometric head outline framing two interactive eyes
+   ============================================================ */
 .eyes-pair {
-    display: flex;
-    gap: 28px;
-    justify-content: center;
-    align-items: center;
+    position: relative;
+    width: 100%;
+    max-width: 600px;
+    aspect-ratio: 600 / 320;
 }
 
+/* SVG head outline sits behind the eyes */
+.head-frame {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+}
+.head-frame .head  { fill: none; stroke: var(--text); stroke-width: 1; }
+.head-frame .brow  { fill: none; stroke: var(--text); stroke-width: 0.8; }
+.head-frame .nose  { fill: none; stroke: var(--text); stroke-width: 0.8; stroke-linejoin: round; }
+.head-frame .mouth { stroke: var(--text); stroke-width: 0.8; }
+.head-frame .grid  { stroke: var(--text); stroke-width: 0.4; stroke-dasharray: 2 5; opacity: 0.28; }
+.head-frame .marker { font-family: var(--font-mono); font-size: 9px; fill: var(--text-dim); }
+
+/* Eye positioning inside the head frame, percentage-based so they scale with the SVG */
 .eye {
-    width: 160px;
-    height: 160px;
+    position: absolute;
+    width: 26.6%;   /* 160/600 */
+    aspect-ratio: 1 / 1;
+    top: 25%;       /* 80/320 — eye top */
     border-radius: 50%;
     overflow: hidden;
-    position: relative;
     cursor: pointer;
-    box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.08);
+    background: var(--bg-solid);
 }
+.eye-left  { left: 16.6%; }   /* 100/600 */
+.eye-right { right: 16.6%; }
 
-/* Left eye = p5 sketch */
+/* Left eye = p5 canvas. No lid. */
 #eyes-canvas-container {
     width: 100%;
     height: 100%;
@@ -142,17 +161,22 @@ em { font-style: italic; }
 #eyes-canvas-container canvas {
     display: block !important;
     border-radius: 50%;
-    width: 160px !important;
-    height: 160px !important;
+    width: 100% !important;
+    height: 100% !important;
 }
 
-/* Right eye = project display */
-.eye-right { background: #0e0e0e; }
+/* Right eye = project display with a natural blink */
+.eye-right { background: var(--bg-solid); }
 
 .project-display {
     position: relative;
     width: 100%;
     height: 100%;
+    clip-path: ellipse(50% 50% at 50% 50%);
+    transition: clip-path 0.36s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.eye-right.blinking .project-display {
+    clip-path: ellipse(50% 0% at 50% 50%);
 }
 
 .project-bg {
@@ -169,53 +193,52 @@ em { font-style: italic; }
         #161616 8px 16px
     );
 }
-
 .project-link {
     position: absolute;
     inset: 0;
     z-index: 1;
     text-decoration: none;
 }
-
 .project-meta {
     position: absolute;
     left: 0;
     right: 0;
     bottom: 0;
     z-index: 2;
-    padding: 10px 14px 12px;
-    background: linear-gradient(to top, rgba(0, 0, 0, 0.75) 30%, rgba(0, 0, 0, 0));
+    padding: 8px 12px 10px;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.78) 30%, rgba(0, 0, 0, 0));
     color: #fff;
-    font-size: 11px;
+    font-size: 10.5px;
     display: flex;
     flex-direction: column;
     gap: 2px;
     pointer-events: none;
 }
 .project-meta .ptitle { font-weight: 700; letter-spacing: 0.02em; }
-.project-meta .psub { font-size: 9.5px; color: rgba(255, 255, 255, 0.7); letter-spacing: 0.05em; }
+.project-meta .psub   { font-size: 9px; color: rgba(255, 255, 255, 0.7); letter-spacing: 0.05em; }
 
-/* Eyelids: two half-circle covers that close to meet at the centre */
-.eyelid {
+/* The thin closed-eyelid line — only visible while blinking */
+.lid-line {
     position: absolute;
-    left: 0;
-    width: 100%;
-    height: 50%;
-    background: var(--bg-solid);
+    left: 14%;
+    right: 14%;
+    top: 50%;
+    height: 1px;
+    background: var(--text);
+    transform: translateY(-50%) scaleX(0);
+    transform-origin: center;
+    transition: transform 0.36s cubic-bezier(0.4, 0, 0.2, 1);
     pointer-events: none;
-    z-index: 5;
-    transition: transform 0.22s cubic-bezier(0.55, 0, 0.45, 1);
+    z-index: 3;
 }
-.eyelid-top    { top: 0;    transform: translateY(-100%); border-bottom: 1px solid rgba(0, 0, 0, 0.18); }
-.eyelid-bottom { bottom: 0; transform: translateY(100%);  border-top:    1px solid rgba(0, 0, 0, 0.18); }
-.eye-right.blinking .eyelid-top    { transform: translateY(0); }
-.eye-right.blinking .eyelid-bottom { transform: translateY(0); }
+.eye-right.blinking .lid-line {
+    transform: translateY(-50%) scaleX(1);
+}
 
 .eyes-caption {
     font-size: 11px;
     color: var(--text-muted);
     font-style: italic;
-    letter-spacing: 0.02em;
     text-align: center;
 }
 
@@ -226,16 +249,15 @@ em { font-style: italic; }
     margin-bottom: 4px;
     letter-spacing: 0.04em;
 }
-
 .works-list { display: flex; flex-direction: column; gap: 1px; }
 
 .work-node {
     display: grid;
-    grid-template-columns: 130px 1fr 36px;
+    grid-template-columns: 120px 1fr 32px;
     column-gap: 10px;
     padding: 4px 0;
     text-decoration: none;
-    font-size: 11.5px;
+    font-size: 11px;
     align-items: baseline;
     border-bottom: 1px dotted transparent;
     line-height: 1.4;
@@ -243,7 +265,7 @@ em { font-style: italic; }
 .work-node:hover { border-bottom-color: var(--rule); }
 .work-node .venue {
     color: var(--accent);
-    font-size: 9.5px;
+    font-size: 9px;
     text-transform: uppercase;
     letter-spacing: 0.07em;
 }
@@ -252,7 +274,7 @@ em { font-style: italic; }
     display: inline-block;
     margin-left: 4px;
     padding: 0 4px;
-    font-size: 8.5px;
+    font-size: 8px;
     font-style: normal;
     font-weight: 700;
     letter-spacing: 0.14em;
@@ -267,8 +289,7 @@ em { font-style: italic; }
     text-align: right;
 }
 
-/* elsewhere block on right column */
-.elsewhere { display: flex; flex-direction: column; gap: 2px; margin-top: 8px; }
+.elsewhere { display: flex; flex-direction: column; gap: 2px; margin-top: 6px; }
 .elsewhere h3 {
     font-size: 11px;
     font-weight: 400;
@@ -281,7 +302,7 @@ em { font-style: italic; }
     gap: 12px;
     padding: 1px 0;
     text-decoration: none;
-    font-size: 11.5px;
+    font-size: 11px;
     border-bottom: 1px dotted transparent;
 }
 .elsewhere a:hover { border-bottom-color: var(--rule); }
@@ -291,8 +312,7 @@ em { font-style: italic; }
 .footer {
     display: flex;
     justify-content: flex-end;
-    align-items: baseline;
-    padding-top: 10px;
+    padding-top: 8px;
     border-top: 1px solid var(--rule);
     font-size: 10.5px;
     color: var(--text-muted);
@@ -304,11 +324,4 @@ em { font-style: italic; }
     .terminal { height: auto; }
     .three-col { grid-template-columns: 1fr; row-gap: 24px; }
     .col-mid { padding-top: 0; }
-}
-
-@media (max-width: 600px) {
-    body { padding: 18px 16px; }
-    .eyes-pair { gap: 18px; }
-    .eye, #eyes-canvas-container canvas { width: 140px !important; height: 140px !important; }
-    .eye { height: 140px; }
 }
