@@ -21,7 +21,6 @@
                 <a href="#patents">patents</a>
                 <a href="mailto:oververitas@gmail.com">contact</a>
             </nav>
-            <span class="tz">online tz: KST <span id="time">--:--:--</span></span>
         </header>
 
         <section class="hero">
@@ -30,165 +29,199 @@
             <p class="bio">i work across film, design, and embodied AI. m.s. at <a href="https://designinformatics.hanyang.ac.kr/">design informatics lab</a>, hanyang university — researching how AI systems can generate and evaluate spaces that human bodies actually use. recent paper presented at CHI 2026 in barcelona.</p>
         </section>
 
-        <section class="meta-blocks">
-            <div class="meta-block">
-                <h3>#### stats</h3>
-                <div class="kv"><span>papers</span><span class="val">2</span></div>
-                <div class="kv"><span>films</span><span class="val">4+</span></div>
-                <div class="kv"><span>designs</span><span class="val">2</span></div>
-                <div class="kv"><span>patents</span><span class="val">1</span></div>
-                <div class="kv"><span>since</span><span class="val">2024</span></div>
-            </div>
-            <div class="meta-block">
-                <h3>#### branch</h3>
-                <div class="kv"><span>current</span><span class="val">behavior-aware</span></div>
-                <div class="kv"><span>based on</span><span class="val">[001]</span></div>
-                <div class="kv"><span>status</span><span class="val">presented · chi 26</span></div>
-                <div class="kv"><span>next</span><span class="val">uist 26 · review</span></div>
-            </div>
-            <div class="meta-block">
-                <h3>#### system</h3>
-                <div class="kv"><span>affil.</span><span class="val">hanyang</span></div>
-                <div class="kv"><span>lab</span><span class="val">dilab</span></div>
-                <div class="kv"><span>role</span><span class="val">ms · co-author</span></div>
-                <div class="kv"><span>dept</span><span class="val">design inf.</span></div>
-            </div>
-        </section>
+        <section class="three-col">
 
-        <section class="eyes-section">
-            <div id="eyes-canvas-container" aria-label="generative eyes — click to disturb"></div>
-            <p class="eyes-caption">— a watcher of how bodies inhabit space · click to disturb</p>
-        </section>
+            <aside class="col col-left">
+                <div class="meta-block">
+                    <h3>#### stats</h3>
+                    <div class="kv"><span>papers</span><span class="val">2</span></div>
+                    <div class="kv"><span>films</span><span class="val">4+</span></div>
+                    <div class="kv"><span>designs</span><span class="val">2</span></div>
+                    <div class="kv"><span>patents</span><span class="val">1</span></div>
+                    <div class="kv"><span>since</span><span class="val">2024</span></div>
+                </div>
+                <div class="meta-block">
+                    <h3>#### branch</h3>
+                    <div class="kv"><span>current</span><span class="val">behavior-aware</span></div>
+                    <div class="kv"><span>based on</span><span class="val">[001]</span></div>
+                    <div class="kv"><span>status</span><span class="val">presented · chi 26</span></div>
+                    <div class="kv"><span>next</span><span class="val">uist 26 · review</span></div>
+                </div>
+                <div class="meta-block">
+                    <h3>#### system</h3>
+                    <div class="kv"><span>affil.</span><span class="val">hanyang</span></div>
+                    <div class="kv"><span>lab</span><span class="val">dilab</span></div>
+                    <div class="kv"><span>role</span><span class="val">ms · co-author</span></div>
+                    <div class="kv"><span>dept</span><span class="val">design inf.</span></div>
+                </div>
+            </aside>
 
-        <section class="works-graph">
-            <h2 class="works-heading">— works · click any node to open · papers=2 · films=2 · designs=2 · campaigns=2 · patents=1</h2>
+            <section class="col col-mid">
+                <div class="eyes-pair" id="eyes-pair">
+                    <div class="eye eye-left" aria-label="generative eye · click to disturb">
+                        <div id="eyes-canvas-container"></div>
+                    </div>
+                    <div class="eye eye-right" aria-label="works eye · click to advance">
+                        <div class="project-display">
+                            <div class="project-bg"></div>
+                            <a class="project-link" href="#" target="_blank" rel="noopener" aria-label="open current work"></a>
+                            <div class="project-meta">
+                                <span class="ptitle"></span>
+                                <span class="psub"></span>
+                            </div>
+                        </div>
+                        <div class="eyelid eyelid-top"></div>
+                        <div class="eyelid eyelid-bottom"></div>
+                    </div>
+                </div>
+                <p class="eyes-caption">— click to blink · the right eye cycles through works</p>
+            </section>
 
-            <div class="works-list" id="research">
-                <a class="work-node" href="https://kindohyoku.github.io/BehaviorAware/" target="_blank" rel="noopener">
-                    <span class="year">2026</span>
-                    <span class="venue">chi 26 · paper</span>
-                    <span class="title">behavior-aware anthropometric scene generation for human-usable 3d layouts</span>
-                    <span class="hash">[001]</span>
-                </a>
-                <a class="work-node" href="https://sites.google.com/andrew.cmu.edu/chi-llm-simulacra/home" target="_blank" rel="noopener">
-                    <span class="year">2026</span>
-                    <span class="venue">chi 26 · workshop</span>
-                    <span class="title">layer-specific llm participation in spatial usability evaluation</span>
-                    <span class="hash">[002]</span>
-                </a>
-            </div>
+            <aside class="col col-right">
+                <h3 class="works-heading">#### works</h3>
+                <div class="works-list">
+                    <a class="work-node" id="research" href="https://kindohyoku.github.io/BehaviorAware/" target="_blank" rel="noopener">
+                        <span class="venue">chi 26 · paper</span>
+                        <span class="title">behavior-aware anthropometric scene generation</span>
+                        <span class="hash">[001]</span>
+                    </a>
+                    <a class="work-node" href="https://sites.google.com/andrew.cmu.edu/chi-llm-simulacra/home" target="_blank" rel="noopener">
+                        <span class="venue">chi 26 · workshop</span>
+                        <span class="title">layer-specific llm participation</span>
+                        <span class="hash">[002]</span>
+                    </a>
+                    <a class="work-node" id="films" href="https://www.bifan.kr/program/program_view.asp?pk_seq=8041&sc_category_seq=8024&sc_num=1&actEvent=view" target="_blank" rel="noopener">
+                        <span class="venue">film · bifan 25'</span>
+                        <span class="title">after dawn — producer</span>
+                        <span class="hash">[003]</span>
+                    </a>
+                    <a class="work-node" href="https://danceswithfilms.com/canned/" target="_blank" rel="noopener">
+                        <span class="venue">film · dwf 25'</span>
+                        <span class="title">canned — art &amp; set director</span>
+                        <span class="hash">[004]</span>
+                    </a>
+                    <a class="work-node" id="practice" href="#">
+                        <span class="venue">design · lighting</span>
+                        <span class="title">table lamp — chōchin × seokdeung</span>
+                        <span class="hash">[005]</span>
+                    </a>
+                    <a class="work-node" href="https://www.instagram.com/reel/C8UKrYYptPP/?igsh=MXNwMGpmYnZneHMwZw==" target="_blank" rel="noopener">
+                        <span class="venue">commerce</span>
+                        <span class="title">adidas "samba" campaign</span>
+                        <span class="hash">[006]</span>
+                    </a>
+                    <a class="work-node" href="https://youtu.be/5DmUZFaWPQI?si=lynaDwLC-g5F7wcA" target="_blank" rel="noopener">
+                        <span class="venue">commerce</span>
+                        <span class="title">korea national contemporary dance company</span>
+                        <span class="hash">[007]</span>
+                    </a>
+                    <a class="work-node" id="patents" href="#">
+                        <span class="venue">kipo · patent</span>
+                        <span class="title">3d scene generation patent <em class="status-inline">filed</em></span>
+                        <span class="hash">[008]</span>
+                    </a>
+                </div>
 
-            <div class="works-list" id="films">
-                <a class="work-node" href="https://www.bifan.kr/program/program_view.asp?pk_seq=8041&sc_category_seq=8024&sc_num=1&actEvent=view" target="_blank" rel="noopener">
-                    <span class="year">2024</span>
-                    <span class="venue">film · bifan 25'</span>
-                    <span class="title">after dawn — producer (dir. yoo kang hyeon)</span>
-                    <span class="hash">[003]</span>
-                </a>
-                <a class="work-node" href="https://danceswithfilms.com/canned/" target="_blank" rel="noopener">
-                    <span class="year">2024</span>
-                    <span class="venue">film · dances with films 25'</span>
-                    <span class="title">canned — art &amp; set director, 2nd AC (dir. lyn)</span>
-                    <span class="hash">[004]</span>
-                </a>
-            </div>
+                <div class="elsewhere">
+                    <h3>#### elsewhere</h3>
+                    <a href="https://www.linkedin.com/in/donghyuk-kim-90b8b2341/" target="_blank" rel="noopener"><span>linkedin</span><span class="val">↗</span></a>
+                    <a href="https://designinformatics.hanyang.ac.kr/" target="_blank" rel="noopener"><span>lab · dilab</span><span class="val">↗</span></a>
+                    <a href="mailto:oververitas@gmail.com"><span>email</span><span class="val">↗</span></a>
+                </div>
+            </aside>
 
-            <div class="works-list" id="practice">
-                <a class="work-node" href="#table-lamp">
-                    <span class="year">2025</span>
-                    <span class="venue">design · lighting</span>
-                    <span class="title">table lamp — chōchin × seokdeung, wood / washi / concrete</span>
-                    <span class="hash">[005]</span>
-                </a>
-                <a class="work-node" href="https://www.instagram.com/reel/C8UKrYYptPP/?igsh=MXNwMGpmYnZneHMwZw==" target="_blank" rel="noopener">
-                    <span class="year">2024</span>
-                    <span class="venue">commerce · campaign</span>
-                    <span class="title">adidas "samba" campaign</span>
-                    <span class="hash">[006]</span>
-                </a>
-                <a class="work-node" href="https://youtu.be/5DmUZFaWPQI?si=lynaDwLC-g5F7wcA" target="_blank" rel="noopener">
-                    <span class="year">2024</span>
-                    <span class="venue">commerce · campaign</span>
-                    <span class="title">korea national contemporary dance company</span>
-                    <span class="hash">[007]</span>
-                </a>
-            </div>
-
-            <div class="works-list" id="patents">
-                <a class="work-node" href="#" data-status="filed">
-                    <span class="year">2026</span>
-                    <span class="venue">kipo · patent</span>
-                    <span class="title">인체측정 데이터 기반 행동 인식형 3차원 실내 공간 자동 생성 및 사용성 검증 시스템 <em class="status-inline">[filed]</em></span>
-                    <span class="hash">[008]</span>
-                </a>
-            </div>
-
-            <p class="git-log">$ git log --graph --oneline --all</p>
-        </section>
-
-        <section class="links-elsewhere">
-            <div class="links-block">
-                <h3>#### links</h3>
-                <a href="https://kindohyoku.github.io/BehaviorAware/" target="_blank" rel="noopener"><span>project · behavior-aware</span><span class="val">↗</span></a>
-                <a href="https://doi.org/10.1145/3772318.3790341" target="_blank" rel="noopener"><span>acm doi</span><span class="val">↗</span></a>
-                <a href="https://sites.google.com/andrew.cmu.edu/chi-llm-simulacra/home" target="_blank" rel="noopener"><span>chi 26 workshop</span><span class="val">↗</span></a>
-            </div>
-            <div class="links-block">
-                <h3>#### elsewhere</h3>
-                <a href="https://www.linkedin.com/in/donghyuk-kim-90b8b2341/" target="_blank" rel="noopener"><span>linkedin</span><span class="val">↗</span></a>
-                <a href="https://designinformatics.hanyang.ac.kr/" target="_blank" rel="noopener"><span>lab · dilab</span><span class="val">↗</span></a>
-                <a href="mailto:oververitas@gmail.com"><span>email · oververitas@gmail.com</span><span class="val">↗</span></a>
-            </div>
         </section>
 
         <footer class="footer">
-            <span class="page">01 / 01</span>
-            <span class="shortcuts">
-                <kbd>R</kbd> research
-                <kbd>F</kbd> films
-                <kbd>D</kbd> practice
-                <kbd>P</kbd> patents
-                <kbd>M</kbd> contact
-                <kbd>↵</kbd> open node
-            </span>
             <span class="copyright">© kim dong hyuk · 2026</span>
         </footer>
 
     </main>
 
-    <!-- Eyes p5 sketch (centerpiece) -->
+    <!-- Eyes p5 sketch (left eye) -->
     <script src="assets/js/eyes_sketch.js"></script>
 
-    <!-- KST clock + keyboard shortcuts -->
+    <!-- Right eye: project cycle + blink -->
     <script>
     (function() {
-        function tick() {
-            const now = new Date();
-            const kstMs = now.getTime() + (now.getTimezoneOffset() + 9 * 60) * 60 * 1000;
-            const k = new Date(kstMs);
-            const pad = (n) => String(n).padStart(2, '0');
-            const el = document.getElementById('time');
-            if (el) el.textContent = pad(k.getHours()) + ':' + pad(k.getMinutes()) + ':' + pad(k.getSeconds());
-        }
-        tick();
-        setInterval(tick, 1000);
-    })();
+        const projects = [
+            { title: 'behavior-aware', sub: 'chi 26 · paper',
+              image: 'assets/behavior-aware/behavior_aware.gif',
+              link:  'https://kindohyoku.github.io/BehaviorAware/' },
+            { title: 'llm simulacra', sub: 'chi 26 · workshop',
+              image: 'assets/chi-workshop/workshop_diagram.svg',
+              link:  'https://sites.google.com/andrew.cmu.edu/chi-llm-simulacra/home' },
+            { title: 'table lamp', sub: 'design · 2025',
+              image: 'assets/table-lamp/tl1.png',
+              link:  '#' },
+            { title: 'after dawn', sub: 'film · 2024',
+              image: 'assets/after-dawn/kung_thumbnail.png',
+              link:  'https://www.bifan.kr/program/program_view.asp?pk_seq=8041&sc_category_seq=8024&sc_num=1&actEvent=view' },
+            { title: 'canned', sub: 'film · 2024',
+              image: 'assets/canned/canned_crop_thumbnail.png',
+              link:  'https://danceswithfilms.com/canned/' },
+            { title: 'adidas samba', sub: 'commerce · 2024',
+              image: null,
+              link:  'https://www.instagram.com/reel/C8UKrYYptPP/?igsh=MXNwMGpmYnZneHMwZw==' },
+            { title: 'kncdc', sub: 'commerce · 2024',
+              image: null,
+              link:  'https://youtu.be/5DmUZFaWPQI?si=lynaDwLC-g5F7wcA' },
+            { title: 'patent · filed', sub: 'kipo 2026',
+              image: null,
+              link:  '#' }
+        ];
 
-    (function() {
-        const map = { r: '#research', f: '#films', d: '#practice', p: '#patents', m: 'mailto:oververitas@gmail.com' };
-        document.addEventListener('keydown', (e) => {
-            if (e.target.matches('input, textarea')) return;
-            if (e.metaKey || e.ctrlKey || e.altKey) return;
-            const k = e.key.toLowerCase();
-            const target = map[k];
-            if (!target) return;
-            if (target.startsWith('mailto:')) {
-                window.location.href = target;
+        const eyeRight = document.querySelector('.eye-right');
+        const projectBg = document.querySelector('.eye-right .project-bg');
+        const projectLink = document.querySelector('.eye-right .project-link');
+        const projectTitle = document.querySelector('.eye-right .ptitle');
+        const projectSub = document.querySelector('.eye-right .psub');
+        let projectIndex = 0;
+
+        function showProject(i) {
+            const p = projects[i];
+            if (p.image) {
+                projectBg.style.backgroundImage = "url('" + p.image + "')";
+                projectBg.classList.remove('placeholder');
             } else {
-                const el = document.querySelector(target);
-                if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                projectBg.style.backgroundImage = '';
+                projectBg.classList.add('placeholder');
             }
+            projectTitle.textContent = p.title;
+            projectSub.textContent = p.sub;
+            projectLink.href = p.link || '#';
+            projectLink.setAttribute('aria-label', 'open ' + p.title);
+        }
+
+        function blinkAndCycle() {
+            if (eyeRight.classList.contains('blinking')) return;
+            eyeRight.classList.add('blinking');
+            // Mid-blink: swap content while lids are closed
+            setTimeout(() => {
+                projectIndex = (projectIndex + 1) % projects.length;
+                showProject(projectIndex);
+            }, 220);
+            // Re-open
+            setTimeout(() => {
+                eyeRight.classList.remove('blinking');
+            }, 320);
+        }
+
+        // Click on left eye (via p5 sketch) triggers blink+cycle
+        window.onEyesClick = blinkAndCycle;
+
+        // Click on right eye triggers blink+cycle AND regenerates left eye
+        eyeRight.addEventListener('click', (e) => {
+            // Don't intercept the inner anchor when user clicks its visible text
+            if (e.target.closest('.project-meta')) return;
+            // Otherwise: blink/cycle, and regenerate the left eye
+            e.preventDefault();
+            blinkAndCycle();
+            if (typeof window.generateNewEyes === 'function') window.generateNewEyes();
         });
+
+        // Prime with first project
+        showProject(0);
     })();
     </script>
 </body>
