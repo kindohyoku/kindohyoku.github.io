@@ -65,21 +65,52 @@ a.link-korean {
     font-size: 13px; /* Original explicit font size, not a general text size */
 }
 
-/* Header / Intro — left zone, restored two sub-columns (about + recent/contact) */
+/* Header / Intro — left zone. About text flows in 2 columns on top;
+   Recently / Contact / eyes sit below in a smaller block that fills the empty space. */
 .intro-section {
     grid-column: 1;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    column-gap: 36px;
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
     width: 100%;
     max-width: 100%;
     margin-bottom: 0;
     height: 100%;
-    overflow-y: auto;            /* fallback if intro content exceeds viewport */
+    overflow-y: auto;
     scrollbar-width: none;
     padding-right: 4px;
 }
 .intro-section::-webkit-scrollbar { display: none; }
+
+/* About paragraphs reflow as a CSS multi-column block — reads as two columns at once */
+.about-me {
+    column-count: 2;
+    column-gap: 32px;
+}
+.about-me p {
+    break-inside: avoid;     /* don't split a paragraph across columns */
+    margin-bottom: 6px;
+}
+
+/* Recently / Contact / Eyes — pushed below the about text, smaller font fills the empty area */
+.recent-contact {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 28px;
+    row-gap: 4px;
+    align-items: start;
+    font-size: 11px;
+}
+.recent-contact .recent-heading  { grid-column: 1; font-size: 11px; }
+.recent-contact .contact-heading { grid-column: 2; font-size: 11px; margin-top: 0; }
+.recent-contact .recent-entry    { grid-column: 1; font-size: 11px; line-height: 1.45; }
+.recent-contact .recent-entry .text-small { font-size: 9px; }
+.recent-contact .contact-entry   { grid-column: 2; font-size: 11px; line-height: 1.45; }
+.recent-contact .eyes-container  { grid-column: 2; margin-top: 12px; }
+.recent-contact #eyes-canvas-container canvas {
+    width: 140px !important;
+    height: 140px !important;
+}
 
 .about-me,
 .recent-contact {
@@ -190,8 +221,11 @@ a.link-korean {
     display: flex;
     flex-wrap: wrap;
     align-items: flex-start;
-    gap: 16px;
+    column-gap: 16px;
+    row-gap: 8px;
 }
+/* heading occupies its own row; items share the row below */
+.portfolio-section > .section-heading { flex-basis: 100%; }
 
 /* Section heading — small italic uppercase with hairline rule */
 .section-heading {
@@ -227,39 +261,21 @@ a.link-korean {
     margin-bottom: 0;
     min-width: 0;
 }
-.portfolio-item--feature   { flex: 0 0 180px; max-width: 180px; }
-.portfolio-item--small     { flex: 0 0 180px; max-width: 180px; }
+/* Static row: feature wider than small, all items share a single row. */
+.portfolio-item--feature   { flex: 2 1 0; min-width: 0; }
+.portfolio-item--small     { flex: 1 1 0; min-width: 0; }
 .portfolio-item--text-only { flex: 1 1 100%; max-width: 100%; }
 
-/* Compact static layout — show only image + title, hide the rest */
-.publication-venue,
-.publication-location,
-.publication-authors,
-.publication-author-note,
-.publication-links,
-.publication-summary,
-.caption-description,
-.festival-award {
-    display: none;
-}
-
-/* Smaller title font in static view */
-.portfolio-caption .caption-title {
-    font-size: 11px;
-    line-height: 1.35;
-    margin-top: 4px;
-    margin-bottom: 0;
-}
-
-/* Patents section still wants to show its full text block */
-.portfolio-section--patents .publication-venue,
-.portfolio-section--patents .publication-location,
-.portfolio-section--patents .publication-authors {
-    display: block;
-}
-.portfolio-section--patents .caption-title {
-    font-size: 11px;
-}
+/* Compact caption typography for the static one-screen layout */
+.portfolio-caption .caption-title { font-size: 11px; line-height: 1.4; margin-bottom: 4px; }
+.portfolio-caption .publication-venue,
+.portfolio-caption .publication-location,
+.portfolio-caption .publication-authors,
+.portfolio-caption .publication-author-note,
+.portfolio-caption .publication-links,
+.portfolio-caption .publication-summary,
+.portfolio-caption .caption-description { font-size: 10px; line-height: 1.45; }
+.portfolio-caption .festival-award { font-size: 9.5px; line-height: 1.45; }
 
 /* Patents section — text-only entries, title left + status tag right */
 .patent-header {
