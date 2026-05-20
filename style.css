@@ -8,7 +8,7 @@
     --text-dim: #b4b4b4;
     --rule: rgba(0, 0, 0, 0.28);
     --rule-soft: rgba(0, 0, 0, 0.12);
-    --font: 'Helvetica Neue', Helvetica, 'Inter', Arial, sans-serif;
+    --font: 'Futura PT', 'Futura', 'Jost', 'Century Gothic', 'Avenir Next', sans-serif;
 }
 
 *, *::before, *::after {
@@ -24,6 +24,7 @@ body {
     color: var(--text);
     font-family: var(--font);
     font-size: 13px;
+    font-weight: 300;            /* thin Futura weight throughout */
     line-height: 1.42;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
@@ -57,9 +58,9 @@ button { font-family: inherit; cursor: pointer; background: none; border: none; 
 }
 
 .name {
-    font-size: 26px;
-    font-weight: 400;
-    letter-spacing: -0.01em;
+    font-size: 27px;
+    font-weight: 300;
+    letter-spacing: 0;
     line-height: 1.05;
 }
 
@@ -268,7 +269,7 @@ a.work-text:hover .tc-link { text-decoration: underline; text-underline-offset: 
     gap: 26px;
 }
 .cv-entry { display: flex; flex-direction: column; gap: 3px; }
-.cv-entry-title { font-size: 13px; font-weight: 700; }
+.cv-entry-title { font-size: 13px; font-weight: 400; }
 .cv-entry-desc {
     font-size: 12px;
     line-height: 1.5;
