@@ -39,56 +39,54 @@ button { font-family: inherit; cursor: pointer; background: none; border: none; 
     align-items: start;
 }
 
-/* ===================== LEFT — index (sticky) ===================== */
+/* ===================== LEFT — index (sticky, one screen, no scroll) ===================== */
 .index {
     grid-column: 1;
     position: sticky;
     top: 0;
     height: 100vh;
-    overflow-y: auto;
-    scrollbar-width: none;
+    overflow: hidden;
 }
-.index::-webkit-scrollbar { display: none; }
 
 .index-inner {
-    padding: 28px 32px;
+    padding: 26px 28px;
     display: flex;
     flex-direction: column;
-    gap: 22px;
-    min-height: 100%;
+    gap: 14px;
+    height: 100%;
 }
 
 .name {
-    font-size: 42px;
+    font-size: 26px;
     font-weight: 400;
-    letter-spacing: -0.015em;
-    line-height: 1.02;
+    letter-spacing: -0.01em;
+    line-height: 1.05;
 }
 
 .bio-grid {
     display: grid;
     grid-template-columns: 1.4fr 1fr;
-    gap: 28px;
+    gap: 22px;
 }
-.bio { display: flex; flex-direction: column; gap: 12px; }
-.bio p { font-size: 12px; line-height: 1.5; color: var(--text); max-width: 34ch; }
-.edu { display: flex; flex-direction: column; gap: 10px; }
-.edu p { font-size: 12px; line-height: 1.5; color: var(--text); }
+.bio { display: flex; flex-direction: column; gap: 8px; }
+.bio p { font-size: 10.5px; line-height: 1.5; color: var(--text); max-width: 36ch; }
+.edu { display: flex; flex-direction: column; gap: 7px; }
+.edu p { font-size: 10.5px; line-height: 1.5; color: var(--text); }
 .edu .edu-sub { color: var(--text-mid); }
 
 /* eyes mark */
-.mark { width: 92px; height: 92px; cursor: pointer; }
+.mark { width: 60px; height: 60px; cursor: pointer; }
 #eyes-canvas-container {
-    width: 92px;
-    height: 92px;
+    width: 60px;
+    height: 60px;
     border-radius: 50%;
     overflow: hidden;
 }
 #eyes-canvas-container canvas {
     display: block !important;
     border-radius: 50%;
-    width: 92px !important;
-    height: 92px !important;
+    width: 60px !important;
+    height: 60px !important;
 }
 
 /* works table */
@@ -96,28 +94,28 @@ button { font-family: inherit; cursor: pointer; background: none; border: none; 
 .wt-row {
     display: grid;
     grid-template-columns: 1fr 2.3fr 0.5fr;
-    gap: 14px;
+    gap: 12px;
     align-items: baseline;
-    padding: 7px 0;
+    padding: 4px 0;
     border-bottom: 1px solid var(--rule);
-    font-size: 12px;
+    font-size: 10.5px;
 }
-.wt-head { color: var(--text-mid); font-size: 11px; }
+.wt-head { color: var(--text-mid); font-size: 10px; }
 a.wt-row { cursor: pointer; transition: background-color 0.15s ease; }
 a.wt-row:hover { background-color: rgba(0, 0, 0, 0.04); }
-.wt-cat { text-transform: uppercase; font-size: 10.5px; letter-spacing: 0.05em; }
-.wt-head .wt-cat { text-transform: none; letter-spacing: 0; font-size: 11px; }
+.wt-cat { text-transform: uppercase; font-size: 9.5px; letter-spacing: 0.05em; }
+.wt-head .wt-cat { text-transform: none; letter-spacing: 0; font-size: 10px; }
 .wt-proj { color: var(--text); }
 .wt-year { text-align: right; color: var(--text); }
 
 /* contact */
 .index-contact {
     margin-top: auto;
-    padding-top: 18px;
+    padding-top: 14px;
     display: flex;
     flex-wrap: wrap;
-    gap: 6px 20px;
-    font-size: 11.5px;
+    gap: 5px 18px;
+    font-size: 10.5px;
     color: var(--text-mid);
 }
 .index-contact a { color: var(--text-mid); }
