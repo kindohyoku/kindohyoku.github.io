@@ -10,117 +10,9 @@
 <body>
     <div class="layout">
 
-        <!-- ===================== LEFT — work gallery ===================== -->
-        <main class="gallery">
-
-            <article class="work" id="w1">
-                <div class="work-label">
-                    <span class="cat">Research</span>
-                    <span class="proj">Behavior-Aware Anthropometric Scene Generation</span>
-                    <span class="year">2026</span>
-                </div>
-                <a class="work-media" href="https://kindohyoku.github.io/BehaviorAware/" target="_blank" rel="noopener">
-                    <img src="assets/behavior-aware/behavior_aware.gif" alt="Behavior-Aware Anthropometric Scene Generation">
-                </a>
-            </article>
-
-            <article class="work" id="w2">
-                <div class="work-label">
-                    <span class="cat">Research</span>
-                    <span class="proj">Layer-Specific LLM Participation in Spatial Usability Evaluation</span>
-                    <span class="year">2026</span>
-                </div>
-                <a class="work-media" href="https://sites.google.com/andrew.cmu.edu/chi-llm-simulacra/home" target="_blank" rel="noopener">
-                    <img src="assets/chi-workshop/workshop_diagram.svg" alt="Layer-Specific LLM Participation diagram">
-                </a>
-            </article>
-
-            <article class="work" id="w3">
-                <div class="work-label">
-                    <span class="cat">Patent</span>
-                    <span class="proj">Anthropometric 3D Indoor Scene Generation System</span>
-                    <span class="year">2026</span>
-                </div>
-                <div class="work-media work-text">
-                    <div class="text-card">
-                        <p class="tc-title">인체측정 데이터 기반 행동 인식형 3차원 실내 공간 자동 생성 및 사용성 검증 시스템</p>
-                        <p class="tc-sub">Anthropometric Data-driven Behavior-Aware Automatic 3D Indoor Scene Generation and Usability Evaluation System</p>
-                        <p class="tc-meta">Kyung Hoon Hyun, Semin Jin, Kim Dong Hyuk</p>
-                        <p class="tc-meta">Application No. KR 10-2026-0040371 · KIPO · Filed</p>
-                    </div>
-                </div>
-            </article>
-
-            <article class="work" id="w4">
-                <div class="work-label">
-                    <span class="cat">Design</span>
-                    <span class="proj">Table Lamp</span>
-                    <span class="year">2025</span>
-                </div>
-                <a class="work-media" href="#w4">
-                    <img src="assets/table-lamp/tl1.png" alt="Table Lamp">
-                </a>
-            </article>
-
-            <article class="work" id="w5">
-                <div class="work-label">
-                    <span class="cat">Film</span>
-                    <span class="proj">After Dawn — Producer</span>
-                    <span class="year">2024</span>
-                </div>
-                <a class="work-media" href="https://www.bifan.kr/program/program_view.asp?pk_seq=8041&sc_category_seq=8024&sc_num=1&actEvent=view" target="_blank" rel="noopener">
-                    <img src="assets/after-dawn/kung_thumbnail.png" alt="After Dawn">
-                </a>
-            </article>
-
-            <article class="work" id="w6">
-                <div class="work-label">
-                    <span class="cat">Film</span>
-                    <span class="proj">Canned — Art &amp; Set Director</span>
-                    <span class="year">2024</span>
-                </div>
-                <a class="work-media" href="https://danceswithfilms.com/canned/" target="_blank" rel="noopener">
-                    <img src="assets/canned/canned_crop_thumbnail.png" alt="Canned">
-                </a>
-            </article>
-
-            <article class="work" id="w7">
-                <div class="work-label">
-                    <span class="cat">Campaign</span>
-                    <span class="proj">Adidas "Samba"</span>
-                    <span class="year">2024</span>
-                </div>
-                <a class="work-media work-text" href="https://www.instagram.com/reel/C8UKrYYptPP/?igsh=MXNwMGpmYnZneHMwZw==" target="_blank" rel="noopener">
-                    <div class="text-card">
-                        <p class="tc-title">Adidas "Samba" Campaign</p>
-                        <p class="tc-meta">Commercial · Visual &amp; Direction</p>
-                        <p class="tc-link">View on Instagram ↗</p>
-                    </div>
-                </a>
-            </article>
-
-            <article class="work" id="w8">
-                <div class="work-label">
-                    <span class="cat">Campaign</span>
-                    <span class="proj">Korea National Contemporary Dance Company</span>
-                    <span class="year">2024</span>
-                </div>
-                <a class="work-media work-text" href="https://youtu.be/5DmUZFaWPQI?si=lynaDwLC-g5F7wcA" target="_blank" rel="noopener">
-                    <div class="text-card">
-                        <p class="tc-title">Korea National Contemporary Dance Company</p>
-                        <p class="tc-meta">Commercial · Visual &amp; Direction</p>
-                        <p class="tc-link">Watch on YouTube ↗</p>
-                    </div>
-                </a>
-            </article>
-
-        </main>
-
-        <!-- ===================== RIGHT — index / cv ===================== -->
+        <!-- ===================== LEFT — index ===================== -->
         <aside class="index">
             <div class="index-inner">
-
-                <p class="index-top"><span class="active">Selected Work</span> / <a href="#contact">CV</a></p>
 
                 <h1 class="name">Kim Dong Hyuk</h1>
 
@@ -188,7 +80,7 @@
                     </a>
                 </div>
 
-                <div class="index-contact" id="contact">
+                <div class="index-contact">
                     <a href="mailto:oververitas@gmail.com">oververitas@gmail.com</a>
                     <a href="https://www.linkedin.com/in/donghyuk-kim-90b8b2341/" target="_blank" rel="noopener">LinkedIn ↗</a>
                 </div>
@@ -196,18 +88,224 @@
             </div>
         </aside>
 
+        <!-- ===================== RIGHT — panel (work gallery / cv) ===================== -->
+        <div class="panel">
+
+            <p class="panel-toggle">
+                <button type="button" class="toggle active" data-view="work">Selected Work</button>
+                <span class="slash">/</span>
+                <button type="button" class="toggle" data-view="cv">CV</button>
+            </p>
+
+            <!-- ---- Selected Work ---- -->
+            <main class="gallery" data-view="work">
+
+                <article class="work" id="w1">
+                    <div class="work-label">
+                        <span class="cat">Research</span>
+                        <span class="proj">Behavior-Aware Anthropometric Scene Generation</span>
+                        <span class="year">2026</span>
+                    </div>
+                    <a class="work-media" href="https://kindohyoku.github.io/BehaviorAware/" target="_blank" rel="noopener">
+                        <img src="assets/behavior-aware/behavior_aware.gif" alt="Behavior-Aware Anthropometric Scene Generation">
+                    </a>
+                </article>
+
+                <article class="work" id="w2">
+                    <div class="work-label">
+                        <span class="cat">Research</span>
+                        <span class="proj">Layer-Specific LLM Participation in Spatial Usability Evaluation</span>
+                        <span class="year">2026</span>
+                    </div>
+                    <a class="work-media" href="https://sites.google.com/andrew.cmu.edu/chi-llm-simulacra/home" target="_blank" rel="noopener">
+                        <img src="assets/chi-workshop/workshop_diagram.svg" alt="Layer-Specific LLM Participation diagram">
+                    </a>
+                </article>
+
+                <article class="work" id="w3">
+                    <div class="work-label">
+                        <span class="cat">Patent</span>
+                        <span class="proj">Anthropometric 3D Indoor Scene Generation System</span>
+                        <span class="year">2026</span>
+                    </div>
+                    <div class="work-media work-text">
+                        <div class="text-card">
+                            <p class="tc-title">인체측정 데이터 기반 행동 인식형 3차원 실내 공간 자동 생성 및 사용성 검증 시스템</p>
+                            <p class="tc-sub">Anthropometric Data-driven Behavior-Aware Automatic 3D Indoor Scene Generation and Usability Evaluation System</p>
+                            <p class="tc-meta">Kyung Hoon Hyun, Semin Jin, Kim Dong Hyuk</p>
+                            <p class="tc-meta">Application No. KR 10-2026-0040371 · KIPO · Filed</p>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="work" id="w4">
+                    <div class="work-label">
+                        <span class="cat">Design</span>
+                        <span class="proj">Table Lamp</span>
+                        <span class="year">2025</span>
+                    </div>
+                    <a class="work-media" href="#w4">
+                        <img src="assets/table-lamp/tl1.png" alt="Table Lamp">
+                    </a>
+                </article>
+
+                <article class="work" id="w5">
+                    <div class="work-label">
+                        <span class="cat">Film</span>
+                        <span class="proj">After Dawn — Producer</span>
+                        <span class="year">2024</span>
+                    </div>
+                    <a class="work-media" href="https://www.bifan.kr/program/program_view.asp?pk_seq=8041&sc_category_seq=8024&sc_num=1&actEvent=view" target="_blank" rel="noopener">
+                        <img src="assets/after-dawn/kung_thumbnail.png" alt="After Dawn">
+                    </a>
+                </article>
+
+                <article class="work" id="w6">
+                    <div class="work-label">
+                        <span class="cat">Film</span>
+                        <span class="proj">Canned — Art &amp; Set Director</span>
+                        <span class="year">2024</span>
+                    </div>
+                    <a class="work-media" href="https://danceswithfilms.com/canned/" target="_blank" rel="noopener">
+                        <img src="assets/canned/canned_crop_thumbnail.png" alt="Canned">
+                    </a>
+                </article>
+
+                <article class="work" id="w7">
+                    <div class="work-label">
+                        <span class="cat">Campaign</span>
+                        <span class="proj">Adidas "Samba"</span>
+                        <span class="year">2024</span>
+                    </div>
+                    <a class="work-media work-text" href="https://www.instagram.com/reel/C8UKrYYptPP/?igsh=MXNwMGpmYnZneHMwZw==" target="_blank" rel="noopener">
+                        <div class="text-card">
+                            <p class="tc-title">Adidas "Samba" Campaign</p>
+                            <p class="tc-meta">Commercial · Visual &amp; Direction</p>
+                            <p class="tc-link">View on Instagram ↗</p>
+                        </div>
+                    </a>
+                </article>
+
+                <article class="work" id="w8">
+                    <div class="work-label">
+                        <span class="cat">Campaign</span>
+                        <span class="proj">Korea National Contemporary Dance Company</span>
+                        <span class="year">2024</span>
+                    </div>
+                    <a class="work-media work-text" href="https://youtu.be/5DmUZFaWPQI?si=lynaDwLC-g5F7wcA" target="_blank" rel="noopener">
+                        <div class="text-card">
+                            <p class="tc-title">Korea National Contemporary Dance Company</p>
+                            <p class="tc-meta">Commercial · Visual &amp; Direction</p>
+                            <p class="tc-link">Watch on YouTube ↗</p>
+                        </div>
+                    </a>
+                </article>
+
+            </main>
+
+            <!-- ---- CV ---- -->
+            <section class="cv" data-view="cv" hidden>
+
+                <div class="cv-section">
+                    <div class="cv-label">Education</div>
+                    <div class="cv-content">
+                        <div class="cv-entry">
+                            <p class="cv-entry-title">Hanyang University</p>
+                            <p class="cv-entry-meta">Seoul, Korea</p>
+                            <p class="cv-entry-meta">M.S. Design Informatics Lab · (Expected) 2027</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="cv-section">
+                    <div class="cv-label">Experiences</div>
+                    <div class="cv-content">
+                        <div class="cv-entry">
+                            <p class="cv-entry-title">Researcher · Design Informatics Lab</p>
+                            <p class="cv-entry-desc">Research on the application of AI in design and human-computer interaction; co-author of the CHI 2026 paper on behavior-aware 3D scene generation.</p>
+                            <p class="cv-entry-meta">Hanyang University, Seoul</p>
+                            <p class="cv-entry-meta">2024 – Present</p>
+                        </div>
+                        <div class="cv-entry">
+                            <p class="cv-entry-title">Producer · After Dawn</p>
+                            <p class="cv-entry-desc">Feature film produced on location in Jeonju &amp; Jeongeup, supported by the Jeonju Film Commission. Official Selection, BIFAN 2025.</p>
+                            <p class="cv-entry-meta">Jeonju, Korea</p>
+                            <p class="cv-entry-meta">2024</p>
+                        </div>
+                        <div class="cv-entry">
+                            <p class="cv-entry-title">Art &amp; Set Director · Canned</p>
+                            <p class="cv-entry-desc">Set design and fabrication for a dance film. Best Film Award, Seoul Dance Film Festival 2025.</p>
+                            <p class="cv-entry-meta">Seoul, Korea</p>
+                            <p class="cv-entry-meta">2024</p>
+                        </div>
+                        <div class="cv-entry">
+                            <p class="cv-entry-title">Producer · Unbearable</p>
+                            <p class="cv-entry-desc">Short film directed by Jiyun Han. Official Selection, NR1IFF 2025.</p>
+                            <p class="cv-entry-meta">Seoul, Korea</p>
+                            <p class="cv-entry-meta">2025</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="cv-section">
+                    <div class="cv-label">Skills</div>
+                    <div class="cv-content">
+                        <div class="cv-entry">
+                            <p class="cv-entry-title">Areas of Practice</p>
+                            <p class="cv-entry-meta">Research | AI, HCI, Spatial Computing</p>
+                            <p class="cv-entry-meta">Film | Producing, Art Direction, Cinematography</p>
+                            <p class="cv-entry-meta">Design | Lighting, Fabrication, Set Design</p>
+                        </div>
+                        <div class="cv-entry">
+                            <p class="cv-entry-title">Tools</p>
+                            <p class="cv-entry-meta">Blender | Cinema 4D</p>
+                            <p class="cv-entry-meta">Premiere Pro | DaVinci Resolve</p>
+                            <p class="cv-entry-meta">Python | Figma</p>
+                        </div>
+                        <div class="cv-entry">
+                            <p class="cv-entry-title">Languages</p>
+                            <p class="cv-entry-meta">Korean | native</p>
+                            <p class="cv-entry-meta">English | fluent</p>
+                        </div>
+                    </div>
+                </div>
+
+            </section>
+
+        </div>
+
     </div>
 
     <!-- eyes p5 sketch — small interactive mark -->
     <script src="assets/js/eyes_sketch.js"></script>
     <script>
     (function() {
-        // Table rows scroll the gallery to the matching work
+        const toggles = document.querySelectorAll('.toggle');
+        const gallery = document.querySelector('.gallery');
+        const cv = document.querySelector('.cv');
+
+        function setView(view) {
+            toggles.forEach((t) => t.classList.toggle('active', t.dataset.view === view));
+            const isCv = (view === 'cv');
+            gallery.hidden = isCv;
+            cv.hidden = !isCv;
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        toggles.forEach((t) => {
+            t.addEventListener('click', () => setView(t.dataset.view));
+        });
+
+        // Table rows scroll the gallery to the matching work (switch to Work view first)
         document.querySelectorAll('.wt-row[data-target]').forEach((row) => {
             row.addEventListener('click', (e) => {
                 const target = document.getElementById(row.dataset.target);
-                if (target) {
-                    e.preventDefault();
+                if (!target) return;
+                e.preventDefault();
+                if (cv.hidden === false) {
+                    setView('work');
+                    setTimeout(() => target.scrollIntoView({ behavior: 'smooth', block: 'start' }), 80);
+                } else {
                     target.scrollIntoView({ behavior: 'smooth', block: 'start' });
                 }
             });

@@ -1,5 +1,5 @@
 /* Kim Dong Hyuk — minimal portfolio
-   Layout reference: yjaelee.com (mirrored — gallery left, index right). */
+   Layout reference: yjaelee.com — index left (sticky), gallery / CV right. */
 
 :root {
     --bg: #ffffff;
@@ -30,6 +30,7 @@ body {
 }
 
 a { color: inherit; text-decoration: none; }
+button { font-family: inherit; cursor: pointer; background: none; border: none; color: inherit; }
 
 /* ===================== Layout ===================== */
 .layout {
@@ -38,104 +39,13 @@ a { color: inherit; text-decoration: none; }
     align-items: start;
 }
 
-/* ===================== LEFT — gallery ===================== */
-.gallery {
-    grid-column: 1;
-    padding: 28px 32px 120px;
-    display: flex;
-    flex-direction: column;
-    gap: 76px;
-}
-
-.work {
-    display: flex;
-    flex-direction: column;
-    gap: 18px;
-    scroll-margin-top: 28px;
-}
-
-.work-label {
-    display: grid;
-    grid-template-columns: 1fr 1.8fr 0.6fr;
-    align-items: baseline;
-    gap: 14px;
-    padding-bottom: 8px;
-    border-bottom: 1px solid var(--rule);
-}
-.work-label .cat {
-    text-transform: uppercase;
-    font-size: 10.5px;
-    letter-spacing: 0.06em;
-    color: var(--text);
-}
-.work-label .proj {
-    font-size: 12.5px;
-    text-align: center;
-    color: var(--text);
-}
-.work-label .year {
-    font-size: 12.5px;
-    text-align: right;
-    color: var(--text);
-}
-
-.work-media {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    min-height: 200px;
-}
-.work-media img {
-    max-width: 100%;
-    max-height: 64vh;
-    object-fit: contain;
-    display: block;
-}
-
-/* Text card for works without an image */
-.work-text {
-    min-height: 340px;
-    background: rgba(0, 0, 0, 0.022);
-    border: 1px solid var(--rule-soft);
-}
-.text-card {
-    max-width: 440px;
-    padding: 44px 36px;
-    text-align: center;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-}
-.text-card .tc-title {
-    font-size: 15px;
-    line-height: 1.4;
-    color: var(--text);
-}
-.text-card .tc-sub {
-    font-size: 11.5px;
-    font-style: italic;
-    color: var(--text-mid);
-    line-height: 1.45;
-}
-.text-card .tc-meta {
-    font-size: 11px;
-    color: var(--text-mid);
-}
-.text-card .tc-link {
-    margin-top: 6px;
-    font-size: 11.5px;
-    color: var(--text);
-}
-a.work-text:hover .tc-link { text-decoration: underline; text-underline-offset: 3px; }
-
-/* ===================== RIGHT — index / cv ===================== */
+/* ===================== LEFT — index (sticky) ===================== */
 .index {
-    grid-column: 2;
+    grid-column: 1;
     position: sticky;
     top: 0;
     height: 100vh;
     overflow-y: auto;
-    border-left: 1px solid var(--rule-soft);
     scrollbar-width: none;
 }
 .index::-webkit-scrollbar { display: none; }
@@ -148,17 +58,6 @@ a.work-text:hover .tc-link { text-decoration: underline; text-underline-offset: 
     min-height: 100%;
 }
 
-.index-top {
-    font-size: 11.5px;
-    color: var(--text-mid);
-}
-.index-top .active {
-    color: var(--text);
-    text-decoration: underline;
-    text-underline-offset: 3px;
-}
-.index-top a:hover { color: var(--text); }
-
 .name {
     font-size: 42px;
     font-weight: 400;
@@ -166,7 +65,6 @@ a.work-text:hover .tc-link { text-decoration: underline; text-underline-offset: 
     line-height: 1.02;
 }
 
-/* Bio + education, two columns */
 .bio-grid {
     display: grid;
     grid-template-columns: 1.4fr 1fr;
@@ -178,12 +76,8 @@ a.work-text:hover .tc-link { text-decoration: underline; text-underline-offset: 
 .edu p { font-size: 12px; line-height: 1.5; color: var(--text); }
 .edu .edu-sub { color: var(--text-mid); }
 
-/* Eyes mark — small interactive p5 canvas */
-.mark {
-    width: 92px;
-    height: 92px;
-    cursor: pointer;
-}
+/* eyes mark */
+.mark { width: 92px; height: 92px; cursor: pointer; }
 #eyes-canvas-container {
     width: 92px;
     height: 92px;
@@ -197,11 +91,8 @@ a.work-text:hover .tc-link { text-decoration: underline; text-underline-offset: 
     height: 92px !important;
 }
 
-/* Works table */
-.works-table {
-    display: flex;
-    flex-direction: column;
-}
+/* works table */
+.works-table { display: flex; flex-direction: column; }
 .wt-row {
     display: grid;
     grid-template-columns: 1fr 2.3fr 0.5fr;
@@ -211,30 +102,15 @@ a.work-text:hover .tc-link { text-decoration: underline; text-underline-offset: 
     border-bottom: 1px solid var(--rule);
     font-size: 12px;
 }
-.wt-head {
-    border-bottom: 1px solid var(--rule);
-    color: var(--text-mid);
-    font-size: 11px;
-}
-.wt-row.wt-head:first-child { border-top: none; }
+.wt-head { color: var(--text-mid); font-size: 11px; }
 a.wt-row { cursor: pointer; transition: background-color 0.15s ease; }
 a.wt-row:hover { background-color: rgba(0, 0, 0, 0.04); }
-.wt-cat {
-    text-transform: uppercase;
-    font-size: 10.5px;
-    letter-spacing: 0.05em;
-}
-.wt-head .wt-cat,
-.wt-head .wt-proj,
-.wt-head .wt-year {
-    text-transform: none;
-    letter-spacing: 0;
-    font-size: 11px;
-}
+.wt-cat { text-transform: uppercase; font-size: 10.5px; letter-spacing: 0.05em; }
+.wt-head .wt-cat { text-transform: none; letter-spacing: 0; font-size: 11px; }
 .wt-proj { color: var(--text); }
 .wt-year { text-align: right; color: var(--text); }
 
-/* Contact line at the bottom of the index */
+/* contact */
 .index-contact {
     margin-top: auto;
     padding-top: 18px;
@@ -251,19 +127,156 @@ a.wt-row:hover { background-color: rgba(0, 0, 0, 0.04); }
     text-underline-offset: 3px;
 }
 
+/* ===================== RIGHT — panel ===================== */
+.panel {
+    grid-column: 2;
+    border-left: 1px solid var(--rule-soft);
+    min-height: 100vh;
+}
+
+/* toggle bar — sticky at the top of the panel */
+.panel-toggle {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    background: var(--bg);
+    padding: 24px 32px 14px;
+    display: flex;
+    align-items: baseline;
+    gap: 8px;
+    font-size: 11.5px;
+    color: var(--text-mid);
+}
+.panel-toggle .toggle {
+    font-size: 11.5px;
+    color: var(--text-mid);
+    padding: 0;
+}
+.panel-toggle .toggle.active {
+    color: var(--text);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+}
+.panel-toggle .toggle:hover { color: var(--text); }
+.panel-toggle .slash { color: var(--text-dim); }
+
+/* hidden view toggling — must override display:flex below */
+.gallery[hidden], .cv[hidden] { display: none; }
+
+/* ---- gallery ---- */
+.gallery {
+    padding: 10px 32px 120px;
+    display: flex;
+    flex-direction: column;
+    gap: 76px;
+}
+.work {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    scroll-margin-top: 70px;
+}
+.work-label {
+    display: grid;
+    grid-template-columns: 1fr 1.8fr 0.6fr;
+    align-items: baseline;
+    gap: 14px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid var(--rule);
+}
+.work-label .cat {
+    text-transform: uppercase;
+    font-size: 10.5px;
+    letter-spacing: 0.06em;
+}
+.work-label .proj { font-size: 12.5px; text-align: center; }
+.work-label .year { font-size: 12.5px; text-align: right; }
+
+.work-media {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 200px;
+}
+.work-media img {
+    max-width: 100%;
+    max-height: 64vh;
+    object-fit: contain;
+    display: block;
+}
+
+/* text card for works without an image */
+.work-text {
+    min-height: 340px;
+    background: rgba(0, 0, 0, 0.022);
+    border: 1px solid var(--rule-soft);
+}
+.text-card {
+    max-width: 440px;
+    padding: 44px 36px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+.text-card .tc-title { font-size: 15px; line-height: 1.4; }
+.text-card .tc-sub {
+    font-size: 11.5px;
+    font-style: italic;
+    color: var(--text-mid);
+    line-height: 1.45;
+}
+.text-card .tc-meta { font-size: 11px; color: var(--text-mid); }
+.text-card .tc-link { margin-top: 6px; font-size: 11.5px; color: var(--text); }
+a.work-text:hover .tc-link { text-decoration: underline; text-underline-offset: 3px; }
+
+/* ---- CV ---- */
+.cv {
+    padding: 14px 32px 120px;
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+}
+.cv-section {
+    display: grid;
+    grid-template-columns: 0.5fr 1.5fr;
+    gap: 28px;
+    align-items: start;
+}
+.cv-label {
+    font-size: 12px;
+    color: var(--text-mid);
+}
+.cv-content {
+    display: flex;
+    flex-direction: column;
+    gap: 26px;
+}
+.cv-entry { display: flex; flex-direction: column; gap: 3px; }
+.cv-entry-title { font-size: 13px; font-weight: 700; }
+.cv-entry-desc {
+    font-size: 12px;
+    line-height: 1.5;
+    color: var(--text);
+    max-width: 52ch;
+    margin: 3px 0 4px;
+}
+.cv-entry-meta { font-size: 11.5px; color: var(--text-mid); line-height: 1.5; }
+
 /* ===================== Responsive ===================== */
 @media (max-width: 900px) {
     .layout { grid-template-columns: 1fr; }
-    .gallery { grid-column: 1; order: 2; padding: 20px 18px 80px; gap: 56px; }
     .index {
         grid-column: 1;
-        order: 1;
         position: static;
         height: auto;
-        border-left: none;
         border-bottom: 1px solid var(--rule-soft);
     }
     .index-inner { min-height: 0; }
+    .panel { grid-column: 1; border-left: none; min-height: 0; }
     .name { font-size: 32px; }
+    .gallery { padding: 10px 18px 80px; gap: 56px; }
     .work-media img { max-height: none; }
+    .cv { padding: 14px 18px 80px; }
+    .cv-section { grid-template-columns: 1fr; gap: 10px; }
 }
