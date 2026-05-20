@@ -23,9 +23,9 @@ body {
     background: var(--bg);
     color: var(--text);
     font-family: var(--font);
-    font-size: 13px;
+    font-size: 12px;
     font-weight: 300;            /* thin Futura weight throughout */
-    line-height: 1.42;
+    line-height: 1.4;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 }
@@ -50,15 +50,15 @@ button { font-family: inherit; cursor: pointer; background: none; border: none; 
 }
 
 .index-inner {
-    padding: 26px 28px;
+    padding: 24px 26px;
     display: flex;
     flex-direction: column;
-    gap: 14px;
+    gap: 13px;
     height: 100%;
 }
 
 .name {
-    font-size: 27px;
+    font-size: 23px;
     font-weight: 300;
     letter-spacing: 0;
     line-height: 1.05;
@@ -167,15 +167,15 @@ a.wt-row:hover { background-color: rgba(0, 0, 0, 0.04); }
     top: 0;
     z-index: 10;
     background: var(--bg);
-    padding: 24px 32px 14px;
+    padding: 18px 28px 12px;
     display: flex;
     align-items: baseline;
     gap: 8px;
-    font-size: 11.5px;
+    font-size: 11px;
     color: var(--text-mid);
 }
 .panel-toggle .toggle {
-    font-size: 11.5px;
+    font-size: 11px;
     color: var(--text-mid);
     padding: 0;
 }
@@ -192,32 +192,32 @@ a.wt-row:hover { background-color: rgba(0, 0, 0, 0.04); }
 
 /* ---- gallery ---- */
 .gallery {
-    padding: 10px 32px 120px;
+    padding: 6px 28px 56px;
     display: flex;
     flex-direction: column;
-    gap: 76px;
+    gap: 40px;
 }
 .work {
     display: flex;
     flex-direction: column;
-    gap: 12px;
-    scroll-margin-top: 70px;
+    gap: 8px;
+    scroll-margin-top: 62px;
 }
 .work-label {
     display: grid;
     grid-template-columns: 1fr 1.8fr 0.6fr;
     align-items: baseline;
     gap: 14px;
-    padding-bottom: 8px;
+    padding-bottom: 6px;
     border-bottom: 1px solid var(--rule);
 }
 .work-label .cat {
     text-transform: uppercase;
-    font-size: 10.5px;
+    font-size: 9.5px;
     letter-spacing: 0.06em;
 }
-.work-label .proj { font-size: 12.5px; text-align: center; }
-.work-label .year { font-size: 12.5px; text-align: right; }
+.work-label .proj { font-size: 11.5px; text-align: center; }
+.work-label .year { font-size: 11.5px; text-align: right; }
 
 /* work media — single image or click-to-advance slideshow */
 .work-media { display: block; }
@@ -228,7 +228,7 @@ a.wt-row:hover { background-color: rgba(0, 0, 0, 0.04); }
 .work-media video {
     width: 100%;
     height: auto;
-    max-height: 76vh;
+    max-height: 58vh;
     object-fit: contain;
     display: block;
 }
@@ -236,10 +236,10 @@ a.wt-row:hover { background-color: rgba(0, 0, 0, 0.04); }
 
 /* short description under each work */
 .work-desc {
-    font-size: 11.5px;
-    line-height: 1.55;
+    font-size: 10.5px;
+    line-height: 1.5;
     color: var(--text);
-    max-width: 62ch;
+    max-width: 64ch;
 }
 .work-desc a {
     color: var(--text-mid);
@@ -268,7 +268,7 @@ a.wt-row:hover { background-color: rgba(0, 0, 0, 0.04); }
 
 /* ---- CV — compact, fits one screen ---- */
 .cv {
-    padding: 12px 32px 28px;
+    padding: 6px 28px 36px;
     display: flex;
     flex-direction: column;
     gap: 16px;
