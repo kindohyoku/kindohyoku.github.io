@@ -33,11 +33,10 @@
                         <a class="recently-row" data-target="w3" href="#w3"><span class="ry">2026</span> Patent filed · KIPO</a>
                         <a class="recently-row" data-target="w6" href="#w6"><span class="ry">2025</span> Best Film Award · Seoul Dance Film Festival</a>
                         <a class="recently-row" data-target="w5" href="#w5"><span class="ry">2025</span> Official Selections · BIFAN, DWF LA, Vienna Shorts, MSFF</a>
+                        <div class="mark" title="hold &amp; drag the eyes across the works">
+                            <div id="eyes-canvas-container"></div>
+                        </div>
                     </div>
-                </div>
-
-                <div class="mark" title="click">
-                    <div id="eyes-canvas-container"></div>
                 </div>
 
                 <div class="works-table">
@@ -357,6 +356,87 @@
                 if (next.tagName === 'VIDEO') { next.currentTime = 0; next.play(); }
             });
         });
+
+        /* draggable eyes — press & hold to drag; the gaze spotlights the work underneath */
+        const mark = document.querySelector('.mark');
+        if (mark) {
+            let dragging = false, offX = 0, offY = 0, placeholder = null;
+
+            function gazeAt(px, py) {
+                mark.style.pointerEvents = 'none';
+                const el = document.elementFromPoint(px, py);
+                mark.style.pointerEvents = '';
+                const work = el ? el.closest('.work') : null;
+                const current = gallery.querySelector('.work.gazed');
+                if (current && current !== work) current.classList.remove('gazed');
+                if (work) {
+                    work.classList.add('gazed');
+                    gallery.classList.add('gazing');
+                } else {
+                    gallery.classList.remove('gazing');
+                }
+            }
+            function clearGaze() {
+                gallery.classList.remove('gazing');
+                const g = gallery.querySelector('.work.gazed');
+                if (g) g.classList.remove('gazed');
+            }
+
+            function startDrag(px, py) {
+                const r = mark.getBoundingClientRect();
+                offX = px - r.left;
+                offY = py - r.top;
+                placeholder = document.createElement('div');
+                placeholder.style.width = r.width + 'px';
+                placeholder.style.height = r.height + 'px';
+                placeholder.style.marginTop = '12px';
+                mark.parentNode.insertBefore(placeholder, mark);
+                mark.style.position = 'fixed';
+                mark.style.margin = '0';
+                mark.style.left = r.left + 'px';
+                mark.style.top = r.top + 'px';
+                mark.style.width = r.width + 'px';
+                mark.style.height = r.height + 'px';
+                mark.style.zIndex = '2000';
+                mark.classList.add('dragging');
+                dragging = true;
+            }
+            function moveDrag(px, py) {
+                if (!dragging) return;
+                mark.style.left = (px - offX) + 'px';
+                mark.style.top = (py - offY) + 'px';
+                gazeAt(px, py);
+            }
+            function endDrag() {
+                if (!dragging) return;
+                dragging = false;
+                clearGaze();
+                const ph = placeholder.getBoundingClientRect();
+                mark.style.transition = 'left 0.42s cubic-bezier(0.2,0.8,0.2,1), top 0.42s cubic-bezier(0.2,0.8,0.2,1)';
+                mark.style.left = ph.left + 'px';
+                mark.style.top = ph.top + 'px';
+                setTimeout(() => {
+                    mark.removeAttribute('style');
+                    mark.classList.remove('dragging');
+                    if (placeholder) { placeholder.remove(); placeholder = null; }
+                }, 440);
+            }
+
+            mark.addEventListener('mousedown', (e) => { e.preventDefault(); startDrag(e.clientX, e.clientY); });
+            document.addEventListener('mousemove', (e) => moveDrag(e.clientX, e.clientY));
+            document.addEventListener('mouseup', endDrag);
+
+            mark.addEventListener('touchstart', (e) => {
+                const t = e.touches[0];
+                startDrag(t.clientX, t.clientY);
+            }, { passive: true });
+            document.addEventListener('touchmove', (e) => {
+                if (!dragging) return;
+                const t = e.touches[0];
+                moveDrag(t.clientX, t.clientY);
+            }, { passive: true });
+            document.addEventListener('touchend', endDrag);
+        }
     })();
     </script>
 </body>
