@@ -168,24 +168,7 @@ function draw_sun() {
     circle(0, 0, sun_radius * 2);
 }
 
-// Exposed so the right eye / external buttons can trigger the same regeneration
-window.generateNewEyes = function() {
-    if (flares.length >= max_flares) return;
-
-    generate_color_palettes();
-    current_background_color = random(background_palette);
-    current_sun_color = random(sun_palette);
-
-    let num_threads = int(random(20, 40));
-    for (let i = 0; i < num_threads; i++) {
-        let angle = radians(i * (360 / num_threads));
-        flares.push(new SolarThread(angle));
-    }
-};
-
+// Interaction disabled — the eyes holds its initial generated form.
 function mousePressed() {
-    if (mouseX >= 0 && mouseX <= width && mouseY >= 0 && mouseY <= height) {
-        window.generateNewEyes();
-        if (typeof window.onEyesClick === 'function') window.onEyesClick();
-    }
+    // intentionally empty
 }

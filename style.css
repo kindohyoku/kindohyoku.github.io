@@ -103,17 +103,12 @@ a.recently-row:hover { color: var(--text); text-decoration: underline; text-unde
     margin-right: 5px;
 }
 
-/* eyes mark — draggable gaze */
+/* eyes mark — static */
 .mark {
     width: 90px;
     height: 90px;
     margin-top: 12px;
-    cursor: grab;
-    user-select: none;
-    -webkit-user-select: none;
-    touch-action: none;
 }
-.mark.dragging { cursor: grabbing; }
 #eyes-canvas-container {
     width: 90px;
     height: 90px;
@@ -211,11 +206,7 @@ a.wt-row:hover { background-color: rgba(0, 0, 0, 0.04); }
     flex-direction: column;
     gap: 8px;
     scroll-margin-top: 62px;
-    transition: opacity 0.3s ease, transform 0.3s ease;
 }
-/* gaze spotlight — while the eyes is dragged over the gallery */
-.gallery.gazing .work { opacity: 0.26; }
-.gallery.gazing .work.gazed { opacity: 1; transform: scale(1.012); }
 .work-label {
     display: grid;
     grid-template-columns: 1fr 1.8fr 0.6fr;
