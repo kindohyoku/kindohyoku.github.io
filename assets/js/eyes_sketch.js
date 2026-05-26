@@ -183,9 +183,15 @@ window.generateNewEyes = function() {
     }
 };
 
-function mousePressed() {
-    if (mouseX >= 0 && mouseX <= width && mouseY >= 0 && mouseY <= height) {
-        window.generateNewEyes();
+// p5's global mousePressed has flaky coordinate mapping when the canvas
+// is heavily CSS-scaled (300→90 with !important) and pixelDensity is set,
+// especially on Windows Chrome. Bind a direct DOM click listener instead.
+window.addEventListener('load', function() {
+    var container = document.getElementById('eyes-canvas-container');
+    if (!container) return;
+    container.style.cursor = 'pointer';
+    container.addEventListener('click', function() {
+        if (typeof window.generateNewEyes === 'function') window.generateNewEyes();
         if (typeof window.onEyesClick === 'function') window.onEyesClick();
-    }
-}
+    });
+});
