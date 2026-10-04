@@ -31,3 +31,5 @@ header{display:grid;grid-template-columns:minmax(0,1fr) 112px;gap:24px;align-ite
 /* Share the introduction row so the portrait starts at the affiliation. */
 header{row-gap:0}header>h1{grid-column:1/-1}
 @media(max-width:440px){header{display:grid;grid-template-columns:minmax(0,1fr) 72px}.profile-photo{position:static;top:auto;right:auto}.intro-copy .affiliation{padding-right:0;min-height:0}}
+
+header>h1{grid-column:1/-1;grid-row:1}.intro-copy{grid-column:1;grid-row:2}.profile-photo{grid-column:2;grid-row:2}
