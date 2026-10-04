@@ -25,3 +25,5 @@ header{display:grid;grid-template-columns:minmax(0,1fr) 112px;gap:24px;align-ite
 @media(max-width:640px){header{grid-template-columns:minmax(0,1fr) 88px;gap:16px}.profile-photo{width:88px;height:99px;margin:0}#films .entry{grid-template-columns:160px minmax(0,1fr);gap:14px}}
 @media(max-width:440px){header{display:block}.profile-photo{position:absolute;top:22px;right:20px;width:72px;height:81px}.intro-copy h1{padding-right:88px}.intro-copy .affiliation{padding-right:88px;min-height:56px}#films .entry{grid-template-columns:1fr;gap:10px}#films .film-preview{width:100%;max-width:none}.film-preview img{aspect-ratio:16/9}#film-player{width:calc(100vw - 24px)}}
 @media(prefers-reduced-motion:reduce){#film-player[open],#film-player.closing{animation:none}.play-mark{transition:none}}
+
+.cv-entry p.scholarship{font-size:12px;line-height:1.4;color:#666;margin-top:3px;font-weight:300}
