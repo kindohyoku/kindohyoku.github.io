@@ -27,3 +27,7 @@ header{display:grid;grid-template-columns:minmax(0,1fr) 112px;gap:24px;align-ite
 @media(prefers-reduced-motion:reduce){#film-player[open],#film-player.closing{animation:none}.play-mark{transition:none}}
 
 .cv-entry p.scholarship{font-size:12px;line-height:1.4;color:#666;margin-top:3px;font-weight:300}
+
+/* Share the introduction row so the portrait starts at the affiliation. */
+header{row-gap:0}header>h1{grid-column:1/-1}
+@media(max-width:440px){header{display:grid;grid-template-columns:minmax(0,1fr) 72px}.profile-photo{position:static;top:auto;right:auto}.intro-copy .affiliation{padding-right:0;min-height:0}}
